@@ -35,7 +35,7 @@ legend('Energy1','Energy2')
 RedEnergy= ((h*c/6e-7)/eV); %(eV) Calculates the energy of red light.
 %%%Outputs
 Prob1ans = radii(max(find(BandGapDot(1.5, radii, 2.5) > 1.5*.95)));
-[OptRadred, OptMatred] = max([radii(max(find(abs(Energy1 - RedEnergy) < .001))), radii(max(find(abs(Energy2 - RedEnergy) < .001)))]);
+[OptRadred, OptMatred] = max(find(abs(Energy1 - RedEnergy) < .001))), radii(max(find(abs(Energy2 - RedEnergy) < .001));
 %%%Results
-fprintf('The largest quantum dot radius within the given parameters is %.3fnm\n',(Prob1ans)*1e9)
-fprintf('The optimal material and quantum dot radius for the absorption of red light (600nm) are material #%d with radius of: %.3fnm\n',OptMatred, OptRadred*1e9) %The last two lines of code print the results to the command window.
+fprintf('The largest quantum dot radius within the given parameters is %.3f\n',Prob1ans)
+frpintf('The optimal material and quantum dot radius for the absorption of red light (600nm) are material #%d with radius of: %.3f\n',OptMatred, OptRadred) %The last two lines of code print the results to the command window.
