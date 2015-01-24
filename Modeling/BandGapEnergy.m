@@ -18,8 +18,8 @@ eps_0 = 8.854*10^-12;%[F / m]
 eV = 1.602*10^-19; %[J]
 
 %%Misc Inputs
-radii=([.5:.0001:5])./(1e9); %Creates a row of numbers
-
+radii = ([.5:.0001:5])./(1e9); %Creates a row of numbers
+redwv = 650e-9; %Creates value for the wavelength of red light.
 %%%Calculations
 
 Energy1=BandGapDot(1.8,radii,10);%Calculates the Qdot energy for the first material.
@@ -32,10 +32,10 @@ xlabel('Qdot Radius (m)','FontSize',16,'FontWeight','bold')
 ylabel('Qdot Energy (eV)','FontSize',16,'FontWeight','bold')
 axis([.49e-10 5e-9 1.1 4.4])
 legend('Energy1','Energy2')
-RedEnergy= ((h*c/6e-7)/eV); %(eV) Calculates the energy of red light.
+RedEnergy= ((h*c/redwv)/eV); %(eV) Calculates the energy of red light.
 %%%Outputs
 Prob1ans = radii(max(find(BandGapDot(1.5, radii, 2.5) > 1.5*.95)));
 [OptRadred, OptMatred] = max([radii(max(find(abs(Energy1 - RedEnergy) < .001))), radii(max(find(abs(Energy2 - RedEnergy) < .001)))]);
 %%%Results
 fprintf('The largest quantum dot radius within the given parameters is %.3fnm\n',(Prob1ans)*1e9)
-fprintf('The optimal material and quantum dot radius for the absorption of red light (600nm) are material #%d with radius of: %.3fnm\n',OptMatred, OptRadred*1e9) %The last two lines of code print the results to the command window.
+fprintf('The optimal material and quantum dot radius for the absorption of red light (650nm) are material #%d with radius of: %.3fnm\n',OptMatred, OptRadred*1e9) %The last two lines of code print the results to the command window.
