@@ -27,10 +27,10 @@ Energy2=BandGapDot(1.2,radii,15);%Calculates the Qdot energy for the second mate
 plot(radii,Energy1,'b')%Plots Energy1 against the qdot radius.
 hold('on')%Retains the previous graph.
 plot(radii,Energy2,'r')%Plots Energy2 against the qdot radius.
-title('Qdot Energy as a function of Qdot radius','FontWeight','bold','FontSize',16)
-xlabel('Qdot Radius (m)','FontSize',14)
-ylabel('Qdot Energy (eV)','FontSize',14)
-axis([.49e-10 5e-9 1.1 4.35])
+title('Qdot Energy as a function of Qdot radius','FontWeight','bold','FontSize',18)
+xlabel('Qdot Radius (m)','FontSize',16,'FontWeight','bold')
+ylabel('Qdot Energy (eV)','FontSize',16,'FontWeight','bold')
+axis([.49e-10 5e-9 1.1 4.4])
 legend('Energy1','Energy2')
 RedEnergy= ((h*c/6e-7)/eV); %(eV) Calculates the energy of red light.
 %%%Outputs
