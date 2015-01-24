@@ -1,4 +1,4 @@
-function [ E_g ] = BandGapDot(E_g_bulk, r, eps_0)
+function [ E_g ] = BandGapDot(E_g_bulk, r, eps)
 %find band gap energy of quantum dot given bulk, radius, and
 %dielectric constant
 
@@ -12,7 +12,7 @@ m_e = 9.11*10^-31;%[kg]
 %Electron Charge
 q_e = 1.602*10^-19;%[C]
 %Permitivity of Free Space
-eps = 8.854*10^-12;%[F / m]
+eps_0 = 8.854*10^-12;%[F / m]
 % 1 eV
 eV = 1.602*10^-19; %[J]
 
