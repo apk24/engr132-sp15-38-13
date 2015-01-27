@@ -16,6 +16,7 @@ eps_0 = 8.854*10^-12;%[F / m]
 % 1 eV
 eV = 1.602*10^-19; %[J]
 
+%The equation to find the band gap
 E_g = E_g_bulk + (((h)^2)./(4*m_e*r.^2) - (1.8*q_e^2)./(4*pi()*eps*eps_0*r))/eV;
 
 end
