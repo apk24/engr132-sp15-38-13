@@ -18,7 +18,7 @@ eps_0 = 8.854*10^-12;%[F / m]
 eV = 1.602*10^-19; %[J]
 
 %%Misc Inputs
-radii = ([.5:.0001:5])./(1e9); %Creates a row of numbers
+radii = ([.5:.0001:50])./(1e9); %Creates a row of numbers
 redwv = 650e-9; %Creates value for the wavelength of red light.
 %%%Calculations
 
@@ -34,7 +34,7 @@ axis([.49e-10 5e-9 1.1 4.4])
 legend('Energy1','Energy2')
 RedEnergy= ((h*c/redwv)/eV); %(eV) Calculates the energy of red light.
 %%%Outputs
-Prob1ans = radii(max(find(BandGapDot(1.5, radii, 2.5) > 1.5*.95)));
+Prob1ans = radii(max(find(BandGapDot(1.5, radii, 2.5) < 1.5*.95)));
 [OptRadred, OptMatred] = max([radii(max(find(abs(Energy1 - RedEnergy) < .001))), radii(max(find(abs(Energy2 - RedEnergy) < .001)))]);
 approachBGB = [radii(max(find(abs(Energy1 - 1.8) < .001))), radii(max(find(abs(Energy2 - 1.2) < .001)))];
 %%%Results
