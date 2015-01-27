@@ -7,36 +7,37 @@ numMat = tmp(1);
 clear tmp;
 
 %find band gap energies of the quantum dots
-Eg_name = linspace(0,1,numMat);
-ct = 1;
-while ct <= numMat
-    Eg_name(ct) = BandGapDot(matTable(ct,1),matTable(ct,3)*1e-9,matTable(ct,2));
-    ct = ct + 1;
-end
+Eg_name = BandGapDot(matTable(:,1),matTable(:,3)*1e-9,matTable(:,2))'; 
 
 %Find band gap energy contribution per unit of the optimization attribute
-
+%(called the value in the justifiction)
 Eg_rv = Eg_name ./ optAttr;
 
 %%The Optimization
-%set up the minimum
+%set up the minimum usage requirements
 matRatio = linspace(minUse, minUse, numMat);
-%Find the most "efficient" over the target
+
+%Find the most "valuable" over the target
 overGoal = find(Eg_name > goalEg);
 [~, tmp] = max(Eg_rv(overGoal));
 effOver = overGoal(tmp);
 clear tmp
 
+%under the target
 underGoal = find(Eg_name < goalEg);
 [~, tmp] = max(Eg_rv(underGoal));
 effUnder = underGoal(tmp);
 clear tmp
 
+%set up the system of equations as an augmented matrix, then rref to find
+%solution
 system = [Eg_name(effOver), Eg_name(effUnder), (goalEg*totalReq - sum(Eg_name)*minUse)
     1, 1, (totalReq-numMat*minUse)];
 solution = rref(system);
 
+%put solution into output variable
 matRatio(effOver) = matRatio(effOver) + solution(1,3);
 matRatio(effUnder) = matRatio(effUnder) + solution(2,3);
 
+%calculate cost
 optAttrValue = sum(optAttr .* matRatio);
