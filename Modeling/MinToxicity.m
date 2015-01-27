@@ -8,4 +8,6 @@ mt = [ 1.92 3.6 4.5
     1.18 7.0 2.7];
 optAttr = [2 3 4 1 2];
 
-MinAttr(mt, optAttr, 1.33)
+[ratio, value] = MinAttr(mt, optAttr, 1.33, 2, 100);
+display(ratio)
+display(value)

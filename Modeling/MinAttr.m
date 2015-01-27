@@ -1,4 +1,4 @@
-function [ matRatio ] = MinAttr( matTable, optAttr, goalEg)
+function [ matRatio, optAttrValue ] = MinAttr( matTable, optAttr, goalEg, minUse, totalReq)
 
 %%Process the inputs into more useful values for the actual optimization
 %get number of materials
@@ -19,19 +19,24 @@ end
 Eg_rv = Eg_name ./ optAttr;
 
 %%The Optimization
+%set up the minimum
+matRatio = linspace(minUse, minUse, numMat);
 %Find the most "efficient" over the target
 overGoal = find(Eg_name > goalEg);
 [~, tmp] = max(Eg_rv(overGoal));
 effOver = overGoal(tmp);
+clear tmp
 
 underGoal = find(Eg_name < goalEg);
 [~, tmp] = max(Eg_rv(underGoal));
 effUnder = underGoal(tmp);
+clear tmp
 
-system = [Eg_name(effOver), Eg_name(effUnder), (goalEg*100 - sum(Eg_name)*2)
-    1, 1, (100-numMat*2)];
+system = [Eg_name(effOver), Eg_name(effUnder), (goalEg*totalReq - sum(Eg_name)*minUse)
+    1, 1, (totalReq-numMat*minUse)];
 solution = rref(system);
-solution(:,3)'
-[addToEffOver, addToEffUnder] = solution(:,3);
 
-matRatio = Eg_rv;
+matRatio(effOver) = matRatio(effOver) + solution(1,3);
+matRatio(effUnder) = matRatio(effUnder) + solution(2,3);
+
+optAttrValue = sum(optAttr .* matRatio);
