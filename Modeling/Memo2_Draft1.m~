@@ -53,7 +53,5 @@ fprintf('\t|\t%4.2f\n', value);
 
 
 %%%Double Minimization.
-[ratio, value1, value2] = DoubleMinAttr(mt, optAttr, optAttr1, 1, 1.33, 2, 100);
-fprintf('Scenario 3, Demo A:\t|');
-fprintf('\t%4.2f', ratio);
-fprintf('\t|\t%4.2f\t|\t%4.2f\n', value1, value2);
+ScaledTox = optAttr1 .* (100/max(optAttr1));
+ScaledCost = optAttr .* (100/max(optAttr));
