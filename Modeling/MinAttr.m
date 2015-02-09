@@ -21,13 +21,13 @@ matRatio = linspace(minUse, minUse, numMat);
 overGoal = find(Eg_name > goalEg);
 [~, tmp] = max(Eg_rv(overGoal));
 effOver = overGoal(tmp);
-clear tmp
+clear tmp;
 
 %under the target
 underGoal = find(Eg_name < goalEg);
 [~, tmp] = max(Eg_rv(underGoal));
 effUnder = underGoal(tmp);
-clear tmp
+clear tmp;
 
 %set up the system of equations as an augmented matrix, then rref to find
 %solution

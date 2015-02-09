@@ -7,12 +7,7 @@ mt = [ 1.92 3.6 4.5
     1.32 9.2 3.5
     1.50 4.0 1.5
     1.71 14.0 4.9
-    1.18 7.0 2.7
-    1.94 3.1 3.2
-    1.26 7.6 2.8
-    1.20 5.0 3.11
-    1.82 2.9 1.2
-    1.96 5.8 4.3];
+    1.18 7.0 2.7];
 
 %set up the costs of each material
 optAttr = [45 35 25 40 30 30 41 22 40 18];
@@ -50,10 +45,3 @@ fprintf('\t|\t%4.2f\n', value);
 fprintf('Scenario 2, Demo B:\t|');
 fprintf('\t%4.2f', ratio);
 fprintf('\t|\t%4.2f\n', value);
-
-
-%%%Double Minimization.
-[ratio, value1, value2] = DoubleMinAttr(mt, optAttr, optAttr1, 1, 1.33, 2, 100);
-fprintf('Scenario 3, Demo A:\t|');
-fprintf('\t%4.2f', ratio);
-fprintf('\t|\t%4.2f\t|\t%4.2f\n', value1, value2);
