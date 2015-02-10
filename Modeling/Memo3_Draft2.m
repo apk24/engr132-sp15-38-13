@@ -48,7 +48,7 @@ fprintf('\t|\t%4.2f', ratio*cost(range)');
 fprintf('\t|\t%4.2f\n', value);
 
 %solve scenario 1 demo a
-[ratio, valueCost, valueTox] = DoubleMinAttr(mt(range, :),cost(range), tox(range), 1, 1.33, 2, 100);
+[ratio, valueCost, valueTox] = DoubleMinAttr(mt(range, :),cost(range), 1, tox(range), 1, 1.33, 2, 100);
 %print result
 fprintf('Scenario 3:\t|');
 fprintf('\t%4.2f', ratio);
@@ -79,7 +79,7 @@ fprintf('\t|\t%4.2f', ratio*cost(range)');
 fprintf('\t|\t%4.2f\n', value);
 
 %solve scenario 1 demo b
-[ratio, valueCost, valueTox] = DoubleMinAttr(mt(range, :), cost(range), tox(range), 1, 1.65, 2, 100);
+[ratio, valueCost, valueTox] = DoubleMinAttr(mt(range, :), cost(range), 1, tox(range), 1, 1.65, 2, 100);
 %print result
 fprintf('Scenario 3:\t|');
 fprintf('\t%4.2f', ratio);
@@ -110,7 +110,7 @@ fprintf('\t|\t%4.2f', ratio*cost(range)');
 fprintf('\t|\t%4.2f\n', value);
 
 %solve scenario 1 demo c
-[ratio, valueCost, valueTox] = DoubleMinAttr(mt(range,:), cost(range), tox(range), 1, 1.33, 2, 100);
+[ratio, valueCost, valueTox] = DoubleMinAttr(mt(range,:), cost(range), 1, tox(range), 1, 1.33, 2, 100);
 %print result
 fprintf('Scenario 3:\t|');
 fprintf('\t%4.2f', ratio);
@@ -141,7 +141,7 @@ fprintf('\t|\t%4.2f', ratio*cost(range)');
 fprintf('\t|\t%4.2f\n', value);
 
 %solve scenario 1 demo d
-[ratio, valueCost, valueTox] = DoubleMinAttr(mt(range,:), cost(range), tox(range), 1, 1.65, 2, 100);
+[ratio, valueCost, valueTox] = DoubleMinAttr(mt(range,:), cost(range), 1, tox(range), 1, 1.65, 2, 100);
 %print result
 fprintf('Scenario 3:\t|');
 fprintf('\t%4.2f', ratio);
@@ -172,7 +172,7 @@ fprintf('\t|\t%4.2f', ratio*cost(range)');
 fprintf('\t|\t%4.2f\n', value);
 
 %solve scenario 1 demo e
-[ratio, valueCost, valueTox] = DoubleMinAttr(mt(range,:), cost(range), tox(range), 1,  1.33, 2, 100);
+[ratio, valueCost, valueTox] = DoubleMinAttr(mt(range,:), cost(range), 1, tox(range), 1,  1.33, 2, 100);
 %print result
 fprintf('Scenario 3:\t|');
 fprintf('\t%4.2f', ratio);
@@ -203,7 +203,7 @@ fprintf('\t|\t%4.2f', ratio*cost(range)');
 fprintf('\t|\t%4.2f\n', value);
 
 %solve scenario 1 demo f
-[ratio, valueCost, valueTox] = DoubleMinAttr(mt(range,:), cost(range), tox(range), 1, 1.65, 2, 100);
+[ratio, valueCost, valueTox] = DoubleMinAttr(mt(range,:), cost(range), 1, tox(range), 1, 1.65, 2, 100);
 %print result
 fprintf('Scenario 3:\t|');
 fprintf('\t%4.2f', ratio);
