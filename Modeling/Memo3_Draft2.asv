@@ -25,7 +25,7 @@ range = 1:5;
 %print table header
 fprintf('Demo A    :\t|');
 fprintf('\t%3d ', range);
-fprintf('\t|\tCost\t|\tImpact\n');
+fprintf('\t|\tCostImpact\n');
 
 %solve scenario 1 demo a
 [ratio, value] = MinAttr(mt(range, :), cost(range), 1.33, 2, 100);
@@ -48,7 +48,7 @@ fprintf('\t|\t%4.2f\n', value);
 %print result
 fprintf('Scenario 3:\t|');
 fprintf('\t%4.2f', ratio);
-fprintf('\t|\t%4.2f\t|\t%4.2f\n', valueCost, valueTox);
+fprintf('\t|\t%4.2f\t%4.2f\n', valueCost, valueTox);
 
 %-------------------------------------------
 
@@ -56,7 +56,7 @@ range = 1:5;
 %print table header
 fprintf('Demo B    :\t|');
 fprintf('\t%3d ', range);
-fprintf('\t|\tCost\t|\tImpact\n');
+fprintf('\t|\tCost/Impact\n');
 
 %solve scenario 1 demo b
 [ratio, value] = MinAttr(mt(range, :), cost(range), 1.65, 2, 100);
@@ -79,7 +79,7 @@ fprintf('\t|\t%4.2f\n', value);
 %print result
 fprintf('Scenario 3:\t|');
 fprintf('\t%4.2f', ratio);
-fprintf('\t|\t%4.2f\t|\t%4.2f\n', valueCost, valueTox);
+fprintf('\t|\t%4.2f\t%4.2f\n', valueCost, valueTox);
 
 %-------------------------------------------
 
@@ -87,7 +87,7 @@ range = 6:10;
 %print table header
 fprintf('Demo C    :\t|');
 fprintf('\t%3d ', range);
-fprintf('\t|\tCost\t|\tImpact\n');
+fprintf('\t|\tCost/Impact\n');
 
 %solve scenario 1 demo c
 [ratio, value] = MinAttr(mt(range,:), cost(range), 1.33, 2, 100);
@@ -110,7 +110,7 @@ fprintf('\t|\t%4.2f\n', value);
 %print result
 fprintf('Scenario 3:\t|');
 fprintf('\t%4.2f', ratio);
-fprintf('\t|\t%4.2f\t|\t%4.2f\n', valueCost, valueTox);
+fprintf('\t|\t%4.2f\t%4.2f\n', valueCost, valueTox);
 
 %-------------------------------------------
 
@@ -118,7 +118,7 @@ range = 6:10;
 %print table header
 fprintf('Demo D    :\t|');
 fprintf('\t%3d ', range);
-fprintf('\t|\tCost\t|\tImpact\n');
+fprintf('\t|\tCost/Impact\n');
 
 %solve scenario 1 demo d
 [ratio, value] = MinAttr(mt(range,:), cost(range), 1.65, 2, 100);
@@ -141,7 +141,7 @@ fprintf('\t|\t%4.2f\n', value);
 %print result
 fprintf('Scenario 3:\t|');
 fprintf('\t%4.2f', ratio);
-fprintf('\t|\t%4.2f\t|\t%4.2f\n', valueCost, valueTox);
+fprintf('\t|\t%4.2f\t%4.2f\n', valueCost, valueTox);
 
 %-------------------------------------------
 
@@ -149,7 +149,7 @@ range = [2,3,4,7,9];
 %print table header
 fprintf('Demo E    :\t|');
 fprintf('\t%3d ', range);
-fprintf('\t|\tCost\t|\tImpact\n');
+fprintf('\t|\tCost/Impact\n');
 
 %solve scenario 1 demo e
 [ratio, value] = MinAttr(mt(range,:), cost(range), 1.33, 2, 100);
@@ -172,7 +172,7 @@ fprintf('\t|\t%4.2f\n', value);
 %print result
 fprintf('Scenario 3:\t|');
 fprintf('\t%4.2f', ratio);
-fprintf('\t|\t%4.2f\t|\t%4.2f\n', valueCost, valueTox);
+fprintf('\t|\t%4.2f\t%4.2f\n', valueCost, valueTox);
 
 %-------------------------------------------
 
@@ -180,7 +180,7 @@ range = [2,3,4,7,9];
 %print table header
 fprintf('Demo F    :\t|');
 fprintf('\t%3d ', range);
-fprintf('\t|\tCost\t|\tImpact\n');
+fprintf('\t|\tCost/Impact\n');
 
 %solve scenario 1 demo f
 [ratio, value] = MinAttr(mt(range,:), cost(range), 1.65, 2, 100);
@@ -203,5 +203,5 @@ fprintf('\t|\t%4.2f\n', value);
 %print result
 fprintf('Scenario 3:\t|');
 fprintf('\t%4.2f', ratio);
-fprintf('\t|\t%4.2f\t|\t%4.2f\n', valueCost, valueTox);
+fprintf('\t|\t%4.2f\t%4.2f\n', valueCost, valueTox);
 % %-----------------------------------------
