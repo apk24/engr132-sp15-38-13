@@ -1,3 +1,8 @@
+%THIS IS A FUNCTION FILE, NOT INTENDED TO BE RUN ON ITS OWN
+%This file is required to be in the same directory as the main file and
+%other helper files. This is because the other files may reference this
+%file.
+
 function [ matRatio, optAttrValue1, optAttrValue2 ] = DoubleMinAttr( matTable, optAttr1, optAttr2, weightingFactor, goalEg, minUse, totalReq)
 
 scaledAttr1 = optAttr1 .* (100/max(optAttr1));

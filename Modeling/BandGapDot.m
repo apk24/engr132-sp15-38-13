@@ -1,3 +1,8 @@
+%THIS IS A FUNCTION FILE, NOT INTENDED TO BE RUN ON ITS OWN
+%This file is required to be in the same directory as the main file and
+%other helper files. This is because the other files may reference this
+%file.
+
 function [ E_g ] = BandGapDot(E_g_bulk, r, eps)
 %find band gap energy of quantum dot given bulk, radius, and
 %dielectric constant

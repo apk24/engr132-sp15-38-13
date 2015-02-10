@@ -1,3 +1,7 @@
+%This file is the main file to be run. Do not run Function Files!
+%This file will not run without DoubleMinAttr, BandGapDot, and MinAttr
+%being in the same directory as this file.
+
 %Clean up workspace before starting
 clear
 clc

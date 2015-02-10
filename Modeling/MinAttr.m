@@ -1,3 +1,8 @@
+%THIS IS A FUNCTION FILE, NOT INTENDED TO BE RUN ON ITS OWN
+%This file is required to be in the same directory as the main file and
+%other helper files. This is because the other files may reference this
+%file.
+
 function [ matRatio, optAttrValue ] = MinAttr( matTable, optAttr, goalEg, minUse, totalReq)
 
 %%Process the inputs into more useful values for the actual optimization
