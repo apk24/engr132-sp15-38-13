@@ -16,7 +16,7 @@ Eg_name = BandGapDot(matTable(:,1),matTable(:,3)*1e-9,matTable(:,2))';
 
 %Find band gap energy contribution per unit of the optimization attribute
 %(called the value in the justifiction)
-Eg_rv = Eg_name ./ optAttr;
+Eg_rv = abs(Eg_name - goalEg) ./ optAttr;
 
 %%The Optimization
 %set up the minimum usage requirements
