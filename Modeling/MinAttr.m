@@ -34,18 +34,17 @@ underGoal = find(Eg_name < goalEg);
 effUnder = underGoal(tmp);
 clear tmp;
 
-if(~any(effUnder) || ~any(effOver))
-    matRatio = matRatio*inf;
-else
-    %set up the system of equations as an augmented matrix, then rref to find
-    %solution
-    system = [Eg_name(effOver), Eg_name(effUnder), (goalEg*totalReq - sum(Eg_name)*minUse)
-        1, 1, (totalReq-numMat*minUse)];
-    solution = rref(system);
+assert(any(effUnder) && any(effOver), 'The material attributes that have been entered are incompatible with the desired goal QD band gap energy.');
 
-    %put solution into output variable
-    matRatio(effOver) = matRatio(effOver) + solution(1,3);
-    matRatio(effUnder) = matRatio(effUnder) + solution(2,3);
-end
+
+%set up the system of equations as an augmented matrix, then rref to find
+%solution
+system = [Eg_name(effOver), Eg_name(effUnder), (goalEg*totalReq - sum(Eg_name)*minUse)
+    1, 1, (totalReq-numMat*minUse)];
+solution = rref(system);
+
+%put solution into output variable
+matRatio(effOver) = matRatio(effOver) + solution(1,3);
+matRatio(effUnder) = matRatio(effUnder) + solution(2,3);
 %calculate cost
 optAttrValue = sum(optAttr .* matRatio);
