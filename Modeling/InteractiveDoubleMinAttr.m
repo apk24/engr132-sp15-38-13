@@ -11,6 +11,7 @@ cost = mt(:,4)';
 %set up toxicity
 tox = mt(:,5)';
 range = input('\nPlease enter the range of materials to use:');
+range = unique(range);
 goalEg = input('\nWhat is the desired quantum dot band gap energy of the product?');
 minUse = input('\nWhat is the minimum required usage (in grams) of all materials?');
 totalReq = input('\nHow much do you want (in grams)?');
