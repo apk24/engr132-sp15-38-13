@@ -34,8 +34,9 @@ underGoal = find(Eg_name < goalEg);
 effUnder = underGoal(tmp);
 clear tmp;
 
-assert(any(effUnder) && any(effOver), 'The material attributes that have been entered are incompatible with the desired goal QD band gap energy.');
-
+if(~(any(effUnder) && any(effOver)))
+    errordlg('The material attributes that have been entered are incompatible with the desired goal QD band gap energy.');
+end
 
 %set up the system of equations as an augmented matrix, then rref to find
 %solution
