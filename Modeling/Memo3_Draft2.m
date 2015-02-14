@@ -1,11 +1,6 @@
 %This file is the main file to be run. Do not run Function Files!
 %This file will not run without DoubleMinAttr, BandGapDot, and MinAttr
 %being in the same directory as this file.
-
-%Clean up workspace before starting
-clear
-clc
-
 %set up the materials table
 mt = [ 1.92 3.6 4.5
     1.32 9.2 3.5
