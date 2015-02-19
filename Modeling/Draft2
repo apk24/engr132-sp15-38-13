@@ -6,6 +6,8 @@ Date:	01/26/2015
 Part 1, Introduction
 According to the information provided to our team, we have come to the conclusion that the direct user of our deliverable will be the QD-PV fabrication team. These direct users primarily need a system to decide which materials to mix and in what quantities so that a goal band gap energy is reached with minimized cost and toxicity. Some of the criteria by which the success of the model could be judged are: its ease of use, its efficiency, and versatility. In order to operate properly the model requires and is constrained by several key data points: the dielectric constant of the materials available, the radius of the Qdot of the materials available, the bulk band gap energy of the materials available, the desired Qdot energy of the product material, the cost and the toxicity of the materials and (for double minimization) relative importance of cost and toxicity. Based on these and given the attributes to minimize, it will select the optimal materials and solve a system of equations to create the best combination of the available materials to be used for fabrication.
 We believe that our model will be useful under a variety of circumstances, but it is primarily designed to minimize the cost/toxicity level of the resulting recipe for the product composition. The model functions best when only one variable is optimized, however it can be expanded to optimize multiple variables given relative the importance of those attributes (weighting factor).
+
+
 Part 2, Procedure (mathematical model) 
 Single Attribute Minimization
 Our model assigns value to each of the materials. Given the band gap energy, E_g, is a weighted average of the component materials and the average cost per gram or toxicity per gram, is also a weighted average, we can define a quantity called value that represents the “cost efficiency” of the material, v. 
@@ -15,6 +17,8 @@ E_(g,goal)=E_(g,o)*x_o+E_(g,u)*x_u+  ∑▒〖E_(g,i)*x_min 〗
 x_o+x_u+x_min*n=100%
 Where E_(g,goal) is goal band gap energy; E_(g,o) and E_(g,u) are the band gap energies of the most valuable material over and under the goal, x_o and x_u are the mass fraction of these two materials necessary(over the minimum); E_(g,i) is the band gap energy of the ith material; x_min is the minimum usage requirement by mass fraction; and n is the number of materials.
 The first equation is merely a rewriting of the formula for the band gap energy of a combination of materials with known band gap energies (Supplied in Memo 2). The second merely states that all the mass fractions must add up to the whole. The mathematical justification for this method can be found in the supporting materials.
+
+
 Two Attribute Minimization
 In order to expand this method to multiple variables, we create a new variable called optimization attribute. This attribute is merely a weighted scaled sum of all the variables to optimize. For example, in this case cost and toxicity are both scaled so that they range from 0 to 100 and then are summed together assigning a weight based on user input. We then run the single attribute minimization procedure on this new optimization attribute, which in turn will yield the two-attribute minimization.
 Part 3, Results 
