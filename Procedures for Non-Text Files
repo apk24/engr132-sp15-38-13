@@ -1,0 +1,18 @@
+
+Procedure for Editing Non-Text files.
+
+Non-Text Files are any files that cannot be edited by a standard text editor, e.g. .doc, .docx, .ppt, .pdf, etc.
+Text Files are excluded from this proceudre and can be edited freely. Text files are MATLAB files, .txt, etc.
+
+1. Sync the repo.
+2. Open the lock.txt file in the root 
+3. Check if someone has "locked" the file you wish to work on. If they have, wait until they release it. Otherwise, continue
+4.Put your name and file name (Full path from the root of the repo) into the lock.txt file. THis constitutes "locking" the file.
+5. You may now edit the file.
+6. When your done editing that file i.e. it is no longer open in any program on your computer, remove your name from the lock file. Commit and Sync.
+
+
+an example lock file entry if Apoorva was editing the PDR presentation would be 
+
+./Project Files/PDR_sec038team13.pptx	Apoorva Kharche
+
