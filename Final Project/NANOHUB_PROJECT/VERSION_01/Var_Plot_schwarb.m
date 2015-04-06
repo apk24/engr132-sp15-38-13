@@ -1,35 +1,35 @@
-function varargout = Var_Plot(varargin)
-% VAR_PLOT MATLAB code for Var_Plot.fig
-%      VAR_PLOT, by itself, creates a new VAR_PLOT or raises the existing
+function varargout = Var_Plot_schwarb(varargin)
+% VAR_PLOT_SCHWARB MATLAB code for Var_Plot_schwarb.fig
+%      VAR_PLOT_SCHWARB, by itself, creates a new VAR_PLOT_SCHWARB or raises the existing
 %      singleton*.
 %
-%      H = VAR_PLOT returns the handle to a new VAR_PLOT or the handle to
+%      H = VAR_PLOT_SCHWARB returns the handle to a new VAR_PLOT_SCHWARB or the handle to
 %      the existing singleton*.
 %
-%      VAR_PLOT('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in VAR_PLOT.M with the given input arguments.
+%      VAR_PLOT_SCHWARB('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in VAR_PLOT_SCHWARB.M with the given input arguments.
 %
-%      VAR_PLOT('Property','Value',...) creates a new VAR_PLOT or raises the
+%      VAR_PLOT_SCHWARB('Property','Value',...) creates a new VAR_PLOT_SCHWARB or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before Var_Plot_OpeningFcn gets called.  An
+%      applied to the GUI before Var_Plot_schwarb_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to Var_Plot_OpeningFcn via varargin.
+%      stop.  All inputs are passed to Var_Plot_schwarb_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help Var_Plot
+% Edit the above text to modify the response to help Var_Plot_schwarb
 
-% Last Modified by GUIDE v2.5 02-Apr-2015 13:12:23
+% Last Modified by GUIDE v2.5 05-Apr-2015 18:03:42
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @Var_Plot_OpeningFcn, ...
-                   'gui_OutputFcn',  @Var_Plot_OutputFcn, ...
+                   'gui_OpeningFcn', @Var_Plot_schwarb_OpeningFcn, ...
+                   'gui_OutputFcn',  @Var_Plot_schwarb_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -44,26 +44,26 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before Var_Plot is made visible.
-function Var_Plot_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before Var_Plot_schwarb is made visible.
+function Var_Plot_schwarb_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to Var_Plot (see VARARGIN)
+% varargin   command line arguments to Var_Plot_schwarb (see VARARGIN)
 
-% Choose default command line output for Var_Plot
+% Choose default command line output for Var_Plot_schwarb
 handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
 
-% UIWAIT makes Var_Plot wait for user response (see UIRESUME)
+% UIWAIT makes Var_Plot_schwarb wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = Var_Plot_OutputFcn(hObject, eventdata, handles) 
+function varargout = Var_Plot_schwarb_OutputFcn(hObject, eventdata, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB

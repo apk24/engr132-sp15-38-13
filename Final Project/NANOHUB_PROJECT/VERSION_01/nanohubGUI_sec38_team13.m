@@ -1,35 +1,35 @@
-function varargout = Main_Hub(varargin)
-% MAIN_HUB MATLAB code for Main_Hub.fig
-%      MAIN_HUB, by itself, creates a new MAIN_HUB or raises the existing
+function varargout = nanohubGUI_sec38_team13(varargin)
+% NANOHUBGUI_SEC38_TEAM13 MATLAB code for nanohubGUI_sec38_team13.fig
+%      NANOHUBGUI_SEC38_TEAM13, by itself, creates a new NANOHUBGUI_SEC38_TEAM13 or raises the existing
 %      singleton*.
 %
-%      H = MAIN_HUB returns the handle to a new MAIN_HUB or the handle to
+%      H = NANOHUBGUI_SEC38_TEAM13 returns the handle to a new NANOHUBGUI_SEC38_TEAM13 or the handle to
 %      the existing singleton*.
 %
-%      MAIN_HUB('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in MAIN_HUB.M with the given input arguments.
+%      NANOHUBGUI_SEC38_TEAM13('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in NANOHUBGUI_SEC38_TEAM13.M with the given input arguments.
 %
-%      MAIN_HUB('Property','Value',...) creates a new MAIN_HUB or raises the
+%      NANOHUBGUI_SEC38_TEAM13('Property','Value',...) creates a new NANOHUBGUI_SEC38_TEAM13 or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before Main_Hub_OpeningFcn gets called.  An
+%      applied to the GUI before nanohubGUI_sec38_team13_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to Main_Hub_OpeningFcn via varargin.
+%      stop.  All inputs are passed to nanohubGUI_sec38_team13_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help Main_Hub
+% Edit the above text to modify the response to help nanohubGUI_sec38_team13
 
-% Last Modified by GUIDE v2.5 04-Apr-2015 16:57:12
+% Last Modified by GUIDE v2.5 05-Apr-2015 18:02:47
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @Main_Hub_OpeningFcn, ...
-                   'gui_OutputFcn',  @Main_Hub_OutputFcn, ...
+                   'gui_OpeningFcn', @nanohubGUI_sec38_team13_OpeningFcn, ...
+                   'gui_OutputFcn',  @nanohubGUI_sec38_team13_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -44,26 +44,26 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before Main_Hub is made visible.
-function Main_Hub_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before nanohubGUI_sec38_team13 is made visible.
+function nanohubGUI_sec38_team13_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to Main_Hub (see VARARGIN)
+% varargin   command line arguments to nanohubGUI_sec38_team13 (see VARARGIN)
 
-% Choose default command line output for Main_Hub
+% Choose default command line output for nanohubGUI_sec38_team13
 handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
 
-% UIWAIT makes Main_Hub wait for user response (see UIRESUME)
+% UIWAIT makes nanohubGUI_sec38_team13 wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = Main_Hub_OutputFcn(hObject, eventdata, handles) 
+function varargout = nanohubGUI_sec38_team13_OutputFcn(hObject, eventdata, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -73,9 +73,9 @@ function varargout = Main_Hub_OutputFcn(hObject, eventdata, handles)
 varargout{1} = handles.output;
 
 
-% --- Executes on button press in pushbutton1.
-function pushbutton1_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton1 (see GCBO)
+% --- Executes on button press in exit_pb.
+function exit_pb_Callback(hObject, eventdata, handles)
+% hObject    handle to exit_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
@@ -111,5 +111,12 @@ function ApoorvaGUI_pb_Callback(hObject, eventdata, handles)
 % --- Executes on button press in citations_pb.
 function citations_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to citations_pb (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in dataEntry_pb.
+function dataEntry_pb_Callback(hObject, eventdata, handles)
+% hObject    handle to dataEntry_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
