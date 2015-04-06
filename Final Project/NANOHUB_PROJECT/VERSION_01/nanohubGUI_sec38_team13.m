@@ -22,7 +22,7 @@ function varargout = nanohubGUI_sec38_team13(varargin)
 
 % Edit the above text to modify the response to help nanohubGUI_sec38_team13
 
-% Last Modified by GUIDE v2.5 05-Apr-2015 18:02:47
+% Last Modified by GUIDE v2.5 06-Apr-2015 19:12:00
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -85,7 +85,8 @@ function RashidGUI_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to RashidGUI_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+Eff_Plot_asarwar
+close nanohubGUI_sec38_team13
 
 % --- Executes on button press in YashGUI_pb.
 function YashGUI_pb_Callback(hObject, eventdata, handles)
