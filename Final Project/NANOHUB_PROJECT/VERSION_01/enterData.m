@@ -22,7 +22,7 @@ function varargout = enterData(varargin)
 
 % Edit the above text to modify the response to help enterData
 
-% Last Modified by GUIDE v2.5 06-Apr-2015 15:03:39
+% Last Modified by GUIDE v2.5 06-Apr-2015 17:07:32
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -74,18 +74,18 @@ varargout{1} = handles.output;
 
 
 
-function numMat_Callback(hObject, eventdata, handles)
-% hObject    handle to numMat (see GCBO)
+function numMat_et_Callback(hObject, eventdata, handles)
+% hObject    handle to numMat_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of numMat as text
-%        str2double(get(hObject,'String')) returns contents of numMat as a double
+% Hints: get(hObject,'String') returns contents of numMat_et as text
+%        str2double(get(hObject,'String')) returns contents of numMat_et as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function numMat_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to numMat (see GCBO)
+function numMat_et_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to numMat_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -97,18 +97,18 @@ end
 
 
 
-function edit2_Callback(hObject, eventdata, handles)
-% hObject    handle to edit2 (see GCBO)
+function atr1_et_Callback(hObject, eventdata, handles)
+% hObject    handle to atr1_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of edit2 as text
-%        str2double(get(hObject,'String')) returns contents of edit2 as a double
+% Hints: get(hObject,'String') returns contents of atr1_et as text
+%        str2double(get(hObject,'String')) returns contents of atr1_et as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function edit2_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit2 (see GCBO)
+function atr1_et_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to atr1_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -120,18 +120,18 @@ end
 
 
 
-function edit3_Callback(hObject, eventdata, handles)
-% hObject    handle to edit3 (see GCBO)
+function atr2_et_Callback(hObject, eventdata, handles)
+% hObject    handle to atr2_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of edit3 as text
-%        str2double(get(hObject,'String')) returns contents of edit3 as a double
+% Hints: get(hObject,'String') returns contents of atr2_et as text
+%        str2double(get(hObject,'String')) returns contents of atr2_et as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function edit3_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit3 (see GCBO)
+function atr2_et_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to atr2_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -143,18 +143,18 @@ end
 
 
 
-function edit4_Callback(hObject, eventdata, handles)
-% hObject    handle to edit4 (see GCBO)
+function atr3_et_Callback(hObject, eventdata, handles)
+% hObject    handle to atr3_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of edit4 as text
-%        str2double(get(hObject,'String')) returns contents of edit4 as a double
+% Hints: get(hObject,'String') returns contents of atr3_et as text
+%        str2double(get(hObject,'String')) returns contents of atr3_et as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function edit4_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit4 (see GCBO)
+function atr3_et_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to atr3_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -166,18 +166,18 @@ end
 
 
 
-function edit5_Callback(hObject, eventdata, handles)
-% hObject    handle to edit5 (see GCBO)
+function atr4_et_Callback(hObject, eventdata, handles)
+% hObject    handle to atr4_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of edit5 as text
-%        str2double(get(hObject,'String')) returns contents of edit5 as a double
+% Hints: get(hObject,'String') returns contents of atr4_et as text
+%        str2double(get(hObject,'String')) returns contents of atr4_et as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function edit5_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit5 (see GCBO)
+function atr4_et_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to atr4_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -202,7 +202,6 @@ function home_pb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 close all
 nanohubGUI_sec38_team13
-
 
 
 

@@ -22,7 +22,7 @@ function varargout = Print_Recipe_shah213(varargin)
 
 % Edit the above text to modify the response to help Print_Recipe_shah213
 
-% Last Modified by GUIDE v2.5 06-Apr-2015 14:05:49
+% Last Modified by GUIDE v2.5 06-Apr-2015 17:22:27
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -125,17 +125,17 @@ close Print_Recipe_shah213
 
 
 function Display_et_Callback(hObject, eventdata, handles)
-% hObject    handle to Display_et (see GCBO)
+% hObject    handle to Display_st (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of Display_et as text
-%        str2double(get(hObject,'String')) returns contents of Display_et as a double
+% Hints: get(hObject,'String') returns contents of Display_st as text
+%        str2double(get(hObject,'String')) returns contents of Display_st as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function Display_et_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to Display_et (see GCBO)
+function Display_st_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to Display_st (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
