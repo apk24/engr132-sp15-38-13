@@ -79,7 +79,7 @@ function exit_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to exit_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-close citations
+close all
 
 % --- Executes on button press in home_pb.
 function home_pb_Callback(hObject, eventdata, handles)

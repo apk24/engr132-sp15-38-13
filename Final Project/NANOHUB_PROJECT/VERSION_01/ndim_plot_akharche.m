@@ -22,7 +22,7 @@ function varargout = ndim_plot_akharche(varargin)
 
 % Edit the above text to modify the response to help ndim_plot_akharche
 
-% Last Modified by GUIDE v2.5 06-Apr-2015 14:23:04
+% Last Modified by GUIDE v2.5 06-Apr-2015 15:02:22
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -87,12 +87,12 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 
-% --- Executes on button press in pushbutton3.
-function pushbutton3_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton3 (see GCBO)
+% --- Executes on button press in enterData_pb.
+function enterData_pb_Callback(hObject, eventdata, handles)
+% hObject    handle to enterData_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+enterData
 
 % --- Executes on button press in clear_pb.
 function clear_pb_Callback(hObject, eventdata, handles)
