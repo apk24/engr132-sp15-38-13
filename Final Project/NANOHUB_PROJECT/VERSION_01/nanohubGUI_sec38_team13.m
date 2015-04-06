@@ -78,7 +78,7 @@ function exit_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to exit_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+close all
 
 % --- Executes on button press in RashidGUI_pb.
 function RashidGUI_pb_Callback(hObject, eventdata, handles)
@@ -92,14 +92,14 @@ function YashGUI_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to YashGUI_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+Print_Recipe_shah213();
 
 % --- Executes on button press in BrodyGUI_pb.
 function BrodyGUI_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to BrodyGUI_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+Var_Plot_schwarb();
 
 % --- Executes on button press in ApoorvaGUI_pb.
 function ApoorvaGUI_pb_Callback(hObject, eventdata, handles)
@@ -113,7 +113,7 @@ function citations_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to citations_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+citations();
 
 % --- Executes on button press in dataEntry_pb.
 function dataEntry_pb_Callback(hObject, eventdata, handles)
