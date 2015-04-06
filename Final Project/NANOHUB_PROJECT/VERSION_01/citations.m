@@ -22,7 +22,7 @@ function varargout = citations(varargin)
 
 % Edit the above text to modify the response to help citations
 
-% Last Modified by GUIDE v2.5 06-Apr-2015 11:05:05
+% Last Modified by GUIDE v2.5 06-Apr-2015 11:22:45
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -54,9 +54,10 @@ function citations_OpeningFcn(hObject, eventdata, handles, varargin)
 
 % Choose default command line output for citations
 handles.output = hObject;
-imshow(handles.citations_ax,'Parent',citations.tiff)
+
 % Update handles structure
 guidata(hObject, handles);
+imshow('citationsImg.jpg','Parent',handles.citations_ax);
 
 % UIWAIT makes citations wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
@@ -78,10 +79,12 @@ function exit_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to exit_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+close citations
 
 % --- Executes on button press in home_pb.
 function home_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to home_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+nanohubGUI_sec38_team13
+close citations

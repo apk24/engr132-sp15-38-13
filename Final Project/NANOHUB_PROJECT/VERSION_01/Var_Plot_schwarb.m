@@ -22,7 +22,7 @@ function varargout = Var_Plot_schwarb(varargin)
 
 % Edit the above text to modify the response to help Var_Plot_schwarb
 
-% Last Modified by GUIDE v2.5 05-Apr-2015 18:03:42
+% Last Modified by GUIDE v2.5 06-Apr-2015 14:19:47
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -207,7 +207,7 @@ function exit_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to exit_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+close all
 
 % --- Executes on button press in pushbutton4.
 function pushbutton4_Callback(hObject, eventdata, handles)
@@ -323,3 +323,5 @@ function home_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to home_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+nanohubGUI_sec38_team13
+close Var_Plot_schwarb
