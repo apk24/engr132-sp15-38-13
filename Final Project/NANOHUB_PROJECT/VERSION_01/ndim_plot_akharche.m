@@ -22,7 +22,7 @@ function varargout = ndim_plot_akharche(varargin)
 
 % Edit the above text to modify the response to help ndim_plot_akharche
 
-% Last Modified by GUIDE v2.5 06-Apr-2015 15:02:22
+% Last Modified by GUIDE v2.5 07-Apr-2015 08:07:40
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -108,3 +108,160 @@ function home_pb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 close ndim_plot_akharche
 nanohubGUI_sec38_team13
+
+
+% --- Executes on slider movement.
+function slider1_Callback(hObject, eventdata, handles)
+% hObject    handle to slider1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+
+% --- Executes during object creation, after setting all properties.
+function slider1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% --- Executes on selection change in x_axis_pm.
+function x_axis_pm_Callback(hObject, eventdata, handles)
+% hObject    handle to x_axis_pm (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: contents = cellstr(get(hObject,'String')) returns x_axis_pm contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from x_axis_pm
+
+
+% --- Executes during object creation, after setting all properties.
+function x_axis_pm_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to x_axis_pm (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on slider movement.
+function x_axis_sl_Callback(hObject, eventdata, handles)
+% hObject    handle to x_axis_sl (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+
+% --- Executes during object creation, after setting all properties.
+function x_axis_sl_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to x_axis_sl (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% --- Executes on selection change in y_axis_pm.
+function y_axis_pm_Callback(hObject, eventdata, handles)
+% hObject    handle to y_axis_pm (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: contents = cellstr(get(hObject,'String')) returns y_axis_pm contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from y_axis_pm
+
+
+% --- Executes during object creation, after setting all properties.
+function y_axis_pm_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to y_axis_pm (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on slider movement.
+function y_axis_sl_Callback(hObject, eventdata, handles)
+% hObject    handle to y_axis_sl (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+
+% --- Executes during object creation, after setting all properties.
+function y_axis_sl_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to y_axis_sl (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% --- Executes on selection change in z_axis_pm.
+function z_axis_pm_Callback(hObject, eventdata, handles)
+% hObject    handle to z_axis_pm (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: contents = cellstr(get(hObject,'String')) returns z_axis_pm contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from z_axis_pm
+
+
+% --- Executes during object creation, after setting all properties.
+function z_axis_pm_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to z_axis_pm (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on slider movement.
+function z_axis_sl_Callback(hObject, eventdata, handles)
+% hObject    handle to z_axis_sl (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+
+% --- Executes during object creation, after setting all properties.
+function z_axis_sl_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to z_axis_sl (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
