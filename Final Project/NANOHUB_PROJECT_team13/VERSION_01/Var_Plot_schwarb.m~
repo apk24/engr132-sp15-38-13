@@ -104,7 +104,7 @@ function atr1_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr1_et as text
 %        str2double(get(hObject,'String')) returns contents of atr1_et as a double
-handles.data.auxatr1 = str2numIget(hObject,'String'));
+handles.data. = str2numIget(hObject,'String'));
 guidata(hObject, handles);
 
 
@@ -129,8 +129,6 @@ function atr2_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr2_et as text
 %        str2double(get(hObject,'String')) returns contents of atr2_et as a double
-handles.data.auxatr2 = str2numIget(hObject,'String'));
-guidata(hObject, handles);
 
 
 % --- Executes during object creation, after setting all properties.
@@ -154,8 +152,6 @@ function atr3_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr3_et as text
 %        str2double(get(hObject,'String')) returns contents of atr3_et as a double
-handles.data.auxatr3 = str2numIget(hObject,'String'));
-guidata(hObject, handles);
 
 
 % --- Executes during object creation, after setting all properties.
@@ -179,8 +175,6 @@ function atr4_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr4_et as text
 %        str2double(get(hObject,'String')) returns contents of atr4_et as a double
-handles.data.auxatr4 = str2numIget(hObject,'String'));
-guidata(hObject, handles);
 
 
 % --- Executes during object creation, after setting all properties.

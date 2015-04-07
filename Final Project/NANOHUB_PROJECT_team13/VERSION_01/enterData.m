@@ -22,7 +22,7 @@ function varargout = enterData(varargin)
 
 % Edit the above text to modify the response to help enterData
 
-% Last Modified by GUIDE v2.5 06-Apr-2015 17:07:32
+% Last Modified by GUIDE v2.5 07-Apr-2015 12:56:13
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -81,7 +81,8 @@ function numMat_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of numMat_et as text
 %        str2double(get(hObject,'String')) returns contents of numMat_et as a double
-
+handles.data.nuMat = str2numIget(hObject,'String'));
+guidata(hObject, handles);
 
 % --- Executes during object creation, after setting all properties.
 function numMat_et_CreateFcn(hObject, eventdata, handles)
@@ -104,6 +105,8 @@ function atr1_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr1_et as text
 %        str2double(get(hObject,'String')) returns contents of atr1_et as a double
+handles.data.atr1 = str2numIget(hObject,'String'));
+guidata(hObject, handles);
 
 
 % --- Executes during object creation, after setting all properties.
@@ -127,6 +130,8 @@ function atr2_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr2_et as text
 %        str2double(get(hObject,'String')) returns contents of atr2_et as a double
+handles.data.atr2 = str2numIget(hObject,'String'));
+guidata(hObject, handles);
 
 
 % --- Executes during object creation, after setting all properties.
@@ -150,6 +155,8 @@ function atr3_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr3_et as text
 %        str2double(get(hObject,'String')) returns contents of atr3_et as a double
+handles.data.atr3 = str2numIget(hObject,'String'));
+guidata(hObject, handles);
 
 
 % --- Executes during object creation, after setting all properties.
@@ -173,6 +180,8 @@ function atr4_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr4_et as text
 %        str2double(get(hObject,'String')) returns contents of atr4_et as a double
+handles.data.atr4 = str2numIget(hObject,'String'));
+guidata(hObject, handles);
 
 
 % --- Executes during object creation, after setting all properties.
@@ -211,3 +220,49 @@ function close_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 close enterData
+
+
+
+function edit6_Callback(hObject, eventdata, handles)
+% hObject    handle to edit6 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit6 as text
+%        str2double(get(hObject,'String')) returns contents of edit6 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit6_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit6 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function edit7_Callback(hObject, eventdata, handles)
+% hObject    handle to edit7 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit7 as text
+%        str2double(get(hObject,'String')) returns contents of edit7 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit7_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit7 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
