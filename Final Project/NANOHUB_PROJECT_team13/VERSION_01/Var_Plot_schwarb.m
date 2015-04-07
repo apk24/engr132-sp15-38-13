@@ -209,6 +209,7 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+[handles.data.
 
 % --- Executes on button press in exit_pb.
 function exit_pb_Callback(hObject, eventdata, handles)
@@ -240,7 +241,8 @@ function atr1_cb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of atr1_cb
-
+atr1_cb = get(hObject,'Value')
+guidata(hObject, handles)
 
 % --- Executes on button press in atr2_cb.
 function atr2_cb_Callback(hObject, eventdata, handles)
@@ -249,7 +251,8 @@ function atr2_cb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of atr2_cb
-
+atr2_cb = get(hObject,'Value')
+guidata(hObject, handles)
 
 % --- Executes on button press in atr3_cb.
 function atr3_cb_Callback(hObject, eventdata, handles)
@@ -258,7 +261,8 @@ function atr3_cb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of atr3_cb
-
+atr3_cb = get(hObject,'Value')
+guidata(hObject, handles)
 
 % --- Executes on button press in atr4_cb.
 function atr4_cb_Callback(hObject, eventdata, handles)
@@ -267,3 +271,5 @@ function atr4_cb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of atr4_cb
+atr4_cb = get(hObject,'Value')
+guidata(hObject, handles)
