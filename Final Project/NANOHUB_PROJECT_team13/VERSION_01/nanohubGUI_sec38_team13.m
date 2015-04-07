@@ -117,7 +117,7 @@ function citations_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to citations_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-citations();
+citationGUI_sec38_team13;
 
 % --- Executes on button press in dataEntry_pb.
 function dataEntry_pb_Callback(hObject, eventdata, handles)
