@@ -219,6 +219,7 @@ elseif (handles.atr3_cb == 1)
     bar(handles.recipe2,handles.data.mat);
 elseif (handles.atr4_cb == 1)
     bar((handles.recipe4,handles.data.mat)
+end
 % --- Executes on button press in exit_pb.
 function exit_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to exit_pb (see GCBO)
