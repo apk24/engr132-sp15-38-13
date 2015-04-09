@@ -3,15 +3,30 @@
 %other helper files. This is because the other files may reference this
 %file.
 
-function [ matRatio, optAttrValue1, optAttrValue2 ] = DoubleMinAttr( matTable, optAttr1, weightingFactor1, optAttr2, weightingFactor2, goalEg, minUse, totalReq)
+function [ recipe ] = DoubleMinAttr( mats, optAttr1Name, weightingFactor1, optAttr2Name, weightingFactor2, goalEg, minUse, totalReq)
+numMat = size(mats);
+
+optAttr1 = linspace(-1,-1,numMat);
+for ct=1:length(mats)
+    optAttr1(ct) = eval('mats(ct).' + optAttr1Name);
+end
+
+optAttr2 = linspace(-1,-1,numMat);
+for ct=1:length(mats)
+    optAttr2(ct) = eval('mats(ct).' + optAttr2Name);
+end
+
 
 scaledAttr1 = optAttr1 .* (100/max(optAttr1));
 scaledAttr2 = optAttr2 .* (100/max(optAttr2));
 weightedAttr = scaledAttr1 * weightingFactor1 + scaledAttr2 * weightingFactor2;
 
-matRatio = MinAttr(matTable, weightedAttr, goalEg, minUse, totalReq);
+recipe = MinAttr(mats, weightedAttr, goalEg, minUse, totalReq);
 optAttrValue1 = matRatio * optAttr1';
 optAttrValue2 = matRatio * optAttr2';
+
+eval('recipe.' + optAttr1Name + ' = optAttrValue1');
+eval('recipe.' + optAttr2Name + ' = optAttrValue2')
 
 end
 
