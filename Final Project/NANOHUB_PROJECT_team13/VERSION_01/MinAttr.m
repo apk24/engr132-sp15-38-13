@@ -4,7 +4,6 @@
 %file.
 
 function [ recipe ] = MinAttr(mats, optAttr, goalEg, minUse, totalReq)
-matTable, optAttr;
 %%Process the inputs into more useful values for the actual optimization
 %get number of materials
 numMat = size(mats);

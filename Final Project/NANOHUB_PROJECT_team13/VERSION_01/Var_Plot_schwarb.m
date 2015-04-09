@@ -83,7 +83,12 @@ function atr1_et_Callback(hObject, eventdata, handles)
 %        str2double(get(hObject,'String')) returns contents of atr1_et as a double
 handles.data.auxatr1 = str2numIget(hObject,'String');
 handles.data.auxatr1.name = handles.data.auxatr1(1);
-handles.data.auxatr1. = handles.data.auxatr1(1);
+handles.data.auxatr1.goaleg = handles.data.auxatr1(2);
+handles.data.auxatr1.minuse = handles.data.auxatr1(3);
+handles.data.auxatr1.total = handles.data.auxatr1(4);
+handles.data.auxatr1.atr = handles.data.auxatr1(5:length(handles.data.auxatr1));
+handles.recipe1 = (handles.data.auxatr1.name, handles.data.auxatr1.atr,handles.data.auxatr1.goaleg,handles.data.auxatr1.minuse,handls.data.auxatr1.total);
+
 guidata(hObject, handles);
 
 
@@ -109,6 +114,12 @@ function atr2_et_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of atr2_et as text
 %        str2double(get(hObject,'String')) returns contents of atr2_et as a double
 handles.data.auxatr2 = str2numIget(hObject,'String');
+handles.data.auxatr2.name = handles.data.auxatr2(1);
+handles.data.auxatr2.goaleg = handles.data.auxatr2(2);
+handles.data.auxatr2.minuse = handles.data.auxatr2(3);
+handles.data.auxatr2.total = handles.data.auxatr2(4);
+handles.data.auxatr2.atr = handles.data.auxatr2(5:length(handles.data.auxatr2));
+handles.recipe2 = (handles.data.auxatr2.name, handles.data.auxatr2.atr,handles.data.auxatr2.goaleg,handles.data.auxatr2.minuse,handls.data.auxatr2.total);
 guidata(hObject, handles);
 
 
@@ -134,6 +145,12 @@ function atr3_et_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of atr3_et as text
 %        str2double(get(hObject,'String')) returns contents of atr3_et as a double
 handles.data.auxatr3 = str2numIget(hObject,'String');
+handles.data.auxatr3.name = handles.data.auxatr3(1);
+handles.data.auxatr3.goaleg = handles.data.auxatr3(2);
+handles.data.auxatr3.minuse = handles.data.auxatr3(3);
+handles.data.auxatr3.total = handles.data.auxatr3(4);
+handles.data.auxatr3.atr = handles.data.auxatr1(5:length(handles.data.auxatr3));
+handles.recipe3 = (handles.data.auxatr3.name, handles.data.auxatr3.atr,handles.data.auxatr3.goaleg,handles.data.auxatr3.minuse,handls.data.auxatr3.total);
 guidata(hObject, handles);
 
 
@@ -159,6 +176,12 @@ function atr4_et_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of atr4_et as text
 %        str2double(get(hObject,'String')) returns contents of atr4_et as a double
 handles.data.auxatr4 = str2numIget(hObject,'String');
+handles.data.auxatr4.name = handles.data.auxatr4(1);
+handles.data.auxatr4.goaleg = handles.data.auxatr4(2);
+handles.data.auxatr4.minuse = handles.data.auxatr4(3);
+handles.data.auxatr4.total = handles.data.auxatr4(4);
+handles.data.auxatr4.atr = handles.data.auxatr4(5:length(handles.data.auxatr4));
+handles.recipe4 = (handles.data.auxatr4.name, handles.data.auxatr4.atr,handles.data.auxatr4.goaleg,handles.data.auxatr4.minuse,handls.data.auxatr4.total);
 guidata(hObject, handles);
 
 
@@ -188,6 +211,14 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+if (handles.atr1_cb == 1)
+    bar(handles.recipe1,handles.data.mat);
+elseif (handles.atr2_cb == 1)
+    bar(handles.recipe2,handles.data.mat);
+elseif (handles.atr3_cb == 1)
+    bar(handles.recipe2,handles.data.mat);
+elseif (handles.atr4_cb == 1)
+    bar((handles.recipe4,handles.data.mat)
 % --- Executes on button press in exit_pb.
 function exit_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to exit_pb (see GCBO)
@@ -218,7 +249,7 @@ function atr1_cb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of atr1_cb
-atr1_cb = get(hObject,'Value')
+handles.atr1_cb = get(hObject,'Value')
 
 guidata(hObject, handles)
 
@@ -229,7 +260,7 @@ function atr2_cb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of atr2_cb
-atr2_cb = get(hObject,'Value')
+handles.atr2_cb = get(hObject,'Value')
 guidata(hObject, handles)
 
 % --- Executes on button press in atr3_cb.
@@ -239,7 +270,7 @@ function atr3_cb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of atr3_cb
-atr3_cb = get(hObject,'Value')
+handles.atr3_cb = get(hObject,'Value')
 guidata(hObject, handles)
 
 % --- Executes on button press in atr4_cb.
@@ -249,5 +280,5 @@ function atr4_cb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of atr4_cb
-atr4_cb = get(hObject,'Value')
+handles.atr4_cb = get(hObject,'Value')
 guidata(hObject, handles)
