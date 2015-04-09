@@ -82,6 +82,8 @@ function atr1_et_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of atr1_et as text
 %        str2double(get(hObject,'String')) returns contents of atr1_et as a double
 handles.data.auxatr1 = str2numIget(hObject,'String');
+handles.data.auxatr1.name = handles.data.auxatr1(1);
+handles.data.auxatr1. = handles.data.auxatr1(1);
 guidata(hObject, handles);
 
 
