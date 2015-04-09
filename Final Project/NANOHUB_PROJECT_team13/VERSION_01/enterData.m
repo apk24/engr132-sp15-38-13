@@ -22,7 +22,7 @@ function varargout = enterData(varargin)
 
 % Edit the above text to modify the response to help enterData
 
-% Last Modified by GUIDE v2.5 07-Apr-2015 12:56:13
+% Last Modified by GUIDE v2.5 09-Apr-2015 11:56:15
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -98,20 +98,20 @@ end
 
 
 
-function atr1_et_Callback(hObject, eventdata, handles)
-% hObject    handle to atr1_et (see GCBO)
+function size_et_Callback(hObject, eventdata, handles)
+% hObject    handle to size_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of atr1_et as text
-%        str2double(get(hObject,'String')) returns contents of atr1_et as a double
+% Hints: get(hObject,'String') returns contents of size_et as text
+%        str2double(get(hObject,'String')) returns contents of size_et as a double
 handles.data.atr1 = str2numIget(hObject,'String'));
 guidata(hObject, handles);
 
 
 % --- Executes during object creation, after setting all properties.
-function atr1_et_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to atr1_et (see GCBO)
+function size_et_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to size_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -123,20 +123,20 @@ end
 
 
 
-function atr2_et_Callback(hObject, eventdata, handles)
-% hObject    handle to atr2_et (see GCBO)
+function cost_et_Callback(hObject, eventdata, handles)
+% hObject    handle to cost_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of atr2_et as text
-%        str2double(get(hObject,'String')) returns contents of atr2_et as a double
+% Hints: get(hObject,'String') returns contents of cost_et as text
+%        str2double(get(hObject,'String')) returns contents of cost_et as a double
 handles.data.atr2 = str2numIget(hObject,'String'));
 guidata(hObject, handles);
 
 
 % --- Executes during object creation, after setting all properties.
-function atr2_et_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to atr2_et (see GCBO)
+function cost_et_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to cost_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -148,20 +148,20 @@ end
 
 
 
-function atr3_et_Callback(hObject, eventdata, handles)
-% hObject    handle to atr3_et (see GCBO)
+function tox_et_Callback(hObject, eventdata, handles)
+% hObject    handle to tox_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of atr3_et as text
-%        str2double(get(hObject,'String')) returns contents of atr3_et as a double
+% Hints: get(hObject,'String') returns contents of tox_et as text
+%        str2double(get(hObject,'String')) returns contents of tox_et as a double
 handles.data.atr3 = str2numIget(hObject,'String'));
 guidata(hObject, handles);
 
 
 % --- Executes during object creation, after setting all properties.
-function atr3_et_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to atr3_et (see GCBO)
+function tox_et_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to tox_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -173,20 +173,20 @@ end
 
 
 
-function atr4_et_Callback(hObject, eventdata, handles)
-% hObject    handle to atr4_et (see GCBO)
+function eps_et_Callback(hObject, eventdata, handles)
+% hObject    handle to eps_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of atr4_et as text
-%        str2double(get(hObject,'String')) returns contents of atr4_et as a double
+% Hints: get(hObject,'String') returns contents of eps_et as text
+%        str2double(get(hObject,'String')) returns contents of eps_et as a double
 handles.data.atr4 = str2numIget(hObject,'String'));
 guidata(hObject, handles);
 
 
 % --- Executes during object creation, after setting all properties.
-function atr4_et_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to atr4_et (see GCBO)
+function eps_et_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to eps_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -223,18 +223,18 @@ close enterData
 
 
 
-function edit6_Callback(hObject, eventdata, handles)
-% hObject    handle to edit6 (see GCBO)
+function beg_et_Callback(hObject, eventdata, handles)
+% hObject    handle to beg_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of edit6 as text
-%        str2double(get(hObject,'String')) returns contents of edit6 as a double
+% Hints: get(hObject,'String') returns contents of beg_et as text
+%        str2double(get(hObject,'String')) returns contents of beg_et as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function edit6_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit6 (see GCBO)
+function beg_et_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to beg_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -246,18 +246,18 @@ end
 
 
 
-function edit7_Callback(hObject, eventdata, handles)
-% hObject    handle to edit7 (see GCBO)
+function qdeg_et_Callback(hObject, eventdata, handles)
+% hObject    handle to qdeg_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of edit7 as text
-%        str2double(get(hObject,'String')) returns contents of edit7 as a double
+% Hints: get(hObject,'String') returns contents of qdeg_et as text
+%        str2double(get(hObject,'String')) returns contents of qdeg_et as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function edit7_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit7 (see GCBO)
+function qdeg_et_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to qdeg_et (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -265,4 +265,26 @@ function edit7_CreateFcn(hObject, eventdata, handles)
 %       See ISPC and COMPUTER.
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on slider movement.
+function ratio_sl_Callback(hObject, eventdata, handles)
+% hObject    handle to ratio_sl (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+
+% --- Executes during object creation, after setting all properties.
+function ratio_sl_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to ratio_sl (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
 end
