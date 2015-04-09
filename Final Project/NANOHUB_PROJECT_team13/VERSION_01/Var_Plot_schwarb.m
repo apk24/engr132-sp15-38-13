@@ -54,7 +54,7 @@ function Var_Plot_schwarb_OpeningFcn(hObject, eventdata, handles, varargin)
 
 % Choose default command line output for Var_Plot_schwarb
 handles.output = hObject;
-data = varargin{1};
+%data = varargin{1};
 % Update handles structure
 guidata(hObject, handles);
 
@@ -81,7 +81,7 @@ function atr1_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr1_et as text
 %        str2double(get(hObject,'String')) returns contents of atr1_et as a double
-handles.data.auxatr1 = str2numIget(hObject,'String'));
+handles.data.auxatr1 = str2numIget(hObject,'String');
 guidata(hObject, handles);
 
 
@@ -106,7 +106,7 @@ function atr2_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr2_et as text
 %        str2double(get(hObject,'String')) returns contents of atr2_et as a double
-handles.data.auxatr2 = str2numIget(hObject,'String'));
+handles.data.auxatr2 = str2numIget(hObject,'String');
 guidata(hObject, handles);
 
 
@@ -131,7 +131,7 @@ function atr3_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr3_et as text
 %        str2double(get(hObject,'String')) returns contents of atr3_et as a double
-handles.data.auxatr3 = str2numIget(hObject,'String'));
+handles.data.auxatr3 = str2numIget(hObject,'String');
 guidata(hObject, handles);
 
 
@@ -156,7 +156,7 @@ function atr4_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr4_et as text
 %        str2double(get(hObject,'String')) returns contents of atr4_et as a double
-handles.data.auxatr4 = str2numIget(hObject,'String'));
+handles.data.auxatr4 = str2numIget(hObject,'String');
 guidata(hObject, handles);
 
 
@@ -185,8 +185,6 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to generate_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
-[handles.data.
 
 % --- Executes on button press in exit_pb.
 function exit_pb_Callback(hObject, eventdata, handles)

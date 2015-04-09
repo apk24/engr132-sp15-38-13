@@ -101,7 +101,7 @@ function BrodyGUI_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to BrodyGUI_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-Var_Plot_schwarb();
+Var_Plot_schwarb;
 close nanohubGUI_sec38_team13
 
 % --- Executes on button press in ApoorvaGUI_pb.
