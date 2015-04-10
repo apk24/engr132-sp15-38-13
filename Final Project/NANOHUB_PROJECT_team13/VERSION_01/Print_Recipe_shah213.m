@@ -73,27 +73,6 @@ function varargout = Print_Recipe_shah213_OutputFcn(hObject, eventdata, handles)
 varargout{1} = handles.output;
 
 
-% --- Executes on button press in Toxicity_pb.
-function Toxicity_pb_Callback(hObject, eventdata, handles)
-% hObject    handle to Toxicity_pb (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in Cost_pb.
-function Cost_pb_Callback(hObject, eventdata, handles)
-% hObject    handle to Cost_pb (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in Both_pb.
-function Both_pb_Callback(hObject, eventdata, handles)
-% hObject    handle to Both_pb (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
 % --- Executes on button press in Print_pb.
 function Print_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to Print_pb (see GCBO)
