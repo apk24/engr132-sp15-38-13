@@ -22,7 +22,7 @@ function varargout = enterData(varargin)
 
 % Edit the above text to modify the response to help enterData
 
-% Last Modified by GUIDE v2.5 09-Apr-2015 11:56:15
+% Last Modified by GUIDE v2.5 11-Apr-2015 13:43:52
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -75,18 +75,18 @@ varargout{1} = handles.output;
 
 
 function numMat_et_Callback(hObject, eventdata, handles)
-% hObject    handle to numMat_et (see GCBO)
+% hObject    handle to numMat_st (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of numMat_et as text
-%        str2double(get(hObject,'String')) returns contents of numMat_et as a double
+% Hints: get(hObject,'String') returns contents of numMat_st as text
+%        str2double(get(hObject,'String')) returns contents of numMat_st as a double
 handles.data.nuMat = str2numIget(hObject,'String'));
 guidata(hObject, handles);
 
 % --- Executes during object creation, after setting all properties.
-function numMat_et_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to numMat_et (see GCBO)
+function numMat_st_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to numMat_st (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -99,19 +99,19 @@ end
 
 
 function size_et_Callback(hObject, eventdata, handles)
-% hObject    handle to size_et (see GCBO)
+% hObject    handle to size_st (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of size_et as text
-%        str2double(get(hObject,'String')) returns contents of size_et as a double
+% Hints: get(hObject,'String') returns contents of size_st as text
+%        str2double(get(hObject,'String')) returns contents of size_st as a double
 handles.data.atr1 = str2numIget(hObject,'String'));
 guidata(hObject, handles);
 
 
 % --- Executes during object creation, after setting all properties.
-function size_et_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to size_et (see GCBO)
+function size_st_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to size_st (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -124,19 +124,19 @@ end
 
 
 function cost_et_Callback(hObject, eventdata, handles)
-% hObject    handle to cost_et (see GCBO)
+% hObject    handle to cost_st (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of cost_et as text
-%        str2double(get(hObject,'String')) returns contents of cost_et as a double
+% Hints: get(hObject,'String') returns contents of cost_st as text
+%        str2double(get(hObject,'String')) returns contents of cost_st as a double
 handles.data.atr2 = str2numIget(hObject,'String'));
 guidata(hObject, handles);
 
 
 % --- Executes during object creation, after setting all properties.
-function cost_et_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to cost_et (see GCBO)
+function cost_st_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to cost_st (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -149,19 +149,19 @@ end
 
 
 function tox_et_Callback(hObject, eventdata, handles)
-% hObject    handle to tox_et (see GCBO)
+% hObject    handle to tox_st (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of tox_et as text
-%        str2double(get(hObject,'String')) returns contents of tox_et as a double
+% Hints: get(hObject,'String') returns contents of tox_st as text
+%        str2double(get(hObject,'String')) returns contents of tox_st as a double
 handles.data.atr3 = str2numIget(hObject,'String'));
 guidata(hObject, handles);
 
 
 % --- Executes during object creation, after setting all properties.
-function tox_et_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to tox_et (see GCBO)
+function tox_st_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to tox_st (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -174,19 +174,19 @@ end
 
 
 function eps_et_Callback(hObject, eventdata, handles)
-% hObject    handle to eps_et (see GCBO)
+% hObject    handle to eps_st (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of eps_et as text
-%        str2double(get(hObject,'String')) returns contents of eps_et as a double
+% Hints: get(hObject,'String') returns contents of eps_st as text
+%        str2double(get(hObject,'String')) returns contents of eps_st as a double
 handles.data.atr4 = str2numIget(hObject,'String'));
 guidata(hObject, handles);
 
 
 % --- Executes during object creation, after setting all properties.
-function eps_et_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to eps_et (see GCBO)
+function eps_st_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to eps_st (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -224,17 +224,17 @@ close enterData
 
 
 function beg_et_Callback(hObject, eventdata, handles)
-% hObject    handle to beg_et (see GCBO)
+% hObject    handle to beg_st (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of beg_et as text
-%        str2double(get(hObject,'String')) returns contents of beg_et as a double
+% Hints: get(hObject,'String') returns contents of beg_st as text
+%        str2double(get(hObject,'String')) returns contents of beg_st as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function beg_et_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to beg_et (see GCBO)
+function beg_st_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to beg_st (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -247,17 +247,17 @@ end
 
 
 function qdeg_et_Callback(hObject, eventdata, handles)
-% hObject    handle to qdeg_et (see GCBO)
+% hObject    handle to qdeg_st (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of qdeg_et as text
-%        str2double(get(hObject,'String')) returns contents of qdeg_et as a double
+% Hints: get(hObject,'String') returns contents of qdeg_st as text
+%        str2double(get(hObject,'String')) returns contents of qdeg_st as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function qdeg_et_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to qdeg_et (see GCBO)
+function qdeg_st_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to qdeg_st (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -288,3 +288,10 @@ function ratio_sl_CreateFcn(hObject, eventdata, handles)
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
 end
+
+
+% --- Executes on button press in addData_pb.
+function addData_pb_Callback(hObject, eventdata, handles)
+% hObject    handle to addData_pb (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
