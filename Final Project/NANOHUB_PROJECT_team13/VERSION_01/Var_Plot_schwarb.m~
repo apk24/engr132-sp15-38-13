@@ -83,7 +83,7 @@ handles.output = hObject;
 %data = varargin{1};
 % Update handles structure
 handles.data.mats = generateRandomMats(8)
-handles.data.recipe.goaleg = 2;
+handles.data.recipe.goaleg = 6;
 handles.data.recipe.minuse = 2;
 handles.data.recipe.total = 100;
 guidata(hObject, handles);
@@ -250,7 +250,7 @@ elseif (handles.atr3_cb == 1)
 elseif (handles.atr4_cb == 1)
     bar(handles.recipe4,handles.data.mat,'green')
 else
-    plot(handles.data.auxatr1.atr,handles.recipe1.ratios);
+    plot(handles.data.mats.name,handles.recipe1.ratios);
 end
 
 % --- Executes on button press in exit_pb.

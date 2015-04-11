@@ -81,7 +81,7 @@ function numMat_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of numMat_st as text
 %        str2double(get(hObject,'String')) returns contents of numMat_st as a double
-handles.data.nuMat = str2numIget(hObject,'String'));
+handles.data.nuMat = str2numIget(hObject,'String');
 guidata(hObject, handles);
 
 % --- Executes during object creation, after setting all properties.
@@ -105,7 +105,7 @@ function size_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of size_st as text
 %        str2double(get(hObject,'String')) returns contents of size_st as a double
-handles.data.atr1 = str2numIget(hObject,'String'));
+handles.data.atr1 = str2numIget(hObject,'String');
 guidata(hObject, handles);
 
 
@@ -130,7 +130,7 @@ function cost_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of cost_st as text
 %        str2double(get(hObject,'String')) returns contents of cost_st as a double
-handles.data.atr2 = str2numIget(hObject,'String'));
+handles.data.atr2 = str2numIget(hObject,'String');
 guidata(hObject, handles);
 
 
@@ -155,7 +155,7 @@ function tox_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of tox_st as text
 %        str2double(get(hObject,'String')) returns contents of tox_st as a double
-handles.data.atr3 = str2numIget(hObject,'String'));
+handles.data.atr3 = str2numIget(hObject,'String');
 guidata(hObject, handles);
 
 
@@ -180,7 +180,7 @@ function eps_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of eps_st as text
 %        str2double(get(hObject,'String')) returns contents of eps_st as a double
-handles.data.atr4 = str2numIget(hObject,'String'));
+handles.data.atr4 = str2numIget(hObject,'String');
 guidata(hObject, handles);
 
 
