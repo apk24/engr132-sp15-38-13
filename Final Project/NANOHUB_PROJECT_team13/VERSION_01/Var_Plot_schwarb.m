@@ -48,7 +48,7 @@ function varargout = Var_Plot_schwarb(varargin)
 
 % Edit the above text to modify the response to help Var_Plot_schwarb
 
-% Last Modified by GUIDE v2.5 06-Apr-2015 14:58:08
+% Last Modified by GUIDE v2.5 12-Apr-2015 21:06:47
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -320,3 +320,11 @@ function atr4_cb_Callback(hObject, eventdata, handles)
 % Hint: get(hObject,'Value') returns toggle state of atr4_cb
 handles.atr4_cb = get(hObject,'Value')
 guidata(hObject, handles)
+
+
+% --- Executes on button press in help_pb.
+function help_pb_Callback(hObject, eventdata, handles)
+% hObject    handle to help_pb (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+Var_Plot_help;
