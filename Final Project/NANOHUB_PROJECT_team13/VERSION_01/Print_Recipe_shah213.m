@@ -22,7 +22,7 @@ function varargout = Print_Recipe_shah213(varargin)
 
 % Edit the above text to modify the response to help Print_Recipe_shah213
 
-% Last Modified by GUIDE v2.5 13-Apr-2015 11:07:34
+% Last Modified by GUIDE v2.5 13-Apr-2015 19:50:12
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -85,7 +85,8 @@ function Clear_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to Clear_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+cla
+set(handles.Display_st,'String','');
 
 % --- Executes on button press in exit_pb.
 function exit_pb_Callback(hObject, eventdata, handles)
@@ -139,3 +140,21 @@ function help_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 Print_Help
+
+
+% --- Executes on button press in generate_pb.
+function generate_pb_Callback(hObject, eventdata, handles)
+% hObject    handle to generate_pb (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+axes(handles.Attr_Plot_ax);
+%%Here's where we'd plot the data that gets passed form the ENTER DATA.
+title('Toxicity vs. Cost');
+ylabel('Toxicity (units/g)');
+xlabel('Cost ($/g)');
+axes(handles.Bar_Graph_ax);
+%%Plot the mass percentages of the materials by their names
+title('Recipe');
+ylabel('Mass Percentage');
+xlabel('Material');
+set(handles.Display_st, 'String', 'Recipe displayed here');
