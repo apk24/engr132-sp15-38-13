@@ -22,7 +22,7 @@ function varargout = Print_Recipe_shah213(varargin)
 
 % Edit the above text to modify the response to help Print_Recipe_shah213
 
-% Last Modified by GUIDE v2.5 06-Apr-2015 17:22:27
+% Last Modified by GUIDE v2.5 13-Apr-2015 11:07:34
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -131,3 +131,11 @@ function AddData_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 enterData
+
+
+% --- Executes on button press in help_pb.
+function help_pb_Callback(hObject, eventdata, handles)
+% hObject    handle to help_pb (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+Print_Help
