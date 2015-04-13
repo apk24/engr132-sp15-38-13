@@ -18,7 +18,7 @@ end
 %(called the value in the justifiction)
 Eg_rv = linspace(-1,-1, numMat);
 for ct=1:length(mats)
-Eg_rv(ct) = abs(Eg_name(ct) - goalEg) / eval(['mats(ct).' , optAttr]);
+Eg_rv(ct) = abs(Eg_name(ct) - goalEg) / str2num(['mats(ct).' , optAttr]);
 end
 
 %%The Optimization

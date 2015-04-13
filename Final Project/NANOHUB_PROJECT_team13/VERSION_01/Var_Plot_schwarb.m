@@ -111,13 +111,14 @@ function atr1_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr1_et as text
 %        str2double(get(hObject,'String')) returns contents of atr1_et as a double
-atrArray1 = eval(get(hObject,'String'));
-handles.data.auxatr1.name = atrArray1(1);
-handles.data.auxatr1.atr = atrArray1(2:length(atrArray1));
+atrArray1 = str2num(get(hObject,'String'));
+handles.data.auxatr1.name = ['Attribute 1'];%atrArray1(1);
+handles.data.auxatr1.atr = atrArray1 %(2:length(atrArray1));
+disp(handles.data.auxatr1.atr)
 numMat = length(handles.data.mats);
-for ct = 1: numMat
-    eval(['handles.data.mats(ct).' , handles.data.auxatr1.name , '= handles.data.auxatr1.atr(ct)']);
-end
+%for ct = 1: numMat
+   % eval(['handles.data.mats(ct).' , handles.data.auxatr1.name , '= handles.data.auxatr1.atr(ct)']);
+%end
 handles.recipe1 = MinAttr(handles.data.mats,handles.data.auxatr1.name,handles.data.recipe.goaleg,handles.data.recipe.minuse,handles.data.recipe.total);
 guidata(hObject, handles);
 
@@ -143,15 +144,15 @@ function atr2_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr2_et as text
 %        str2double(get(hObject,'String')) returns contents of atr2_et as a double
-atrArray2 = eval(get(hObject,'String'));
+atrArray2 = str2num(get(hObject,'String'));
 handles.data.auxatr2.name = atrArray2(1);
-handles.data.auxatr2.goaleg = atrArray2(2);
-handles.data.auxatr2.minuse = atrArray2(3);
-handles.data.auxatr2.total = atrArray2(4);
-handles.data.auxatr2.atr = atrArray2(5:length(atrArray2));
-handles.recipe2 = MinAttr(handles.data.auxatr2.name, handles.data.auxatr2.atr,handles.data.auxatr2.goaleg,handles.data.auxatr2.minuse,handls.data.auxatr2.total);
+handles.data.auxatr2.atr = atrArray2(2:length(atrArray2));
+numMat = length(handles.data.mats);
+for ct = 1: numMat
+    eval(['handles.data.mats(ct).' , handles.data.auxatr2.name , '= handles.data.auxatr2.atr(ct)']);
+end
+handles.recipe2 = MinAttr(handles.data.mats,handles.data.auxatr2.name,handles.data.recipe.goaleg,handles.data.recipe.minuse,handles.data.recipe.total);
 guidata(hObject, handles);
-
 
 % --- Executes during object creation, after setting all properties.
 function atr2_et_CreateFcn(hObject, eventdata, handles)
@@ -174,13 +175,14 @@ function atr3_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr3_et as text
 %        str2double(get(hObject,'String')) returns contents of atr3_et as a double
-atrArray3 = eval(get(hObject,'String'));
+atrArray3 = str2num(get(hObject,'String'));
 handles.data.auxatr3.name = atrArray3(1);
-handles.data.auxatr3.goaleg = atrArray3(2);
-handles.data.auxatr3.minuse = atrArray3(3);
-handles.data.auxatr3.total = atrArray3(4);
-handles.data.auxatr3.atr = atrArray3(5:length(atrArray3));
-handles.recipe3 = MinAttr(handles.data.auxatr3.name, handles.data.auxatr3.atr,handles.data.auxatr3.goaleg,handles.data.auxatr3.minuse,handls.data.auxatr3.total);
+handles.data.auxatr3.atr = atrArray3(2:length(atrArray3));
+numMat = length(handles.data.mats);
+for ct = 1: numMat
+    eval(['handles.data.mats(ct).' , handles.data.auxatr3.name , '= handles.data.auxatr3.atr(ct)']);
+end
+handles.recipe3 = MinAttr(handles.data.mats,handles.data.auxatr3.name,handles.data.recipe.goaleg,handles.data.recipe.minuse,handles.data.recipe.total);
 guidata(hObject, handles);
 
 
@@ -205,13 +207,14 @@ function atr4_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr4_et as text
 %        str2double(get(hObject,'String')) returns contents of atr4_et as a double
-atrArray4 = eval(get(hObject,'String'));
+atrArray4 = str2num(get(hObject,'String'));
 handles.data.auxatr4.name = atrArray4(1);
-handles.data.auxatr4.goaleg = atrArray4(2);
-handles.data.auxatr4.minuse = atrArray4(3);
-handles.data.auxatr4.total = atrArray4(4);
-handles.data.auxatr4.atr = atrArray4(5:length(atrArray4));
-handles.recipe4 = MinAttr(handles.data.auxatr4.name, handles.data.auxatr4.atr,handles.data.auxatr4.goaleg,handles.data.auxatr4.minuse,handls.data.auxatr4.total);
+handles.data.auxatr4.atr = atrArray4(2:length(atrArray4));
+numMat = length(handles.data.mats);
+for ct = 1: numMat
+    eval(['handles.data.mats(ct).' , handles.data.auxatr4.name , '= handles.data.auxatr1.atr(ct)']);
+end
+handles.recipe4 = MinAttr(handles.data.mats,handles.data.auxatr4.name,handles.data.recipe.goaleg,handles.data.recipe.minuse,handles.data.recipe.total);
 guidata(hObject, handles);
 
 
@@ -240,18 +243,51 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to generate_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+handles.data.auxatr1.atr = [1 3 5 7 9 11 13 15];
+handles.data.auxatr2.atr = [2 4 6 8 10 12 14 16];
+handles.data.auxatr3.atr = [1 2 3 4 5 6 7 8];
+handles.data.auxatr4.atr = [1 9 4 3 2 6 4 12];
+handles.recipe1.ratios = [13 2 2 2 35 2 16 53];
 if (handles.atr1_cb == 1)
-    bar(handles.recipe1,handles.data.mat);
-elseif (handles.atr2_cb == 1)
-    bar(handles.recipe2,handles.data.mat,'magenta');
-elseif (handles.atr3_cb == 1)
-    bar(handles.recipe2,handles.data.mat,'red');
-elseif (handles.atr4_cb == 1)
-    bar(handles.recipe4,handles.data.mat,'green')
-else
-    plot(handles.data.auxatr1.atr,handles.recipe1.ratios);
+    %plot(handles.recipe1,handles.data.mat);
+    plot(handles.data.auxatr1.atr,handles.recipe1.ratios,'black');
+    title('Material Ratio by Attribute Value')
+    ylabel('Material Ratio')
+    xlabel('Attribute Value') 
+    hold on;
 end
+if (handles.atr2_cb == 1)
+    %plot(handles.recipe2,handles.data.mat,'magenta');
+    plot(handles.data.auxatr2.atr,handles.recipe1.ratios,'magenta');
+    title('Material Ratio by Attribute Value','FontColor','w')
+    ylabel('Material Ratio','FontColor','w')
+    xlabel('Attribute Value','FontColor','w')  
+    hold on;
+end
+if (handles.atr3_cb == 1)
+    %plot(handles.recipe2,handles.data.mat,'red');
+    plot(handles.data.auxatr3.atr,handles.recipe1.ratios,'red');
+    title('Material Ratio by Attribute Value','FontColor','w')
+    ylabel('Material Ratio','FontColor','w')
+    xlabel('Attribute Value','FontColor','w')  
+    hold on;
+end
+if (handles.atr4_cb == 1)
+    %plot(handles.recipe4,handles.data.mat,'green')
+    plot(handles.data.auxatr4.atr,handles.recipe1.ratios,'green');
+    title('Material Ratio by Attribute Value','FontColor','w')
+    ylabel('Material Ratio','FontColor','w')
+    xlabel('Attribute Value','FontColor','w') 
+    hold on;
+end
+if ((handles.atr1_cb ~= 1)&(handles.atr2_cb ~= 1)&(handles.atr3_cb ~= 1)&(handles.atr4_cb ~= 1))
+    plot([1 5 10 15 25 30 40 50],handles.recipe1.ratios);
+    title('Material Ratio by Attribute Value','FontColor','w')
+    ylabel('Material Ratio','FontColor','w')
+    xlabel('Attribute Value','FontColor','w') 
+    hold on;
+end
+hold off;
 
 % --- Executes on button press in exit_pb.
 function exit_pb_Callback(hObject, eventdata, handles)
@@ -265,7 +301,7 @@ function clear_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to clear_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-clear handles.plot_ax
+cla(handles.plot_ax);
 set(handles.atr1_et,'String','Enter');
 set(handles.atr2_et,'String','Enter');
 set(handles.atr3_et,'String','Enter');
