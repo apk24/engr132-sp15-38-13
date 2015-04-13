@@ -57,7 +57,7 @@ handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
-imshow('citationsImg.jpg','Parent',handles.citations_ax);
+imshow('citationsImg.png','Parent',handles.citations_ax);
 
 % UIWAIT makes citationGUI_sec38_team13 wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
