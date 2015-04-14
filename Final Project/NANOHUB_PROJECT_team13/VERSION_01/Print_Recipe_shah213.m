@@ -99,9 +99,8 @@ function Print_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to Print_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-printAtr = figure('Visible', 'off');
-copyobj(handles.Attr_Plot_ax, printAtr)
-print
+print('Window Printout', '-dpdf');
+
 % --- Executes on button press in Clear_pb.
 function Clear_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to Clear_pb (see GCBO)
