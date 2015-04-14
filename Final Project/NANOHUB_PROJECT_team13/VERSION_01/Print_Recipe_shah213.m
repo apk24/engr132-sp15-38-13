@@ -75,6 +75,7 @@ function Print_Recipe_shah213_OpeningFcn(hObject, eventdata, handles, varargin)
 
 % Choose default command line output for Print_Recipe_shah213
 handles.output = hObject;
+set(handles.Print_pb, 'Enable', 'off');
 
 % Update handles structure
 guidata(hObject, handles);
@@ -108,6 +109,7 @@ function Clear_pb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 cla
 set(handles.Display_st,'String','');
+set(handles.Print_pb, 'Enable', 'off');
 
 % --- Executes on button press in exit_pb.
 function exit_pb_Callback(hObject, eventdata, handles)
@@ -179,3 +181,4 @@ title('Recipe');
 ylabel('Mass Percentage');
 xlabel('Material');
 set(handles.Display_st, 'String', 'Recipe displayed here');
+set(handles.Print_pb, 'Enable', 'on');
