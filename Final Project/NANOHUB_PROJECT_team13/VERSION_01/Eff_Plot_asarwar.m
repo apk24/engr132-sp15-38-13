@@ -107,7 +107,7 @@ function clearPlots_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to clearPlots_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+cla;
 
 % --- Executes on button press in cost_pb.
 function cost_pb_Callback(hObject, eventdata, handles)
