@@ -22,7 +22,7 @@ function varargout = Print_Recipe_shah213(varargin)
 
 % Edit the above text to modify the response to help Print_Recipe_shah213
 
-% Last Modified by GUIDE v2.5 13-Apr-2015 19:50:12
+% Last Modified by GUIDE v2.5 13-Apr-2015 20:03:55
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -78,8 +78,9 @@ function Print_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to Print_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
-
+printAtr = figure('Visible', 'off');
+copyobj(handles.Attr_Plot_ax, printAtr)
+print
 % --- Executes on button press in Clear_pb.
 function Clear_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to Clear_pb (see GCBO)
