@@ -248,9 +248,9 @@ handles.data.auxatr2.atr = [2 4 6 8 10 12 14 16];
 handles.data.auxatr3.atr = [1 2 3 4 5 6 7 8];
 handles.data.auxatr4.atr = [1 9 4 3 2 6 4 12];
 handles.recipe1.ratios = [13 2 2 2 35 2 16 53];
-handles.recipe2.ratios = [2 2 2 13 14 16 43 4];
+handles.recipe2.ratios = [2 2 2 13 14 16 43];
 handles.recipe3.ratios = [2 2 2 2 3 5 6 75];
-handles.recipe4.ratios = [2 2 34 35 21 4 2 5];
+handles.recipe4.ratios = [2 2 34 35 21 4 2];
 if (handles.atr1_cb == 1)
     %plot(handles.recipe1,handles.data.mat);
     plot(handles.data.auxatr1.atr,handles.recipe1.ratios,'black');
@@ -262,32 +262,32 @@ end
 if (handles.atr2_cb == 1)
     %plot(handles.recipe2,handles.data.mat,'magenta');
     plot(handles.data.auxatr2.atr,handles.recipe2.ratios,'magenta');
-    title('Material Ratio by Attribute Value')
-    ylabel('Material Ratio')
-    xlabel('Attribute Value')  
+    title('Material Ratio by Attribute Value','FontColor',[1 1 1])
+    ylabel('Material Ratio','FontColor',[1 1 1])
+    xlabel('Attribute Value','FontColor',[1 1 1])  
     hold on;
 end
 if (handles.atr3_cb == 1)
     %plot(handles.recipe2,handles.data.mat,'red');
     plot(handles.data.auxatr3.atr,handles.recipe3.ratios,'red');
-    title('Material Ratio by Attribute Value')
-    ylabel('Material Ratio')
-    xlabel('Attribute Value')  
+    title('Material Ratio by Attribute Value','FontColor',[1 1 1])
+    ylabel('Material Ratio','FontColor',[1 1 1])
+    xlabel('Attribute Value','FontColor',[1 1 1])  
     hold on;
 end
 if (handles.atr4_cb == 1)
     %plot(handles.recipe4,handles.data.mat,'green')
     plot(handles.data.auxatr4.atr,handles.recipe4.ratios,'green');
-    title('Material Ratio by Attribute Value')
-    ylabel('Material Ratio')
-    xlabel('Attribute Value')
+    title('Material Ratio by Attribute Value','FontColor',[1 1 1])
+    ylabel('Material Ratio','FontColor',[1 1 1])
+    xlabel('Attribute Value','FontColor',[1 1 1]) 
     hold on;
 end
 if ((handles.atr1_cb ~= 1)&(handles.atr2_cb ~= 1)&(handles.atr3_cb ~= 1)&(handles.atr4_cb ~= 1))
     plot([1 5 10 15 25 30 40 50],handles.recipe1.ratios);
-    title('Material Ratio by Attribute Value')
-    ylabel('Material Ratio')
-    xlabel('Attribute Value')
+    title('Material Ratio by Attribute Value','FontColor',[1 1 1])
+    ylabel('Material Ratio','FontColor',)
+    xlabel('Attribute Value','FontColor','w') 
     hold on;
 end
 hold off;
