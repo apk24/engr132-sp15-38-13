@@ -1,4 +1,25 @@
 function varargout = nanohubGUI_sec38_team13(varargin)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%  ENGR 13200 Spring 2015
+%  Programmer(s) and Purdue Email Address(es):
+%  1. Broderick Schwartz, schwarb@purdue.edu
+%
+%  Other Contributor(s) and Purdue Email Address(es):
+%  1. Name login@purdue.edu
+%
+%  Section #:  38    Team #: 13
+%  Assignment: nanoHUB Simulation Suite
+%
+%  Academic Integrity Statement:
+%       I/We have not used source code obtained from
+%       any other unauthorized source, either modified
+%       or unmodified.  Neither have I/we provided access
+%       to my/our code to another. The project I/we am/are 
+%       submitting is my/our own original work.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%We did not include in text prior art citations in this GUI because it
+%would not serve any better purpose than the citations Window we
+%programmed.
 % NANOHUBGUI_SEC38_TEAM13 MATLAB code for nanohubGUI_sec38_team13.fig
 %      NANOHUBGUI_SEC38_TEAM13, by itself, creates a new NANOHUBGUI_SEC38_TEAM13 or raises the existing
 %      singleton*.

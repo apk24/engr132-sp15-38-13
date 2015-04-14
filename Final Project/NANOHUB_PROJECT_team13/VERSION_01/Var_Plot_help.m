@@ -1,4 +1,24 @@
 function varargout = Var_Plot_help(varargin)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%  ENGR 13200 Spring 2015
+%  Programmer(s) and Purdue Email Address(es):
+%  1. Broderick Schwartz, schwarb@purdue.edu
+%
+%  Other Contributor(s) and Purdue Email Address(es):
+%  1. Name login@purdue.edu
+%
+%  Section #:38      Team #:13
+%  Assignment: nanoHUB Simulation Suite
+%
+%  Academic Integrity Statement:
+%       I/We have not used source code obtained from
+%       any other unauthorized source, either modified
+%       or unmodified.  Neither have I/we provided access
+%       to my/our code to another. The project I/we am/are 
+%       submitting is my/our own original work.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%No citations were used for this help GUI as the programmer was the sole
+%source of infomation on their GUI.
 % VAR_PLOT_HELP MATLAB code for Var_Plot_help.fig
 %      VAR_PLOT_HELP, by itself, creates a new VAR_PLOT_HELP or raises the existing
 %      singleton*.

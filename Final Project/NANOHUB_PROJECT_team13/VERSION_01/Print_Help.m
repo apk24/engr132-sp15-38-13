@@ -1,4 +1,24 @@
 function varargout = Print_Help(varargin)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%  ENGR 13200 Spring 2015
+%  Programmer(s) and Purdue Email Address(es):
+%  1. Yash Shah, shah213@purdue.edu
+%
+%  Other Contributor(s) and Purdue Email Address(es):
+%  1. Name login@purdue.edu
+%
+%  Section #:  38    Team #: 13
+%  Assignment: nanoHUB Simulation Suite
+%
+%  Academic Integrity Statement:
+%       I/We have not used source code obtained from
+%       any other unauthorized source, either modified
+%       or unmodified.  Neither have I/we provided access
+%       to my/our code to another. The project I/we am/are 
+%       submitting is my/our own original work.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%No citations were used for this GUI as the programmer was the sole source
+%of information regarding the use of their GUI.
 % PRINT_HELP MATLAB code for Print_Help.fig
 %      PRINT_HELP, by itself, creates a new PRINT_HELP or raises the existing
 %      singleton*.

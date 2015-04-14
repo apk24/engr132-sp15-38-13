@@ -1,4 +1,26 @@
 function varargout = Eff_Plot_asarwar(varargin)
+%%NOTE TO GRADER!!!! Rashid did not contribute to M7 in any way this was
+%%his GUI we were unable to do anything for it as we were busy with our
+%%own.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%  ENGR 13200 Spring 2015
+%  Programmer(s) and Purdue Email Address(es):
+%  1. Rashid Sarwar, asarwar@purdue.edu
+%
+%  Other Contributor(s) and Purdue Email Address(es):
+%  1. Name login@purdue.edu
+%
+%  Section #: 38      Team #: 13
+%  Assignment: nanoHUB Simulation Suite
+%
+%  Academic Integrity Statement:
+%       I/We have not used source code obtained from
+%       any other unauthorized source, either modified
+%       or unmodified.  Neither have I/we provided access
+%       to my/our code to another. The project I/we am/are 
+%       submitting is my/our own original work.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % EFF_PLOT_ASARWAR MATLAB code for Eff_Plot_asarwar.fig
 %      EFF_PLOT_ASARWAR, by itself, creates a new EFF_PLOT_ASARWAR or raises the existing
 %      singleton*.

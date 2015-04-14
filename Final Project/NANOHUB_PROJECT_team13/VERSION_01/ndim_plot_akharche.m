@@ -1,4 +1,25 @@
 function varargout = ndim_plot_akharche(varargin)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%  ENGR 13200 Spring 2015
+%  Programmer(s) and Purdue Email Address(es):
+%  1. Apoorva Kharche, akharche@purdue.edu
+%
+%  Other Contributor(s) and Purdue Email Address(es):
+%  1. Name login@purdue.edu
+%
+%  Section #: 38     Team #:13
+%  Assignment: nanoHUB Simulation Suite
+%
+%  Academic Integrity Statement:
+%       I/We have not used source code obtained from
+%       any other unauthorized source, either modified
+%       or unmodified.  Neither have I/we provided access
+%       to my/our code to another. The project I/we am/are 
+%       submitting is my/our own original work.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%In text citations for this GUI were not included because we found no
+%justification for their inclusion as they were already enumerated in the
+%Citations GUI.
 % NDIM_PLOT_AKHARCHE MATLAB code for ndim_plot_akharche.fig
 %      NDIM_PLOT_AKHARCHE, by itself, creates a new NDIM_PLOT_AKHARCHE or raises the existing
 %      singleton*.

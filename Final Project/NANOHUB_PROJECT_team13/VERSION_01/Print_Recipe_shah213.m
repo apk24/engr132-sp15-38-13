@@ -1,4 +1,25 @@
 function varargout = Print_Recipe_shah213(varargin)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%  ENGR 13200 Spring 2015
+%  Programmer(s) and Purdue Email Address(es):
+%  1. Yash Shah, shah213@purdue.edu
+%
+%  Other Contributor(s) and Purdue Email Address(es):
+%  1. Name login@purdue.edu
+%
+%  Section #: 38   Team #:13
+%  Assignment: nanoHUB Simulation Suite
+%
+%  Academic Integrity Statement:
+%       I/We have not used source code obtained from
+%       any other unauthorized source, either modified
+%       or unmodified.  Neither have I/we provided access
+%       to my/our code to another. The project I/we am/are 
+%       submitting is my/our own original work.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%In text citations are not found in this GUI because the only citations
+%needed are for prior art and pictures can't have in 'text' citations.
+%Citations are found in the citations GUI window.
 % PRINT_RECIPE_SHAH213 MATLAB code for Print_Recipe_shah213.fig
 %      PRINT_RECIPE_SHAH213, by itself, creates a new PRINT_RECIPE_SHAH213 or raises the existing
 %      singleton*.
