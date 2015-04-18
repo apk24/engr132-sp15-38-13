@@ -22,8 +22,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-function [ recipe ] = DoubleMinAttr( mats, optAttr1Name, optAttr2Name, relimp, goalEg, minUse, totalReq)
+function [ recipe ] = DoubleMinAttr( mats, optAttr1Name, optAttr2Name, recipe)
 numMat = length(mats);
+relimp = recipe.relimp;
+goalEg = recipe.goaleg;
+minUse = recipe.minUse;
+totalReq = recipe.total;
+if numMat <= 0
+    errordlg('Not enough materials!');
+end
 weightingFactor1 = relimp;
 weightingFactor2 = 100 -relimp;
 optAttr1 = linspace(-1,-1,numMat);
@@ -36,18 +43,16 @@ for ct=1:length(mats)
     optAttr2(ct) = eval(['mats(ct).', optAttr2Name]);
 end
 
-size(optAttr1)
-size(max(optAttr1))
 scaledAttr1 = optAttr1 .* (100/max(optAttr1));
 scaledAttr2 = optAttr2 .* (100/max(optAttr2));
 weightedAttr = scaledAttr1 * weightingFactor1 + scaledAttr2 * weightingFactor2;
 
 recipe = MinAttr(mats, weightedAttr, goalEg, minUse, totalReq);
-optAttrValue1 = matRatio * optAttr1';
-optAttrValue2 = matRatio * optAttr2';
+optAttrValue1 = recipe.ratios * optAttr1';
+optAttrValue2 = recipe.ratios * optAttr2';
 
-eval('recipe.' + optAttr1Name + ' = optAttrValue1');
-eval('recipe.' + optAttr2Name + ' = optAttrValue2')
+eval(['recipe.', optAttr1Name, ' = optAttrValue1;']);
+eval(['recipe.', optAttr2Name, ' = optAttrValue2;']);
 
 end
 

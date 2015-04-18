@@ -124,17 +124,17 @@ aNames = handles.data.attrNames;
 xstep = str2num(get(handles.x_axis_et, 'String'));
 ystep = str2num(get(handles.y_axis_et, 'String'));
 zstep = str2num(get(handles.z_axis_et, 'String'));
-xitem = char(aNames(2, get(handles.x_axis_pm, 'Value')));
-yitem = char(aNames(2, get(handles.y_axis_pm, 'Value')));
-zitem = char(aNames(2, get(handles.z_axis_pm, 'Value')));
+xitem = char(aNames(get(handles.x_axis_pm, 'Value'), 2));
+yitem = char(aNames(get(handles.y_axis_pm, 'Value'), 2));
+zitem = char(aNames(get(handles.z_axis_pm, 'Value'), 2));
 recipe = getappdata(0, 'recipe');
 if(xstep)
     yvals = linspace(0,0,length(xstep));
     zvals = yvals;
     xvals = xstep;
     for ct = xstep
-        eval(['recipe.', xitem, '=ct']')
-        DoubleMinAttr(recipe.mats, 'cost', 'tox', recipe.relimp, recipe.goaleg, recipe.minUse, recipe.total);
+        eval(['recipe.', xitem, '=ct;']');
+        recipe = DoubleMinAttr(recipe.mats, 'cost', 'tox', recipe);
         yvals(ct) = eval(['recipe.', yitem]);
         zvals(ct) = eval(['recipe.', zitem]);
     end
@@ -143,7 +143,7 @@ elseif(ystep)
     xvals = zvals;
     yvals = ystep;
     for ct = ystep
-        eval(['recipe.', yitem, '=ct']')
+        eval(['recipe.', yitem, '=ct;']');
         DoubleMinAttr(recipe.mats, 'cost', 'tox', recipe.relimp, recipe.goaleg, recipe.minUse, recipe.total);
         xvals(ct) = eval(['recipe.', xitem]);
         zvals(ct) = eval(['recipe.', zitem]);
@@ -153,13 +153,13 @@ else
     yvals = xvals;
     zvals = zstep;
     for ct = zstep
-        eval(['recipe.', zitem, '=ct']')
+        eval(['recipe.', zitem, '=ct;']');
         DoubleMinAttr(recipe.mats, 'cost', 'tox', recipe.relimp, recipe.goaleg, recipe.minUse, recipe.total);
         yvals(ct) = eval(['recipe.', yitem]);
         xvals(ct) = eval(['recipe.', xitem]);
     end
 end
-
+plot(xvals, yvals);
 % --- Executes on button press in enterData_pb.
 function enterData_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to enterData_pb (see GCBO)

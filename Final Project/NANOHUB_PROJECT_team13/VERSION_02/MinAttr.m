@@ -25,18 +25,22 @@ function [ recipe ] = MinAttr(mats, optAttr, goalEg, minUse, totalReq)
 %%Process the inputs into more useful values for the actual optimization
 %get number of materials
 numMat = length(mats);
-
+if numMat <= 0
+    errordlg('Not enough materials!')
+end
+for ct = 1:numMat
+    mats(ct).qdeg = BandGapDot(mats(ct));
+end
 %find band gap energies of the quantum dots
 Eg_name = linspace(-1,-1,numMat);
-for ct=1:length(mats)
-    Eg_name(ct) = mats(ct).beg;
+for ct=1:numMat
+    Eg_name(ct) = mats(ct).qdeg;
 end
-
 %Find band gap energy contribution per unit of the optimization attribute
 %(called the value in the justifiction)
 Eg_rv = linspace(-1,-1, numMat);
-for ct=1:length(mats)
-Eg_rv(ct) = abs(Eg_name(ct) - goalEg) / str2num(['mats(ct).' , optAttr]);
+for ct=1:numMat
+Eg_rv(ct) = abs(Eg_name(ct) - goalEg) / optAttr(ct);
 end
 
 %%The Optimization
@@ -68,13 +72,10 @@ solution = rref(system);
 %put solution into output variable
 matRatio(effOver) = matRatio(effOver) + solution(1,3);
 matRatio(effUnder) = matRatio(effUnder) + solution(2,3);
-%calculate cost
-optAttrValue = sum(optAttr .* matRatio);
 
 recipe = struct(...
     'ratios', matRatio, ...
     'mats', mats, ...
     'total', totalReq, ...
-    'minuse', minUse, ...
-    optAttr, optAttrValue ...
+    'minuse', minUse ...
     );
