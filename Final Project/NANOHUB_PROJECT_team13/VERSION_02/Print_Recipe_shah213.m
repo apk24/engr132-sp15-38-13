@@ -99,9 +99,15 @@ function Print_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to Print_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-printAtr = figure('Visible', 'off');
-copyobj(handles.Attr_Plot_ax, printAtr)
-print
+
+%print('Window Printout', '-dpdf');
+handle_plot = handles.Attr_Plot_ax
+saveas(handle_plot, 'Attribute', 'jpeg');
+close(handle_plot);
+handle_bar = handles.Bar_Graph_ax
+saveas(handle_bar,'Barchart', 'jpeg');
+close(handle_bar);
+
 % --- Executes on button press in Clear_pb.
 function Clear_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to Clear_pb (see GCBO)
@@ -176,6 +182,8 @@ ylabel('Toxicity (units/g)');
 xlabel('Cost ($/g)');
 axes(handles.Bar_Graph_ax);
 %%Plot the mass percentages of the materials by their names
+x = [2 4 7 2 4 5 2 5 1 4];
+bar(x);
 title('Recipe');
 ylabel('Mass Percentage');
 xlabel('Material');
