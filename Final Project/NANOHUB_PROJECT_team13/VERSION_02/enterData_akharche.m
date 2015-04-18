@@ -686,7 +686,7 @@ recipe.goaleg = str2num(get(handles.goal_et, 'String'));
 recipe.minUse = str2num(get(handles.minUse_et, 'String'));
 recipe.total = str2num(get(handles.total_et, 'String'));
 recipe.relimp = get(handles.ratio_sl, 'Value');
-if isempty(recipe.mats)
+if 1%isempty(recipe.mats)
     recipe.mats = getappdata(0, 'mats');
 end
 setappdata(0, 'recipe' ,recipe);
