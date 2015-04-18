@@ -101,12 +101,14 @@ function Print_pb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 %print('Window Printout', '-dpdf');
+
 handle_plot = handles.Attr_Plot_ax
 saveas(handle_plot, 'Attribute', 'jpeg');
 close(handle_plot);
-handle_bar = handles.Bar_Graph_ax
-saveas(handle_bar,'Barchart', 'jpeg');
-close(handle_bar);
+
+%handle_bar = handles.Bar_Graph_ax
+%print(handle_bar,'Barchart', '-dpdf');
+%close(handle_bar);
 
 % --- Executes on button press in Clear_pb.
 function Clear_pb_Callback(hObject, eventdata, handles)
