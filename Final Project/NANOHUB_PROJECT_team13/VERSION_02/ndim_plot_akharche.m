@@ -43,7 +43,7 @@ function varargout = ndim_plot_akharche(varargin)
 
 % Edit the above text to modify the response to help ndim_plot_akharche
 
-% Last Modified by GUIDE v2.5 07-Apr-2015 08:07:40
+% Last Modified by GUIDE v2.5 18-Apr-2015 13:32:27
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -76,6 +76,20 @@ function ndim_plot_akharche_OpeningFcn(hObject, eventdata, handles, varargin)
 % Choose default command line output for ndim_plot_akharche
 handles.output = hObject;
 
+aNames = cell(5,4);
+aNames(1, 1:4) = {'Cost', 'cost', 0, 2000};
+aNames(2, 1:4) = {'Toxicity', 'tox', 0, 500};
+aNames(3, 1:4) = {'Goal Band Gap Energy', 'goaleg', 0, 10};
+aNames(4, 1:4) = {'Relative Importance', 'relimp', 0, 100};
+aNames(5, 1:4) = {'None', '', 0, 0};
+
+handles.data.attrNames = aNames;
+set(handles.x_axis_pm, 'String', aNames(:,1));
+set(handles.y_axis_pm, 'String', aNames(:,1));
+set(handles.z_axis_pm, 'String', aNames(:,1));
+
+setappdata(0, 'openGUI', @ndim_plot_akharche);
+
 % Update handles structure
 guidata(hObject, handles);
 
@@ -106,14 +120,52 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to generate_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+aNames = handles.data.attrNames;
+xstep = str2num(get(handles.x_axis_et, 'String'));
+ystep = str2num(get(handles.y_axis_et, 'String'));
+zstep = str2num(get(handles.z_axis_et, 'String'));
+xitem = char(aNames(2, get(handles.x_axis_pm, 'Value')));
+yitem = char(aNames(2, get(handles.y_axis_pm, 'Value')));
+zitem = char(aNames(2, get(handles.z_axis_pm, 'Value')));
+recipe = getappdata(0, 'recipe');
+if(xstep)
+    yvals = linspace(0,0,length(xstep));
+    zvals = yvals;
+    xvals = xstep;
+    for ct = xstep
+        eval(['recipe.', xitem, '=ct']')
+        DoubleMinAttr(recipe.mats, 'cost', 'tox', recipe.relimp, recipe.goaleg, recipe.minUse, recipe.total);
+        yvals(ct) = eval(['recipe.', yitem]);
+        zvals(ct) = eval(['recipe.', zitem]);
+    end
+elseif(ystep)
+    zvals = linspace(0,0,length(ystep));
+    xvals = zvals;
+    yvals = ystep;
+    for ct = ystep
+        eval(['recipe.', yitem, '=ct']')
+        DoubleMinAttr(recipe.mats, 'cost', 'tox', recipe.relimp, recipe.goaleg, recipe.minUse, recipe.total);
+        xvals(ct) = eval(['recipe.', xitem]);
+        zvals(ct) = eval(['recipe.', zitem]);
+    end
+else
+    xvals = linspace(0,0,length(zstep));
+    yvals = xvals;
+    zvals = zstep;
+    for ct = zstep
+        eval(['recipe.', zitem, '=ct']')
+        DoubleMinAttr(recipe.mats, 'cost', 'tox', recipe.relimp, recipe.goaleg, recipe.minUse, recipe.total);
+        yvals(ct) = eval(['recipe.', yitem]);
+        xvals(ct) = eval(['recipe.', xitem]);
+    end
+end
 
 % --- Executes on button press in enterData_pb.
 function enterData_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to enterData_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-enterData
+enterData_akharche
 
 % --- Executes on button press in clear_pb.
 function clear_pb_Callback(hObject, eventdata, handles)
@@ -286,3 +338,66 @@ function z_axis_sl_CreateFcn(hObject, eventdata, handles)
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
 end
+
+
+% --- Executes during object creation, after setting all properties.
+function y_axis_et_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to y_axis_et (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes during object creation, after setting all properties.
+function x_axis_et_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to x_axis_et (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes during object creation, after setting all properties.
+function z_axis_et_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to z_axis_et (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+
+
+function x_axis_et_Callback(hObject, eventdata, handles)
+% hObject    handle to x_axis_et (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of x_axis_et as text
+%        str2double(get(hObject,'String')) returns contents of x_axis_et as a double
+
+
+
+function y_axis_et_Callback(hObject, eventdata, handles)
+% hObject    handle to y_axis_et (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of y_axis_et as text
+%        str2double(get(hObject,'String')) returns contents of y_axis_et as a double
+
+
+
+function z_axis_et_Callback(hObject, eventdata, handles)
+% hObject    handle to z_axis_et (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of z_axis_et as text
+%        str2double(get(hObject,'String')) returns contents of z_axis_et as a double

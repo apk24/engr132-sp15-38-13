@@ -22,20 +22,22 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-function [ recipe ] = DoubleMinAttr( mats, optAttr1Name, weightingFactor1, optAttr2Name, weightingFactor2, goalEg, minUse, totalReq)
-numMat = size(mats);
-
+function [ recipe ] = DoubleMinAttr( mats, optAttr1Name, optAttr2Name, relimp, goalEg, minUse, totalReq)
+numMat = length(mats);
+weightingFactor1 = relimp;
+weightingFactor2 = 100 -relimp;
 optAttr1 = linspace(-1,-1,numMat);
 for ct=1:length(mats)
-    optAttr1(ct) = eval('mats(ct).' + optAttr1Name);
+    optAttr1(ct) = eval(['mats(ct).', optAttr1Name]);
 end
 
 optAttr2 = linspace(-1,-1,numMat);
 for ct=1:length(mats)
-    optAttr2(ct) = eval('mats(ct).' + optAttr2Name);
+    optAttr2(ct) = eval(['mats(ct).', optAttr2Name]);
 end
 
-
+size(optAttr1)
+size(max(optAttr1))
 scaledAttr1 = optAttr1 .* (100/max(optAttr1));
 scaledAttr2 = optAttr2 .* (100/max(optAttr2));
 weightedAttr = scaledAttr1 * weightingFactor1 + scaledAttr2 * weightingFactor2;

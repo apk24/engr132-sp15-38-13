@@ -76,6 +76,7 @@ function nanohubGUI_sec38_team13_OpeningFcn(hObject, eventdata, handles, varargi
 % Choose default command line output for nanohubGUI_sec38_team13
 handles.output = hObject;
 
+setappdata(0, 'openGUI', @nanohubGUI_sec38_team13);
 % Update handles structure
 guidata(hObject, handles);
 
@@ -107,6 +108,7 @@ function RashidGUI_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 Eff_Plot_asarwar
+setappdata(0, 'openGUI', @Eff_Plot_asarwar);
 close nanohubGUI_sec38_team13
 
 % --- Executes on button press in YashGUI_pb.
@@ -115,6 +117,7 @@ function YashGUI_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 Print_Recipe_shah213();
+setappdata(0, 'openGUI', @Print_Recipe_shah213);
 close nanohubGUI_sec38_team13
 
 % --- Executes on button press in BrodyGUI_pb.
@@ -123,6 +126,7 @@ function BrodyGUI_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 Var_Plot_schwarb;
+setappdata(0, 'openGUI', @Var_Plot_schwarb);
 close nanohubGUI_sec38_team13
 
 % --- Executes on button press in ApoorvaGUI_pb.
@@ -131,6 +135,7 @@ function ApoorvaGUI_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 ndim_plot_akharche
+setappdata(0, 'openGUI', @ndim_plot_akharche);
 close nanohubGUI_sec38_team13
 
 % --- Executes on button press in citations_pb.
@@ -139,10 +144,12 @@ function citations_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 citationGUI_sec38_team13;
+setappdata(0, 'openGUI', @citationGUI_sec38_team13);
 
 % --- Executes on button press in dataEntry_pb.
 function dataEntry_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to dataEntry_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-enterData
+enterData_akharche
+setappdata(0, 'openGUI', @nanohubGUI_sec38_team13);
