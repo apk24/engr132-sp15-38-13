@@ -50,7 +50,7 @@ function varargout = Var_Plot_schwarb(varargin)
 
 % Edit the above text to modify the response to help Var_Plot_schwarb
 
-% Last Modified by GUIDE v2.5 18-Apr-2015 14:14:11
+% Last Modified by GUIDE v2.5 20-Apr-2015 18:06:57
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -109,6 +109,7 @@ end
 if (isfield(handles,'oldAtr3'))
     set(handles.atr4_et,'String',num2str(handles.oldAtr4))
 end
+handles.axesHandle = get(handles.plot_ax);
 guidata(hObject, handles);
 
 %This is a set of placeholder values until the other GUIs are ready for
@@ -312,11 +313,16 @@ if (handles.atr1_cb == 1)|(handles.atr2_cb == 1)|(handles.atr3_cb == 1)|(handles
        recipeAg = [recipeOne',recipeTwo',recipeThree',recipeFour'];
     %plot(handles.recipe1,handles.data.mat);
     customPlot(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg);%plot(names,recipeOne,'black');
-    title('Material Ratio by Attribute Value')
-    ylabel('Material Ratio')
-    xlabel('Attribute Value')
+    title('Material Ratio by Attribute Value','Color','w','FontSize',13);
+    ylabel('Material Ratio','FontSize',13,'Color','w');
+    xlabel('Attribute Value','FontSize',13,'Color','w');
     legend('Attribute 1','Attribute 2','Attribute 3','Attribute 4');
     handles.legend = legend('Attribute 1','Attribute 2','Attribute 3','Attribute 4');
+    set(handles.plot_ax,'YColor',[1 1 1]); % Change the right Axis's color to red
+    set(handles.plot_ax,'XColor',[1 1 1]);
+    set(handles.text1,'visible','off');
+    %c = get(handles.plot_ax,'Color');
+    %set(c,'value','w');
     hold on;
 end
 guidata(hObject, handles)
