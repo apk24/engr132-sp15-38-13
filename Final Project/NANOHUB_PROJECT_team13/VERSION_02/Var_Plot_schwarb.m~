@@ -86,7 +86,35 @@ handles.output = hObject;
 handles.data.mats = getappdata(0, 'mats');
 %disp(handles.data.mats)
 handles.data.recipe = getappdata(0, 'recipe');
+handles.oldData = getappdata(0,'Var_Plot_data');
+handles.oldAtr1 = getappdata(0,'auxatr1');
+handles.oldAtr2 = getappdata(0,'auxatr2');
+handles.oldAtr3 = getappdata(0,'auxatr3');
+handles.oldAtr4 = getappdata(0,'auxatr4');
+if (isfield(handles,'oldData'))
+    handles.recipe1 = getappdata(0,'recipe1');
+    handles.recipe2 = getappdata(0,'recipe2');
+    handles.recipe3 = getappdata(0,'recipe3');
+    handles.recipe4 = getappdata(0,'recipe4');
+    disp(handles.recipe1)
+    disp(handles.recipe2)
+    disp(handles.recipe3)
+    disp(handles.recipe4)
+end
+if (isfield(handles,'oldAtr1'))
+    set(handles.atr1_et,'String',num2str(handles.oldAtr1))
+end
+if (isfield(handles,'oldAtr2'))
+    set(handles.atr2_et,'String',num2str(handles.oldAtr2))
+end
+if (isfield(handles,'oldAtr2'))
+    set(handles.atr3_et,'String',num2str(handles.oldAtr3))
+end
+if (isfield(handles,'oldAtr3'))
+    set(handles.atr4_et,'String',num2str(handles.oldAtr4))
+end
 guidata(hObject, handles);
+
 %This is a set of placeholder values until the other GUIs are ready for
 %total coordination.
 % UIWAIT makes Var_Plot_schwarb wait for user response (see UIRESUME)
@@ -122,6 +150,7 @@ disp(handles)
 handles.recipe1 = MinAttr(handles.data.mats,handles.data.auxatr1.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
 guidata(hObject, handles);
 setappdata(0, 'auxatr1',handles.data.auxatr1.atr);
+setappdata(0,'recipe1',handles.recipe1)
 %This gets the info from hObject and sends it to be minimized.
 
 % --- Executes during object creation, after setting all properties.
@@ -153,6 +182,7 @@ numMat = length(handles.data.mats);
 % end
 handles.recipe2 = MinAttr(handles.data.mats,handles.data.auxatr2.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
 guidata(hObject, handles);
+setappdata(0,'recipe2',handles.recipe2)
 setappdata(0, 'auxatr2',handles.data.auxatr2.atr)
 
 %This gets the info from hObject and sends it to be minimized.
@@ -186,6 +216,7 @@ numMat = length(handles.data.mats);
 handles.recipe3 = MinAttr(handles.data.mats,handles.data.auxatr3.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
 guidata(hObject, handles);
 setappdata(0,'auxatr3',handles.data.auxatr3.atr);
+setappdata(0,'recipe3',handles.recipe3)
 %This gets the info from hObject and sends it to be minimized.
 
 % --- Executes during object creation, after setting all properties.
@@ -215,6 +246,8 @@ numMat = length(handles.data.mats);
 %     eval(['handles.data.mats(ct).' , handles.data.auxatr4.name , '= handles.data.auxatr1.atr(ct)']);
 % end
 handles.recipe4 = MinAttr(handles.data.mats,handles.data.auxatr4.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
+setappdata(0,'auxatr4',handles.data.auxatr4.atr);
+setappdata(0,'recipe4',handles.recipe4)
 guidata(hObject, handles);
 %This gets the info from hObject and sends it to be minimized.
 
@@ -245,16 +278,13 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to generate_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% handles.data.auxatr1.atr = [1 3 5 7 9 11 13 15];
-% handles.data.auxatr2.atr = [2 4 6 8 10 12 14 16];
-% handles.data.auxatr3.atr = [1 2 3 4 5 6 7 8];
-% handles.data.auxatr4.atr = [1 9 4 3 2 6 4 12];
-% handles.recipe1.ratios = [13 2 2 2 35 2 16 53];%These are demo sets until all is working together.
-% handles.recipe2.ratios = [2 2 2 13 14 16 43 4];
-% handles.recipe3.ratios = [2 2 2 2 3 5 6 75];
-% handles.recipe4.ratios = [2 2 34 35 21 4 2 5];
+cla(handles.plot_ax)
 mats = handles.data.mats;
 names = cell(length(mats));
+recipeOne = linspace(0,0,length(mats));
+recipeTwo = linspace(0,0,length(mats));
+recipeThree = linspace(0,0,length(mats));
+recipeFour = linspace(0,0,length(mats));
 for ct=1:length(mats)
 names(ct) = {handles.data.mats(ct).name};
 end
@@ -272,47 +302,52 @@ end
 if (isfield(handles,'recipe4'))
 recipeFour = handles.recipe4.ratios;
 end
-display(recipeZero)
-if (handles.atr1_cb == 1)
+if (handles.atr1_cb == 1)|(handles.atr2_cb == 1)|(handles.atr3_cb == 1)|handles.atr4_cb == 1)
+    if (handles.atr1_cb == 0)
+        recipeOne = recipeOne * 0;
+    end
+    if (na
+       recipeAg = [recipeOne',recipeTwo',recipeThree',recipeFour'];
     %plot(handles.recipe1,handles.data.mat);
-    customPlot('plot', handles.plot_ax, namePlaceHolder, recipeOne, names, {}, );%plot(names,recipeOne,'black');
+    customPlot(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg);%plot(names,recipeOne,'black');
     title('Material Ratio by Attribute Value')
     ylabel('Material Ratio')
     xlabel('Attribute Value') 
     hold on;
 end
-if (handles.atr2_cb == 1)
-    %plot(handles.recipe2,handles.data.mat,'magenta');
-    plot(names,recipeTwo,'magenta'); %Each of the selection structures only plots if the check boxes associated are 'on.'
-    title('Material Ratio by Attribute Value')
-    ylabel('Material Ratio')
-    xlabel('Attribute Value')  
-    hold on;
-end
-if (handles.atr3_cb == 1)
-    %plot(handles.recipe2,handles.data.mat,'red');
-    plot(names,recipeThree,'red');
-    title('Material Ratio by Attribute Value')
-    ylabel('Material Ratio')
-    xlabel('Attribute Value')  
-    hold on;
-end
-if (handles.atr4_cb == 1)
-    %plot(handles.recipe4,handles.data.mat,'green')
-    plot(names,recipeFour,'green');
-    title('Material Ratio by Attribute Value')
-    ylabel('Material Ratio')
-    xlabel('Attribute Value')
-    hold on;
-end
- if ((handles.atr1_cb ~= 1)&(handles.atr2_cb ~= 1)&(handles.atr3_cb ~= 1)&(handles.atr4_cb ~= 1))
-     plot(names,recipeZero);
-     title('Material Ratio by Attribute Value') %This is where the default data will be plotted.
-     ylabel('Material Ratio')
-     xlabel('Attribute Value')
-     hold on;
- end
-hold off;
+
+% if (handles.atr2_cb == 1)
+%     %plot(handles.recipe2,handles.data.mat,'magenta');
+%     customPlot(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg)%plot(names,recipeTwo,'magenta'); %Each of the selection structures only plots if the check boxes associated are 'on.'
+%     title('Material Ratio by Attribute Value')
+%     ylabel('Material Ratio')
+%     xlabel('Attribute Value')  
+%     hold on;
+% end
+% if (handles.atr3_cb == 1)
+%     %plot(handles.recipe2,handles.data.mat,'red');
+%     customPlot(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg)%plot(names,recipeThree,'red');
+%     title('Material Ratio by Attribute Value')
+%     ylabel('Material Ratio')
+%     xlabel('Attribute Value')  
+%     hold on;
+% end
+% if (handles.atr4_cb == 1)
+%     %plot(handles.recipe4,handles.data.mat,'green')
+%     customPlot(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg)%plot(names,recipeFour,'green');
+%     title('Material Ratio by Attribute Value')
+%     ylabel('Material Ratio')
+%     xlabel('Attribute Value')
+%     hold on;
+% end
+%  if ((handles.atr1_cb ~= 1)&(handles.atr2_cb ~= 1)&(handles.atr3_cb ~= 1)&(handles.atr4_cb ~= 1))
+%      customPlot(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeZero, 'b')%plot(names,recipeZero);
+%      title('Material Ratio by Attribute Value') %This is where the default data will be plotted.
+%      ylabel('Material Ratio')
+%      xlabel('Attribute Value')
+%      hold on;
+%  end
+% hold off;
 
 % --- Executes on button press in exit_pb.
 function exit_pb_Callback(hObject, eventdata, handles)
@@ -329,10 +364,10 @@ function clear_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 cla(handles.plot_ax);
-set(handles.atr1_et,'String','Enter');
-set(handles.atr2_et,'String','Enter');
-set(handles.atr3_et,'String','Enter');
-set(handles.atr4_et,'String','Enter');
+% set(handles.atr1_et,'String','Enter');
+% set(handles.atr2_et,'String','Enter');
+% set(handles.atr3_et,'String','Enter');
+% set(handles.atr4_et,'String','Enter');
 guidata(hObject, handles)
 %This clears all text boxes and the axes for new data or a recombination.
 % --- Executes on button press in home_pb.
