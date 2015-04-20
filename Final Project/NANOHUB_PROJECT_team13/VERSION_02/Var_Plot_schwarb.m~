@@ -254,19 +254,12 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % handles.recipe4.ratios = [2 2 34 35 21 4 2 5];
 names = handles.data.mats(:,1);
 recipeZero = handles.data.recipe.ratios;
-if (isfield(handles,'recipe1'))
+if (isfield(handles,'recipe1')
 recipeOne = handles.recipe1.ratios;
 end
-if (isfield(handles,'recipe2'))
 recipeTwo = handles.recipe2.ratios;
-end
-if (isfield(handles,'recipe3'))
 recipeThree = handles.recipe3.ratios;
-end
-if (isfield(handles,'recipe4'))
 recipeFour = handles.recipe4.ratios;
-end
-display(recipeZero)
 if (handles.atr1_cb == 1)
     %plot(handles.recipe1,handles.data.mat);
     plot(names,recipeOne,'black');
