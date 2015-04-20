@@ -111,6 +111,7 @@ function atr1_et_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of atr1_et as text
 %        str2double(get(hObject,'String')) returns contents of atr1_et as a double
+disp('i"m here')
 handles.data.auxatr1.atr = str2num(get(hObject,'String'));
 handles.data.auxatr1.name = ['Attribute 1'];%atrArray1(1);
 numMat = length(handles.data.mats);
@@ -252,7 +253,12 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % handles.recipe2.ratios = [2 2 2 13 14 16 43 4];
 % handles.recipe3.ratios = [2 2 2 2 3 5 6 75];
 % handles.recipe4.ratios = [2 2 34 35 21 4 2 5];
-names = handles.data.mats(:,1);
+mats = handles.data.mats;
+names = cell(length(mats));
+for ct=1:length(mats)
+names(ct) = {handles.data.mats(ct).name};
+end
+namePlaceHolder = 1 : length(mats);
 recipeZero = handles.data.recipe.ratios;
 if (isfield(handles,'recipe1'))
 recipeOne = handles.recipe1.ratios;
@@ -269,7 +275,7 @@ end
 display(recipeZero)
 if (handles.atr1_cb == 1)
     %plot(handles.recipe1,handles.data.mat);
-    plot(names,recipeOne,'black');
+    customPlot(@plot, handles.plot_ax, names, {}, namePlaceHolder, recipeOne, '--ok');%plot(names,recipeOne,'black');
     title('Material Ratio by Attribute Value')
     ylabel('Material Ratio')
     xlabel('Attribute Value') 
@@ -277,7 +283,7 @@ if (handles.atr1_cb == 1)
 end
 if (handles.atr2_cb == 1)
     %plot(handles.recipe2,handles.data.mat,'magenta');
-    plot(names,recipeTwo,'magenta'); %Each of the selection structures only plots if the check boxes associated are 'on.'
+    customPlot('plot', handles.plot_ax, namePlaceHolder, recipeTwo, names, {}, {'LineSpec'}, {'magenta'});%plot(names,recipeTwo,'magenta'); %Each of the selection structures only plots if the check boxes associated are 'on.'
     title('Material Ratio by Attribute Value')
     ylabel('Material Ratio')
     xlabel('Attribute Value')  
@@ -285,7 +291,7 @@ if (handles.atr2_cb == 1)
 end
 if (handles.atr3_cb == 1)
     %plot(handles.recipe2,handles.data.mat,'red');
-    plot(nemes,recipeThree,'red');
+    customPlot('plot', handles.plot_ax, namePlaceHolder, recipeThree, names, {}, {'LineSpec'}, {'red'});%plot(names,recipeThree,'red');
     title('Material Ratio by Attribute Value')
     ylabel('Material Ratio')
     xlabel('Attribute Value')  
@@ -293,14 +299,14 @@ if (handles.atr3_cb == 1)
 end
 if (handles.atr4_cb == 1)
     %plot(handles.recipe4,handles.data.mat,'green')
-    plot(names,recipeFour,'green');
+    customPlot('plot', handles.plot_ax, namePlaceHolder, recipeFour, names, {}, {'LineSpec'}, {'green'});%plot(names,recipeFour,'green');
     title('Material Ratio by Attribute Value')
     ylabel('Material Ratio')
     xlabel('Attribute Value')
     hold on;
 end
  if ((handles.atr1_cb ~= 1)&(handles.atr2_cb ~= 1)&(handles.atr3_cb ~= 1)&(handles.atr4_cb ~= 1))
-     plot(names,recipeZero);
+     customPlot('plot', handles.plot_ax, namePlaceHolder, recipeZero, names, {}, {'LineSpec'}, {'blue'});%plot(names,recipeZero);
      title('Material Ratio by Attribute Value') %This is where the default data will be plotted.
      ylabel('Material Ratio')
      xlabel('Attribute Value')

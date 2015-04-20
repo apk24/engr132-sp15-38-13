@@ -1,4 +1,4 @@
-function customPlot(plot, handle, XTickLabel, YTickLabel, varargin)
+function customPlot(plotType, handle, x, y, XTickLabel, YTickLabel, extraInput)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %  ENGR 13200 Spring 2015
 %  Programmer(s) and Purdue Email Address(es):
@@ -17,8 +17,11 @@ function customPlot(plot, handle, XTickLabel, YTickLabel, varargin)
 %       to my/our code to another. The project I/we am/are 
 %       submitting is my/our own original work.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-axes(handle);
-plot(varargin{:});
+for ct = 1:length(extraInput)
+    
+
+command = [plotType, '(x,y', extraInput, ')'];
+eval(command);
 if ~isempty(XTickLabel)
 set(handle, 'XTickLabel', XTickLabel);
 NumTicks = length(XTickLabel);
@@ -32,3 +35,4 @@ L = get(handle,'YLim');
 set(handle,'YTick',linspace(L(1),L(2),NumTicks))
 end
 end
+
