@@ -316,7 +316,7 @@ function help_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to help_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+enterData_help_sec38_team13;
 
 % --- Executes on button press in clearAll_pb.
 function clearAll_pb_Callback(hObject, eventdata, handles)
@@ -601,7 +601,6 @@ function help_pb_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to help_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
-
 
 % --- Executes during object creation, after setting all properties.
 function clearAll_pb_CreateFcn(hObject, eventdata, handles)
