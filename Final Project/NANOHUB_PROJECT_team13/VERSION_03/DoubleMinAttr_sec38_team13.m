@@ -51,8 +51,11 @@ recipe = MinAttr_sec38_team13(mats, weightedAttr, goalEg, minUse, totalReq);
 optAttrValue1 = recipe.ratios * optAttr1'; %#ok<NASGU>
 optAttrValue2 = recipe.ratios * optAttr2'; %#ok<NASGU>
 
-eval(['recipe.', optAttr1Name, ' = optAttrValue1;']);
-eval(['recipe.', optAttr2Name, ' = optAttrValue2;']);
-
+recipe.(optAttr1Name) = optAttrValue1;
+recipe.(optAttr2Name)= optAttrValue2;
+recipe.relimp = relimp;
+recipe.goaleg = goalEg;
+recipe.minUse = minUse;
+recipe.total = totalReq;
 end
 
