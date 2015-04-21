@@ -76,6 +76,8 @@ function Print_Recipe_shah213_OpeningFcn(hObject, eventdata, handles, varargin)
 % Choose default command line output for Print_Recipe_shah213
 handles.output = hObject;
 
+handles.recipe = getappdata(0, 'recipe');
+
 % Update handles structure
 guidata(hObject, handles);
 
@@ -161,7 +163,7 @@ function AddData_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to AddData_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-enterData
+enterData_akharche
 
 
 % --- Executes on button press in help_pb.
@@ -184,9 +186,16 @@ ylabel('Toxicity (units/g)');
 xlabel('Cost ($/g)');
 axes(handles.Bar_Graph_ax);
 %%Plot the mass percentages of the materials by their names
-x = [2 4 7 2 4 5 2 5 1 4];
-bar(x);
+
+matr = handles.recipe.mats 
+for counter = 1:length(matr)
+  cellar{counter} = matr(counter).name;
+end
+
+set(handles.Display_st, 'String', cellar);
+
+customPlot_akharche_sec38_team13 (@bar, handles.Bar_Graph_ax, cellar, {}, 1:length(matr), handles.recipe.ratios)
 title('Recipe');
-ylabel('Mass Percentage');
+ylabel('Material Mass Index [g]');
 xlabel('Material');
-set(handles.Display_st, 'String', 'Recipe displayed here');
+
