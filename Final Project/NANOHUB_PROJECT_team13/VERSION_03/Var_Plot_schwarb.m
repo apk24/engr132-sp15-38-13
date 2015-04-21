@@ -137,6 +137,21 @@ function atr1_et_Callback(hObject, eventdata, handles)
 %        str2double(get(hObject,'String')) returns contents of atr1_et as a double
 handles.data.auxatr1.atr = str2num(get(hObject,'String'));
 handles.data.auxatr1.name = ['Attribute 1'];%atrArray1(1);
+if (any(handles.data.auxatr1.atr < 0))
+    h = errordlg('Error in Attribute 1 entry field: Non-negative values only','Invalid Input');
+    handles.data.auxatr1.atr = handles.data.auxatr1.atr * 0;
+    set(handles.atr1_et,'String','Enter');
+end
+if (length(handles.data.auxatr1.atr) < length(handles.data.mats))
+    h = errordlg('Error in Attribute 1 entry field: There must be the same number of attribute values as materials','Insufficient Inputs');
+    handles.data.auxatr1.atr = handles.data.auxatr1.atr * 0;
+    set(handles.atr1_et,'String','Enter');
+end
+if (length(handles.data.auxatr1.atr) > length(handles.data.mats))
+    h = errordlg('Error in Attribute 1 entry field: There must be the same number of attribute values as materials','Too many Inputs');
+    handles.data.auxatr1.atr = handles.data.auxatr1.atr * 0;
+    set(handles.atr1_et,'String','Enter');
+end
 numMat = length(handles.data.mats);
 % for ct = 1: numMat
 %     eval(['handles.data.mats(ct).' , handles.data.auxatr1.name , '= handles.data.auxatr1.atr(ct)']);
@@ -171,6 +186,21 @@ function atr2_et_Callback(hObject, eventdata, handles)
 handles.data.auxatr2.atr = str2num(get(hObject,'String'));
 handles.data.auxatr2.name = ['Attribute 2'];
 numMat = length(handles.data.mats);
+if (any(handles.data.auxatr2.atr < 0))
+    h = errordlg('Error in Attribute 2 entry field: Non-negative values only','Invalid Input');
+    handles.data.auxatr2.atr = handles.data.auxatr2.atr * 0;
+    set(handles.atr2_et,'String','Enter');
+end
+if (length(handles.data.auxatr2.atr) < length(handles.data.mats))
+    h = errordlg('Error in Attribute 2 entry field: There must be the same number of attribute values as materials','Insufficient Inputs');
+    handles.data.auxatr2.atr = handles.data.auxatr2.atr * 0;
+    set(handles.atr2_et,'String','Enter');
+end
+if (length(handles.data.auxatr2.atr) > length(handles.data.mats))
+    h = errordlg('Error in Attribute 2 entry field: There must be the same number of attribute values as materials','Too many Inputs');
+    handles.data.auxatr2.atr = handles.data.auxatr2.atr * 0;
+    set(handles.atr2_et,'String','Enter');
+end
 % for ct = 1: numMat
 %     eval(['handles.data.mats(ct).' , handles.data.auxatr2.name , '= handles.data.auxatr2.atr(ct)']);
 % end
@@ -204,6 +234,21 @@ function atr3_et_Callback(hObject, eventdata, handles)
 handles.data.auxatr3.atr = str2num(get(hObject,'String'));
 handles.data.auxatr3.name = ['Attribute 3']; 
 numMat = length(handles.data.mats);
+if (any(handles.data.auxatr3.atr < 0))
+    h = errordlg('Error in Attribute 3 entry field: Non-negative values only','Invalid Input');
+    handles.data.auxatr3.atr = handles.data.auxatr3.atr * 0;
+    set(handles.atr3_et,'String','Enter');
+end
+if (length(handles.data.auxatr3.atr) < length(handles.data.mats))
+    h = errordlg('Error in Attribute 3 entry field: There must be the same number of attribute values as materials','Insufficient Inputs');
+    handles.data.auxatr3.atr = handles.data.auxatr3.atr * 0;
+    set(handles.atr3_et,'String','Enter');
+end
+if (length(handles.data.auxatr3.atr) > length(handles.data.mats))
+    h = errordlg('Error in Attribute 3 entry field: There must be the same number of attribute values as materials','Too many Inputs');
+    handles.data.auxatr3.atr = handles.data.auxatr3.atr * 0;
+    set(handles.atr3_et,'String','Enter');
+end
 % for ct = 1: numMat
 %     eval(['handles.data.mats(ct).' , handles.data.auxatr3.name , '= handles.data.auxatr3.atr(ct)']);
 % end
@@ -236,6 +281,21 @@ function atr4_et_Callback(hObject, eventdata, handles)
 handles.data.auxatr4.atr = str2num(get(hObject,'String'));
 handles.data.auxatr4.name = ['Attribute 4'];
 numMat = length(handles.data.mats);
+if (any(handles.data.auxatr4.atr < 0))
+    h = errordlg('Error in Attribute 4 entry field: Non-negative values only','Invalid Input');
+    handles.data.auxatr4.atr = handles.data.auxatr4.atr * 0;
+    set(handles.atr4_et,'String','Enter');
+end
+if (length(handles.data.auxatr4.atr) < length(handles.data.mats))
+    h = errordlg('Error in Attribute 4 entry field: There must be the same number of attribute values as materials','Insufficient Inputs');
+    handles.data.auxatr4.atr = handles.data.auxatr4.atr * 0;
+    set(handles.atr4_et,'String','Enter');
+end
+if (length(handles.data.auxatr4.atr) > length(handles.data.mats))
+    h = errordlg('Error in Attribute 4 entry field: There must be the same number of attribute values as materials','Too many Inputs');
+    handles.data.auxatr4.atr = handles.data.auxatr4.atr * 0;
+    set(handles.atr4_et,'String','Enter');
+end
 % for ct = 1: numMat
 %     eval(['handles.data.mats(ct).' , handles.data.auxatr4.name , '= handles.data.auxatr1.atr(ct)']);
 % end
