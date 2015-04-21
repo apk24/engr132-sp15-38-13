@@ -688,6 +688,7 @@ recipe.relimp = get(handles.ratio_sl, 'Value');
 if 1%isempty(recipe.mats)
     recipe.mats = getappdata(0, 'mats');
 end
+recipe = DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe);
 setappdata(0, 'recipe' ,recipe);
 
 function mats = addMatData(hObject, handles)

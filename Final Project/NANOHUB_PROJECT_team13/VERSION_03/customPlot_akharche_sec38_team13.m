@@ -18,7 +18,7 @@ function customPlot_akharche_sec38_team13(plot, handle, XTickLabel, YTickLabel, 
 %       submitting is my/our own original work.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 axes(handle);
-plot(varargin{:});
+plot(handle, varargin{:});
 if ~isempty(XTickLabel)
 set(handle, 'XTickLabel', XTickLabel);
 NumTicks = length(XTickLabel);
@@ -30,5 +30,6 @@ set(handle, 'YTickLabel', YTickLabel);
 NumTicks = length(YTickLabel);
 L = get(handle,'YLim');
 set(handle,'YTick',linspace(L(1),L(2),NumTicks))
+handle.XColor = 'white';
 end
 end
