@@ -134,7 +134,7 @@ if(xstep)
     xvals = xstep;
     for ct = xstep
         eval(['recipe.', xitem, '=ct;']');
-        recipe = DoubleMinAttr(recipe.mats, 'cost', 'tox', recipe);
+        recipe = DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe);
         yvals(ct) = eval(['recipe.', yitem]);
         zvals(ct) = eval(['recipe.', zitem]);
     end
@@ -144,7 +144,7 @@ elseif(ystep)
     yvals = ystep;
     for ct = ystep
         eval(['recipe.', yitem, '=ct;']');
-        DoubleMinAttr(recipe.mats, 'cost', 'tox', recipe.relimp, recipe.goaleg, recipe.minUse, recipe.total);
+        DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe.relimp, recipe.goaleg, recipe.minUse, recipe.total);
         xvals(ct) = eval(['recipe.', xitem]);
         zvals(ct) = eval(['recipe.', zitem]);
     end
@@ -154,7 +154,7 @@ else
     zvals = zstep;
     for ct = zstep
         eval(['recipe.', zitem, '=ct;']');
-        DoubleMinAttr(recipe.mats, 'cost', 'tox', recipe.relimp, recipe.goaleg, recipe.minUse, recipe.total);
+        DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe.relimp, recipe.goaleg, recipe.minUse, recipe.total);
         yvals(ct) = eval(['recipe.', yitem]);
         xvals(ct) = eval(['recipe.', xitem]);
     end

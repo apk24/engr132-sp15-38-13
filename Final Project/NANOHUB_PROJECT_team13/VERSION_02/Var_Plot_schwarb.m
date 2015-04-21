@@ -142,7 +142,7 @@ numMat = length(handles.data.mats);
 % for ct = 1: numMat
 %     eval(['handles.data.mats(ct).' , handles.data.auxatr1.name , '= handles.data.auxatr1.atr(ct)']);
 % end
-handles.recipe1 = MinAttr(handles.data.mats,handles.data.auxatr1.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
+handles.recipe1 = MinAttr_sec38_team13(handles.data.mats,handles.data.auxatr1.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
 guidata(hObject, handles);
 setappdata(0, 'auxatr1',handles.data.auxatr1.atr);
 setappdata(0,'recipe1',handles.recipe1)
@@ -175,7 +175,7 @@ numMat = length(handles.data.mats);
 % for ct = 1: numMat
 %     eval(['handles.data.mats(ct).' , handles.data.auxatr2.name , '= handles.data.auxatr2.atr(ct)']);
 % end
-handles.recipe2 = MinAttr(handles.data.mats,handles.data.auxatr2.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
+handles.recipe2 = MinAttr_sec38_team13(handles.data.mats,handles.data.auxatr2.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
 guidata(hObject, handles);
 setappdata(0,'recipe2',handles.recipe2)
 setappdata(0, 'auxatr2',handles.data.auxatr2.atr)
@@ -208,7 +208,7 @@ numMat = length(handles.data.mats);
 % for ct = 1: numMat
 %     eval(['handles.data.mats(ct).' , handles.data.auxatr3.name , '= handles.data.auxatr3.atr(ct)']);
 % end
-handles.recipe3 = MinAttr(handles.data.mats,handles.data.auxatr3.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
+handles.recipe3 = MinAttr_sec38_team13(handles.data.mats,handles.data.auxatr3.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
 guidata(hObject, handles);
 setappdata(0,'auxatr3',handles.data.auxatr3.atr);
 setappdata(0,'recipe3',handles.recipe3)
@@ -240,7 +240,7 @@ numMat = length(handles.data.mats);
 % for ct = 1: numMat
 %     eval(['handles.data.mats(ct).' , handles.data.auxatr4.name , '= handles.data.auxatr1.atr(ct)']);
 % end
-handles.recipe4 = MinAttr(handles.data.mats,handles.data.auxatr4.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
+handles.recipe4 = MinAttr_sec38_team13(handles.data.mats,handles.data.auxatr4.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
 setappdata(0,'auxatr4',handles.data.auxatr4.atr);
 setappdata(0,'recipe4',handles.recipe4)
 guidata(hObject, handles);
@@ -312,7 +312,7 @@ if (handles.atr1_cb == 1)|(handles.atr2_cb == 1)|(handles.atr3_cb == 1)|(handles
     end
        recipeAg = [recipeOne',recipeTwo',recipeThree',recipeFour'];
     %plot(handles.recipe1,handles.data.mat);
-    customPlot(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg);%plot(names,recipeOne,'black');
+    customPlot_akharche_sec38_team13(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg);%plot(names,recipeOne,'black');
     title('Material Ratio by Attribute Value','Color','w','FontSize',13);
     ylabel('Material Ratio','FontSize',13,'Color','w');
     xlabel('Attribute Value','FontSize',13,'Color','w');
@@ -329,7 +329,7 @@ guidata(hObject, handles)
 
 % if (handles.atr2_cb == 1)
 %     %plot(handles.recipe2,handles.data.mat,'magenta');
-%     customPlot(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg)%plot(names,recipeTwo,'magenta'); %Each of the selection structures only plots if the check boxes associated are 'on.'
+%     customPlot_akharche_sec38_team13(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg)%plot(names,recipeTwo,'magenta'); %Each of the selection structures only plots if the check boxes associated are 'on.'
 %     title('Material Ratio by Attribute Value')
 %     ylabel('Material Ratio')
 %     xlabel('Attribute Value')  
@@ -337,7 +337,7 @@ guidata(hObject, handles)
 % end
 % if (handles.atr3_cb == 1)
 %     %plot(handles.recipe2,handles.data.mat,'red');
-%     customPlot(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg)%plot(names,recipeThree,'red');
+%     customPlot_akharche_sec38_team13(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg)%plot(names,recipeThree,'red');
 %     title('Material Ratio by Attribute Value')
 %     ylabel('Material Ratio')
 %     xlabel('Attribute Value')  
@@ -345,14 +345,14 @@ guidata(hObject, handles)
 % end
 % if (handles.atr4_cb == 1)
 %     %plot(handles.recipe4,handles.data.mat,'green')
-%     customPlot(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg)%plot(names,recipeFour,'green');
+%     customPlot_akharche_sec38_team13(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg)%plot(names,recipeFour,'green');
 %     title('Material Ratio by Attribute Value')
 %     ylabel('Material Ratio')
 %     xlabel('Attribute Value')
 %     hold on;
 % end
 %  if ((handles.atr1_cb ~= 1)&(handles.atr2_cb ~= 1)&(handles.atr3_cb ~= 1)&(handles.atr4_cb ~= 1))
-%      customPlot(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeZero, 'b')%plot(names,recipeZero);
+%      customPlot_akharche_sec38_team13(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeZero, 'b')%plot(names,recipeZero);
 %      title('Material Ratio by Attribute Value') %This is where the default data will be plotted.
 %      ylabel('Material Ratio')
 %      xlabel('Attribute Value')

@@ -21,7 +21,7 @@
 %       submitting is my/our own original work.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [ recipe ] = MinAttr(mats, optAttr, goalEg, minUse, totalReq)
+function [ recipe ] = MinAttr_sec38_team13(mats, optAttr, goalEg, minUse, totalReq)
 %%Process the inputs into more useful values for the actual optimization
 %get number of materials
 numMat = length(mats);
@@ -29,7 +29,7 @@ if numMat <= 0
     errordlg('Not enough materials!')
 end
 for ct = 1:numMat
-    mats(ct).qdeg = BandGapDot(mats(ct));
+    mats(ct).qdeg = BandGapDot_sec38_team13(mats(ct));
 end
 %find band gap energies of the quantum dots
 Eg_name = linspace(-1,-1,numMat);

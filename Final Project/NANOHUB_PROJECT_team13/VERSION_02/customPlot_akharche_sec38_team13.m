@@ -1,4 +1,4 @@
-function customPlot(plot, handle, XTickLabel, YTickLabel, varargin)
+function customPlot_akharche_sec38_team13(plot, handle, XTickLabel, YTickLabel, varargin)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %  ENGR 13200 Spring 2015
 %  Programmer(s) and Purdue Email Address(es):

@@ -22,7 +22,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-function [ E_g ] = BandGapDot(mat)
+function [ E_g ] = BandGapDot_sec38_team13(mat)
 %find band gap energy of quantum dot given bulk, radius, and
 %dielectric constant
 

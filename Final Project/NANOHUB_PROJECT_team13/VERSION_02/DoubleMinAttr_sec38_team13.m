@@ -22,7 +22,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-function [ recipe ] = DoubleMinAttr( mats, optAttr1Name, optAttr2Name, recipe)
+function [ recipe ] = DoubleMinAttr_sec38_team13( mats, optAttr1Name, optAttr2Name, recipe)
 numMat = length(mats);
 relimp = recipe.relimp;
 goalEg = recipe.goaleg;
@@ -47,9 +47,9 @@ scaledAttr1 = optAttr1 .* (100/max(optAttr1));
 scaledAttr2 = optAttr2 .* (100/max(optAttr2));
 weightedAttr = scaledAttr1 * weightingFactor1 + scaledAttr2 * weightingFactor2;
 
-recipe = MinAttr(mats, weightedAttr, goalEg, minUse, totalReq);
-optAttrValue1 = recipe.ratios * optAttr1';
-optAttrValue2 = recipe.ratios * optAttr2';
+recipe = MinAttr_sec38_team13(mats, weightedAttr, goalEg, minUse, totalReq);
+optAttrValue1 = recipe.ratios * optAttr1'; %#ok<NASGU>
+optAttrValue2 = recipe.ratios * optAttr2'; %#ok<NASGU>
 
 eval(['recipe.', optAttr1Name, ' = optAttrValue1;']);
 eval(['recipe.', optAttr2Name, ' = optAttrValue2;']);
