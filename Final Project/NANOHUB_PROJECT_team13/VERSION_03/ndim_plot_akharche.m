@@ -76,17 +76,27 @@ function ndim_plot_akharche_OpeningFcn(hObject, eventdata, handles, varargin)
 % Choose default command line output for ndim_plot_akharche
 handles.output = hObject;
 
-aNames = cell(5,4);
+aNames = cell(7,4);
 aNames(1, 1:4) = {'Cost', 'cost', 0, 2000};
 aNames(2, 1:4) = {'Toxicity', 'tox', 0, 500};
 aNames(3, 1:4) = {'Goal Band Gap Energy', 'goaleg', 0, 10};
 aNames(4, 1:4) = {'Relative Importance', 'relimp', 0, 100};
-aNames(5, 1:4) = {'None', '', 0, 0};
+aNames(5, 1:4) = {'Minimum Use', 'minUse', 0, 100};
+aNames(6, 1:4) = {'Total Required', 'total', 0, 1000};
+aNames(7, 1:4) = {'None', 'none', 0, 0};
 
+handles.data.xNames = aNames(1:6, :);
+handles.data.yNames = aNames(1:6, :);
+handles.data.zNames = aNames([1,2,7], :);
 handles.data.attrNames = aNames;
-set(handles.x_axis_pm, 'String', aNames(:,1));
-set(handles.y_axis_pm, 'String', aNames(:,1));
-set(handles.z_axis_pm, 'String', aNames(:,1));
+
+xNames = handles.data.xNames;
+yNames = handles.data.yNames;
+zNames = handles.data.zNames;
+
+set(handles.x_axis_pm, 'String', xNames(:,1));
+set(handles.y_axis_pm, 'String', yNames(:,1));
+set(handles.z_axis_pm, 'String', zNames(:,1));
 
 setappdata(0, 'openGUI', @ndim_plot_akharche);
 
@@ -120,46 +130,91 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to generate_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-aNames = handles.data.attrNames;
+try
+xNames = handles.data.xNames;
+yNames = handles.data.yNames;
+zNames = handles.data.zNames;
 xstep = str2num(get(handles.x_axis_et, 'String'));
 ystep = str2num(get(handles.y_axis_et, 'String'));
-zstep = str2num(get(handles.z_axis_et, 'String'));
-xitem = char(aNames(get(handles.x_axis_pm, 'Value'), 2));
-yitem = char(aNames(get(handles.y_axis_pm, 'Value'), 2));
-zitem = char(aNames(get(handles.z_axis_pm, 'Value'), 2));
+xitem = char(xNames(get(handles.x_axis_pm, 'Value'), 2));
+yitem = char(yNames(get(handles.y_axis_pm, 'Value'), 2));
+zitem = char(zNames(get(handles.z_axis_pm, 'Value'), 2));
 recipe = getappdata(0, 'recipe');
-if(xstep)
+plotType = @plot;
+yvals = [];
+xvals = [];
+zvals = [];
+if(~(isempty(xstep) || isempty(ystep)))
+    yvals = ystep;
+    zvals = zeros(length(ystep),length(xstep));
+    xvals = xstep;
+    for ctx = 1:length(xstep)
+        recipe.(xitem) = xvals(ctx);
+        for cty = 1:length(ystep)
+            recipe.(yitem) = yvals(cty);
+            recipe = DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe);
+            if(isempty(recipe.(zitem)))
+                errordlg('Something is wrong about this plot. Perhaps there are no values left to be evaluated by the program?');
+            end
+            zvals(cty,ctx) = recipe.(zitem);
+        end
+    end
+    plotType = @surfc;
+elseif(~isempty(xstep))
     yvals = linspace(0,0,length(xstep));
     zvals = yvals;
     xvals = xstep;
-    for ct = xstep
-        eval(['recipe.', xitem, '=ct;']');
+    for ct = 1:length(xvals)
+        recipe.(xitem) = xvals(ct);
         recipe = DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe);
-        yvals(ct) = eval(['recipe.', yitem]);
-        zvals(ct) = eval(['recipe.', zitem]);
+        yvals(ct) = recipe.(yitem);
+        try
+            zvals(ct) = recipe.(zitem);
+        catch
+            if(isempty(recipe.(zitem)))
+                zvals = [];
+            end
+        end
     end
+    plotType = @plot3;
 elseif(ystep)
-    zvals = linspace(0,0,length(ystep));
-    xvals = zvals;
+    xvals = linspace(0,0,length(ystep));
+    zvals = xvals;
     yvals = ystep;
-    for ct = ystep
-        eval(['recipe.', yitem, '=ct;']');
-        DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe.relimp, recipe.goaleg, recipe.minUse, recipe.total);
-        xvals(ct) = eval(['recipe.', xitem]);
-        zvals(ct) = eval(['recipe.', zitem]);
+    for ct = 1:length(yvals)
+        recipe.(yitem) = yvals(ct);
+        recipe = DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe);
+        xvals(ct) = recipe.(xitem);
+        try
+            zvals(ct) = recipe.(zitem);
+        catch
+            if(isempty(recipe.(zitem)))
+                zvals = [];
+            end
+        end
     end
+    plotType = @plot3;
 else
-    xvals = linspace(0,0,length(zstep));
-    yvals = xvals;
-    zvals = zstep;
-    for ct = zstep
-        eval(['recipe.', zitem, '=ct;']');
-        DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe.relimp, recipe.goaleg, recipe.minUse, recipe.total);
-        yvals(ct) = eval(['recipe.', yitem]);
-        xvals(ct) = eval(['recipe.', xitem]);
+    errordlg('Please define the range for at least one of the variables to plot');
+end
+if(isempty(zvals))
+    customPlot_akharche_sec38_team13(@plot, handles.plot_ax, {}, {}, xvals, yvals);
+else
+    customPlot_akharche_sec38_team13(plotType, handles.plot_ax, {}, {}, xvals, yvals, zvals);
+end
+xlabel(xNames{get(handles.x_axis_pm, 'Value'), 1});
+ylabel(yNames{get(handles.y_axis_pm, 'Value'), 1});
+zlabel(zNames{get(handles.z_axis_pm, 'Value'), 1});
+catch ME
+    disp(ME.identifier);
+    switch ME.identifier
+        case 'MATLAB:surfc:NonMatrixInput'
+            errordlg('Please ensure you are plotting more than a single point or line when giving two ranges to plot over');
+        otherwise
+            rethrow(ME)
     end
 end
-plot(xvals, yvals);
+
 % --- Executes on button press in enterData_pb.
 function enterData_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to enterData_pb (see GCBO)
@@ -172,7 +227,7 @@ function clear_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to clear_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+cla(handles.plot_ax);
 
 % --- Executes on button press in home_pb.
 function home_pb_Callback(hObject, eventdata, handles)

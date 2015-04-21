@@ -57,5 +57,6 @@ recipe.relimp = relimp;
 recipe.goaleg = goalEg;
 recipe.minUse = minUse;
 recipe.total = totalReq;
+recipe.none = [];
 end
 
