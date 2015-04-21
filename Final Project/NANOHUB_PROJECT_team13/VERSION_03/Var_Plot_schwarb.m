@@ -84,7 +84,6 @@ function Var_Plot_schwarb_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
 % Update handles structure
 handles.data.mats = getappdata(0, 'mats');
-%disp(handles.data.mats)
 handles.data.recipe = getappdata(0, 'recipe');
 handles.oldData = getappdata(0,'Var_Plot_data');
 handles.oldAtr1 = getappdata(0,'auxatr1');
@@ -314,7 +313,7 @@ if (handles.atr1_cb == 1)|(handles.atr2_cb == 1)|(handles.atr3_cb == 1)|(handles
     %plot(handles.recipe1,handles.data.mat);
     customPlot_akharche_sec38_team13(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg);%plot(names,recipeOne,'black');
     title('Material Ratio by Attribute Value','Color','w','FontSize',13);
-    ylabel('Material Ratio','FontSize',13,'Color','w');
+    ylabel('Material Mass','FontSize',13,'Color','w');
     xlabel('Attribute Value','FontSize',13,'Color','w');
     legend('Attribute 1','Attribute 2','Attribute 3','Attribute 4');
     handles.legend = legend('Attribute 1','Attribute 2','Attribute 3','Attribute 4');
