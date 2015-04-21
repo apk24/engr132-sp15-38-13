@@ -318,7 +318,7 @@ if (handles.atr1_cb == 1)|(handles.atr2_cb == 1)|(handles.atr3_cb == 1)|(handles
     xlabel('Attribute Value','FontSize',13,'Color','w');
     legend('Attribute 1','Attribute 2','Attribute 3','Attribute 4');
     handles.legend = legend('Attribute 1','Attribute 2','Attribute 3','Attribute 4');
-    set(handles.plot_ax,'YColor',[1 1 1]); % Change the right Axis's color to red
+    set(handles.plot_ax,'YColor',[1 1 1]); % Change the Axes color to white.
     set(handles.plot_ax,'XColor',[1 1 1]);
     set(handles.text1,'visible','off');
     %c = get(handles.plot_ax,'Color');
