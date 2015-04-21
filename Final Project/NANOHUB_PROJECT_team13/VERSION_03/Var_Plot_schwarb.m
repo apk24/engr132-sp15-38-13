@@ -97,16 +97,16 @@ if (isfield(handles,'oldData'))
     handles.recipe4 = getappdata(0,'recipe4');
 end
 if (isfield(handles,'oldAtr1'))
-    set(handles.atr1_et,'String',num2str(handles.oldAtr1))
+    set(handles.atr1_et,'String',num2str(handles.oldAtr1));
 end
 if (isfield(handles,'oldAtr2'))
-    set(handles.atr2_et,'String',num2str(handles.oldAtr2))
+    set(handles.atr2_et,'String',num2str(handles.oldAtr2));
 end
 if (isfield(handles,'oldAtr2'))
-    set(handles.atr3_et,'String',num2str(handles.oldAtr3))
+    set(handles.atr3_et,'String',num2str(handles.oldAtr3));
 end
 if (isfield(handles,'oldAtr3'))
-    set(handles.atr4_et,'String',num2str(handles.oldAtr4))
+    set(handles.atr4_et,'String',num2str(handles.oldAtr4));
 end
 handles.axesHandle = get(handles.plot_ax);
 guidata(hObject, handles);
@@ -157,9 +157,9 @@ numMat = length(handles.data.mats);
 %     eval(['handles.data.mats(ct).' , handles.data.auxatr1.name , '= handles.data.auxatr1.atr(ct)']);
 % end
 handles.recipe1 = MinAttr_sec38_team13(handles.data.mats,handles.data.auxatr1.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
-guidata(hObject, handles);
 setappdata(0, 'auxatr1',handles.data.auxatr1.atr);
 setappdata(0,'recipe1',handles.recipe1)
+guidata(hObject, handles);
 %This gets the info from hObject and sends it to be minimized.
 
 % --- Executes during object creation, after setting all properties.
@@ -205,10 +205,9 @@ end
 %     eval(['handles.data.mats(ct).' , handles.data.auxatr2.name , '= handles.data.auxatr2.atr(ct)']);
 % end
 handles.recipe2 = MinAttr_sec38_team13(handles.data.mats,handles.data.auxatr2.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
+setappdata(0,'recipe2',handles.recipe2);
+setappdata(0, 'auxatr2',handles.data.auxatr2.atr);
 guidata(hObject, handles);
-setappdata(0,'recipe2',handles.recipe2)
-setappdata(0, 'auxatr2',handles.data.auxatr2.atr)
-
 %This gets the info from hObject and sends it to be minimized.
 % --- Executes during object creation, after setting all properties.
 function atr2_et_CreateFcn(hObject, eventdata, handles)
@@ -253,9 +252,9 @@ end
 %     eval(['handles.data.mats(ct).' , handles.data.auxatr3.name , '= handles.data.auxatr3.atr(ct)']);
 % end
 handles.recipe3 = MinAttr_sec38_team13(handles.data.mats,handles.data.auxatr3.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
-guidata(hObject, handles);
 setappdata(0,'auxatr3',handles.data.auxatr3.atr);
-setappdata(0,'recipe3',handles.recipe3)
+setappdata(0,'recipe3',handles.recipe3);
+guidata(hObject, handles);
 %This gets the info from hObject and sends it to be minimized.
 
 % --- Executes during object creation, after setting all properties.
@@ -301,7 +300,7 @@ end
 % end
 handles.recipe4 = MinAttr_sec38_team13(handles.data.mats,handles.data.auxatr4.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
 setappdata(0,'auxatr4',handles.data.auxatr4.atr);
-setappdata(0,'recipe4',handles.recipe4)
+setappdata(0,'recipe4',handles.recipe4);
 guidata(hObject, handles);
 %This gets the info from hObject and sends it to be minimized.
 
@@ -332,7 +331,7 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to generate_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-cla(handles.plot_ax)
+cla(handles.plot_ax);
 mats = handles.data.mats;
 names = cell(length(mats));
 recipeOne = linspace(0,0,length(mats));
@@ -356,34 +355,56 @@ end
 if (isfield(handles,'recipe4'))
 recipeFour = handles.recipe4.ratios;
 end
+legendArray = {};
 if (handles.atr1_cb == 1)|(handles.atr2_cb == 1)|(handles.atr3_cb == 1)|(handles.atr4_cb == 1)
     if (handles.atr1_cb ~= 1)
-        recipeOne = recipeOne * 0;
+        recipeOne = [];
     end
     if (handles.atr2_cb ~= 1)
-        recipeTwo = recipeTwo * 0;
+        recipeTwo = [];
     end
     if (handles.atr3_cb ~= 1)
-        recipeThree = recipeThree * 0;
+        recipeThree = [];
     end
     if (handles.atr4_cb ~= 1)
-        recipeFour = recipeFour * 0;
+        recipeFour = [];
+    end
+    if (handles.atr1_cb == 1)
+        legendArray = {legendArray{:}, 'Attribute 1'};
+    end
+    if (handles.atr2_cb == 1)
+        legendArray = {legendArray{:}, 'Attribute 2'};
+    end
+    if (handles.atr3_cb == 1)
+        legendArray = {legendArray{:}, 'Attribute 3'};
+    end
+    if (handles.atr4_cb == 1)
+        legendArray = {legendArray{:}, 'Attribute 4'};
     end
        recipeAg = [recipeOne',recipeTwo',recipeThree',recipeFour'];
     %plot(handles.recipe1,handles.data.mat);
     customPlot_akharche_sec38_team13(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg);%plot(names,recipeOne,'black');
-    title('Material Ratio by Attribute Value','Color','w','FontSize',13);
-    ylabel('Material Mass','FontSize',13,'Color','w');
-    xlabel('Attribute Value','FontSize',13,'Color','w');
-    legend('Attribute 1','Attribute 2','Attribute 3','Attribute 4');
-    handles.legend = legend('Attribute 1','Attribute 2','Attribute 3','Attribute 4');
+    title('Material Ratio by Attribute Value','Color','w','FontSize',13,'FontWeight','bold');
+    ylabel('Material Mass','FontSize',13,'Color','w','FontWeight','bold');
+    xlabel('Attribute Value','FontSize',13,'Color','w','FontWeight','bold');
+    handles.legend = legend(legendArray{:});
     set(handles.plot_ax,'YColor',[1 1 1]); % Change the Axes color to white.
     set(handles.plot_ax,'XColor',[1 1 1]);
     set(handles.text1,'visible','off');
     %c = get(handles.plot_ax,'Color');
     %set(c,'value','w');
-    hold on;
-end
+else
+    customPlot_akharche_sec38_team13(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeZero)%plot(names,recipeZero);
+    title('Material Ratio by Attribute Value','Color','w','FontSize',13,'FontWeight','bold');
+    ylabel('Material Mass','FontSize',13,'Color','w','FontWeight','bold');
+    xlabel('Attribute Value','FontSize',13,'Color','w','FontWeight','bold');
+    legend('Original Recipe');
+    handles.legend = legend('Original Recipe');
+    set(handles.plot_ax,'YColor',[1 1 1]); % Change the Axes color to white.
+    set(handles.plot_ax,'XColor',[1 1 1]);
+    set(handles.text1,'visible','off');
+  end
+ hold off;
 guidata(hObject, handles)
 
 % if (handles.atr2_cb == 1)
@@ -435,6 +456,7 @@ function clear_pb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 cla(handles.plot_ax);
 set(handles.legend,'visible','off');
+set(handles.text1,'visible','on');
 % set(handles.atr1_et,'String','Enter');
 % set(handles.atr2_et,'String','Enter');
 % set(handles.atr3_et,'String','Enter');
@@ -446,7 +468,7 @@ function home_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to home_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-setappdata(0,'Var_Plot_data',handles)
+setappdata(0,'Var_Plot_data',handles);
 nanohubGUI_sec38_team13
 close Var_Plot_schwarb
 %This returns the program to the home screen.
@@ -458,9 +480,8 @@ function atr1_cb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of atr1_cb
-handles.atr1_cb = get(hObject,'Value')
-
-guidata(hObject, handles)
+handles.atr1_cb = get(hObject,'Value');
+guidata(hObject, handles);
 %This is where the value of hObject gets stored in handles.
 
 % --- Executes on button press in atr2_cb.
@@ -470,8 +491,8 @@ function atr2_cb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of atr2_cb
-handles.atr2_cb = get(hObject,'Value')
-guidata(hObject, handles)
+handles.atr2_cb = get(hObject,'Value');
+guidata(hObject, handles);
 %This is where the value of hObject gets stored in handles.
 % --- Executes on button press in atr3_cb.
 function atr3_cb_Callback(hObject, eventdata, handles)
@@ -480,8 +501,8 @@ function atr3_cb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of atr3_cb
-handles.atr3_cb = get(hObject,'Value')
-guidata(hObject, handles)
+handles.atr3_cb = get(hObject,'Value');
+guidata(hObject, handles);
 %This is where the value of hObject gets stored in handles.
 % --- Executes on button press in atr4_cb.
 function atr4_cb_Callback(hObject, eventdata, handles)
@@ -490,8 +511,8 @@ function atr4_cb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of atr4_cb
-handles.atr4_cb = get(hObject,'Value')
-guidata(hObject, handles)
+handles.atr4_cb = get(hObject,'Value');
+guidata(hObject, handles);
 %This is where the value of hObject gets stored in handles.
 
 % --- Executes on button press in help_pb.
