@@ -102,13 +102,27 @@ function Print_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-%print('Window Printout', '-dpdf');
+matr = handles.recipe.mats; 
+for counter = 1:length(matr)
+  cellar{counter} = matr(counter).name;
+end
 
-%handle_plot = handles.Attr_Plot_ax
-%saveas(handle_plot, 'Attribute', 'jpeg');
-%close(handle_plot);
+handles.PlotWindow = figure(1)
 
-export_fig('exportfig_Attr_Plot_ax.png', '-png', '-painters', '-r300');
+customPlot_akharche_sec38_team13 (@plot, handles.savePlot, cellar, {}, 1:length(matr), handles.recipe.ratios);
+title('Toxicity vs. Cost');
+ylabel('Toxicity (units/g)');
+xlabel('Cost ($/g)');
+
+%
+
+handles.BarWindow = figure(2)
+
+customPlot_akharche_sec38_team13 (@colorBar_akharche_sec38_team13, handles.saveBar, cellar, {}, 1:length(matr), handles.recipe.ratios, 'rgb');
+title('Toxicity vs. Cost');
+ylabel('Toxicity (units/g)');
+xlabel('Cost ($/g)');
+%export_fig('exportfig_Attr_Plot_ax.png', '-png', '-painters', '-r300');
 
 %handle_bar = handles.Bar_Graph_ax
 %print(handle_bar,'Barchart', '-dpdf');
@@ -183,25 +197,23 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 axes(handles.Attr_Plot_ax);
 %%Here's where we'd plot the data that gets passed form the ENTER DATA.
+matr = handles.recipe.mats; 
+tox = 1:length(matr);
+cost = 1:length(matr);
+cellar = cell(length(matr));
+for counter = 1:length(matr)
+  cellar{counter} = matr(counter).name;
+  tox(counter) = matr(countr).tox;
+  
+end
+
 customPlot_akharche_sec38_team13 (@plot, handles.Attr_Plot_ax, cellar, {}, 1:length(matr), handles.recipe.ratios);
-title('Toxicity vs. Cost');
-ylabel('Toxicity (units/g)');
-xlabel('Cost ($/g)');
-
-handles.savePlot = figure(1)
-axes(handles.savePlot);
-
-customPlot_akharche_sec38_team13 (@plot, handles.savePlot, cellar, {}, 1:length(matr), handles.recipe.ratios);
 title('Toxicity vs. Cost');
 ylabel('Toxicity (units/g)');
 xlabel('Cost ($/g)');
 
 axes(handles.Bar_Graph_ax);
 %%Plot the mass percentages of the materials by their names
-matr = handles.recipe.mats; 
-for counter = 1:length(matr)
-  cellar{counter} = matr(counter).name;
-end
 
 set(handles.Display_st, 'String', cellar);
 
@@ -210,10 +222,3 @@ title('Recipe');
 ylabel('Material Mass Index [g]');
 xlabel('Material');
 
-handles.saveBar = figure(2)
-axes(handles.saveBar);
-
-customPlot_akharche_sec38_team13 (@colorBar_akharche_sec38_team13, handles.saveBar, cellar, {}, 1:length(matr), handles.recipe.ratios, 'rgb');
-title('Toxicity vs. Cost');
-ylabel('Toxicity (units/g)');
-xlabel('Cost ($/g)');
