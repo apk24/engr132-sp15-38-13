@@ -108,9 +108,11 @@ function home_pb_Callback(hObject, eventdata, handles)
 save = questdlg('Would you like to save and process entered data?', 'Save', 'Save and Process', 'Don"t Save', 'Cancel');
 switch save
     case 'Save and Process'
-        saveRecipeData(hObject, handles);
+        [~, iserror] = saveRecipeData(hObject, handles);
+        if(~iserror)
         close
         nanohubGUI_sec38_team13
+        end
     case 'Don"t Save'
         close
         nanohubGUI_sec38_team13
@@ -122,10 +124,13 @@ function close_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to close_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-uiwait(saveRecipeData(hObject, handles));
-close
-openGUI = getappdata(0, 'openGUI');
-openGUI()
+[~, iserror] = saveRecipeData(hObject, handles);
+if(~iserror)
+    close
+    nanohubGUI_sec38_team13
+    openGUI = getappdata(0, 'openGUI');
+    openGUI()
+end
 % --- Executes on slider movement.
 function ratio_sl_Callback(hObject, eventdata, handles)
 % hObject    handle to ratio_sl (see GCBO)
@@ -686,7 +691,8 @@ set(handles.ratio_sl, 'Value', recipe.relimp);
 % Update handles structure
 guidata(hObject, handles);
 
-function recipe =  saveRecipeData(hObject, handles)
+function [recipe, iserror] =  saveRecipeData(hObject, handles)
+iserror = 1;
 recipe = getappdata(0, 'recipe');
 recipe.goaleg = str2num(get(handles.goal_et, 'String'));
 recipe.minUse = str2num(get(handles.minUse_et, 'String'));
@@ -697,19 +703,21 @@ if 1%isempty(recipe.mats)
 end
 numMat = length(recipe.mats);
 if(numMat < 2)
-    errordlg('There are not enough materials entered. Please ensure there are atleast 2 materials.', 'Invalid Input', 'modal');
+    errordlgWait('There are not enough materials entered. Please ensure there are atleast 2 materials.', 'Invalid Input', 'modal');
 elseif(recipe.minUse*numMat > recipe.total)
-    errordlg('It is impossible to maintain that level of minimum usage. Please ensure that the minimum usage does not exceed total requirement. Take care that 5 materials with a minimum usage of 2g, result in a minimum of 10g of product', 'Invalid Input', 'modal');
+    errordlgWait('It is impossible to maintain that level of minimum usage. Please ensure that the minimum usage does not exceed total requirement. Take care that 5 materials with a minimum usage of 2g, result in a minimum of 10g of product', 'Invalid Input', 'modal');
 elseif(recipe.total <=0)
-    errordlg('Total required product cannot be less than or equal to zero', 'Invalid Input', 'modal');
+    errordlgWait('Total required product cannot be less than or equal to zero', 'Invalid Input', 'modal');
 elseif(recipe.minUse < 0)
-    errordlg('Minimum usage cannot be less than zero', 'Invalid Input', 'modal');
+    errordlgWait('Minimum usage cannot be less than zero', 'Invalid Input', 'modal');
 else
     recipe = DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe);
+    iserror = 0;
     setappdata(0, 'recipe' ,recipe);
 end
 
-function mats = addMatData(hObject, handles)
+function [mats, iserror] = addMatData(hObject, handles)
+iserror = 1;
 newMatName = get(handles.matName_et, 'String');
 if length(newMatName) > 5
     newMatName = newMatName(1:5);
@@ -724,9 +732,10 @@ newMat = struct( ...
     'name',  newMatName...
     );
 if(any(struct2array(newMat)<= 0))
-    errordlg('Please double check your data values for negative values or zeroes.', 'Invalid Input', 'modal');
+    errordlgWait('Please double check your data values for negative values or zeroes.', 'Invalid Input', 'modal');
 else
     mats = getappdata(0, 'mats');
     mats = [mats, newMat];
+    iserror = 0;
     setappdata(0, 'mats', mats);
 end
