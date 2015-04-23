@@ -32,14 +32,6 @@ else
     E_g_bulk = mat.beg;
     r = mat.r*1.0e-9;
     eps = mat.eps;
-    switch(find(any([E_g_bulk, r, eps] <= 0), 1))
-        case 1
-            errordlg('Bulk E_g must be positive', 'Non-positive input', 'modal');
-        case 2
-            errordlg('QD Radius  must be positive', 'Non-positive input', 'modal');
-        case 3
-            errordlg('Dielectric Constant must be positive', 'Non-positive input', 'modal');
-    end
     %%Constants
     %Planck
     h = 6.626*10^(-34); %[J * s]
