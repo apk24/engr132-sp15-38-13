@@ -104,9 +104,11 @@ function Print_pb_Callback(hObject, eventdata, handles)
 
 %print('Window Printout', '-dpdf');
 
-handle_plot = handles.Attr_Plot_ax
-saveas(handle_plot, 'Attribute', 'jpeg');
-close(handle_plot);
+%handle_plot = handles.Attr_Plot_ax
+%saveas(handle_plot, 'Attribute', 'jpeg');
+%close(handle_plot);
+
+export_fig('exportfig_Attr_Plot_ax.png', '-png', '-painters', '-r300');
 
 %handle_bar = handles.Bar_Graph_ax
 %print(handle_bar,'Barchart', '-dpdf');
@@ -181,6 +183,15 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 axes(handles.Attr_Plot_ax);
 %%Here's where we'd plot the data that gets passed form the ENTER DATA.
+customPlot_akharche_sec38_team13 (@plot, handles.Attr_Plot_ax, cellar, {}, 1:length(matr), handles.recipe.ratios);
+title('Toxicity vs. Cost');
+ylabel('Toxicity (units/g)');
+xlabel('Cost ($/g)');
+
+handles.savePlot = figure(1)
+axes(handles.savePlot);
+
+customPlot_akharche_sec38_team13 (@plot, handles.savePlot, cellar, {}, 1:length(matr), handles.recipe.ratios);
 title('Toxicity vs. Cost');
 ylabel('Toxicity (units/g)');
 xlabel('Cost ($/g)');
@@ -198,3 +209,11 @@ customPlot_akharche_sec38_team13 (@colorBar_akharche_sec38_team13, handles.Bar_G
 title('Recipe');
 ylabel('Material Mass Index [g]');
 xlabel('Material');
+
+handles.saveBar = figure(2)
+axes(handles.saveBar);
+
+customPlot_akharche_sec38_team13 (@colorBar_akharche_sec38_team13, handles.saveBar, cellar, {}, 1:length(matr), handles.recipe.ratios, 'rgb');
+title('Toxicity vs. Cost');
+ylabel('Toxicity (units/g)');
+xlabel('Cost ($/g)');
