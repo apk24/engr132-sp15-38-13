@@ -35,12 +35,12 @@ weightingFactor1 = relimp;
 weightingFactor2 = 100 -relimp;
 optAttr1 = linspace(-1,-1,numMat);
 for ct=1:length(mats)
-    optAttr1(ct) = eval(['mats(ct).', optAttr1Name]);
+    optAttr1(ct) = mats(ct).(optAttr1Name);
 end
 
 optAttr2 = linspace(-1,-1,numMat);
 for ct=1:length(mats)
-    optAttr2(ct) = eval(['mats(ct).', optAttr2Name]);
+    optAttr2(ct) = mats(ct).(optAttr2Name);
 end
 
 scaledAttr1 = optAttr1 .* (100/max(optAttr1));

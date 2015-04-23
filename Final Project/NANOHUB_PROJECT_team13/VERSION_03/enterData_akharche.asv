@@ -690,7 +690,7 @@ if 1%isempty(recipe.mats)
 end
 if(length(recipe.mats) >= 2)
 recipe = DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe);
-end
+
 setappdata(0, 'recipe' ,recipe);
 
 function mats = addMatData(hObject, handles)
