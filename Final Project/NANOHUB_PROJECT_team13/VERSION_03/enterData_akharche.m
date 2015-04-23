@@ -122,7 +122,7 @@ function close_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to close_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-saveRecipeData(hObject, handles);
+uiwait(saveRecipeData(hObject, handles));
 close
 openGUI = getappdata(0, 'openGUI');
 openGUI()
@@ -315,6 +315,7 @@ function addData_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 mats = addMatData(hObject, handles);
+recipe = getappdata(0, 'recipe');
 updateDisplay(hObject, handles, mats, recipe);
 
 % --- Executes on button press in help_pb.
@@ -709,7 +710,6 @@ else
 end
 
 function mats = addMatData(hObject, handles)
-mats = getappdata(0, 'mats');
 newMatName = get(handles.matName_et, 'String');
 if length(newMatName) > 5
     newMatName = newMatName(1:5);
@@ -723,9 +723,10 @@ newMat = struct( ...
     'tox', str2num(get(handles.tox_et, 'String')), ...
     'name',  newMatName...
     );
-mats = [mats, newMat];
 if(any(struct2array(newMat)<= 0))
     errordlg('Please double check your data values for negative values or zeroes.', 'Invalid Input', 'modal');
 else
+    mats = getappdata(0, 'mats');
+    mats = [mats, newMat];
     setappdata(0, 'mats', mats);
 end
