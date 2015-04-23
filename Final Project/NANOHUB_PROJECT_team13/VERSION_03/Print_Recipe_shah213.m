@@ -194,7 +194,7 @@ end
 
 set(handles.Display_st, 'String', cellar);
 
-customPlot_akharche_sec38_team13 (@bar, handles.Bar_Graph_ax, cellar, {}, 1:length(matr), handles.recipe.ratios);
+customPlot_akharche_sec38_team13 (@colorBar_akharche_sec38_team13, handles.Bar_Graph_ax, cellar, {}, 1:length(matr), handles.recipe.ratios, 'rgb');
 title('Recipe');
 ylabel('Material Mass Index [g]');
 xlabel('Material');
