@@ -204,10 +204,10 @@ cellar = cell(length(matr));
 for counter = 1:length(matr)
   cellar{counter} = matr(counter).name;
   tox(counter) = matr(countr).tox;
-  
+  cost(counter) = matr(countr).cost;
 end
 
-customPlot_akharche_sec38_team13 (@plot, handles.Attr_Plot_ax, cellar, {}, 1:length(matr), handles.recipe.ratios);
+customPlot_akharche_sec38_team13 (@plot, handles.Attr_Plot_ax, cellar, {}, handles.recipe.cost, handles.recipe.tox);
 title('Toxicity vs. Cost');
 ylabel('Toxicity (units/g)');
 xlabel('Cost ($/g)');
