@@ -77,6 +77,8 @@ function Print_Recipe_shah213_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
 
 handles.recipe = getappdata(0, 'recipe');
+handles.matArr = getappdata(0, 'mats');
+
 
 % Update handles structure
 guidata(hObject, handles);
@@ -102,54 +104,50 @@ function Print_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-matr = handles.recipe.mats; 
+matr = handles.recipe.mats; %Assigns the matrix
+tox = 1:length(matr); %Assigns toxicity array
+cost = 1:length(matr); %Assigns cost array
+cellar = cell(length(matr)); %Creates a cell array
 for counter = 1:length(matr)
   cellar{counter} = matr(counter).name;
+  tox(counter) = matr(counter).tox;
+  cost(counter) = matr(counter).cost;
 end
 
-handles.PlotWindow = figure(1)
+setappdata(0, 'Yash_Plot1', cost);
+setappdata(0, 'Yash_Plot2', tox);
+setappdata(0, 'Bar_cellar', cellar);
 
-customPlot_akharche_sec38_team13 (@plot, handles.savePlot, cellar, {}, 1:length(matr), handles.recipe.ratios);
-title('Toxicity vs. Cost');
-ylabel('Toxicity (units/g)');
-xlabel('Cost ($/g)');
+Print_Bar_shah213;
+Print_Plot_shah213;
 
-%
 
-handles.BarWindow = figure(2)
-
-customPlot_akharche_sec38_team13 (@colorBar_akharche_sec38_team13, handles.saveBar, cellar, {}, 1:length(matr), handles.recipe.ratios, 'rgb');
-title('Toxicity vs. Cost');
-ylabel('Toxicity (units/g)');
-xlabel('Cost ($/g)');
 %export_fig('exportfig_Attr_Plot_ax.png', '-png', '-painters', '-r300');
 
-%handle_bar = handles.Bar_Graph_ax
-%print(handle_bar,'Barchart', '-dpdf');
-%close(handle_bar);
 
 % --- Executes on button press in Clear_pb.
 function Clear_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to Clear_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-cla
-set(handles.Display_st,'String','');
+cla(handles.Bar_Graph_ax);
+cla(handles.Attr_Plot_ax);
+set(handles.Display_st,'String','Recipe displayed here'); %Sets the display text to reset
 
 % --- Executes on button press in exit_pb.
 function exit_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to exit_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-close all
+close all %Exits entire GUI
 
 % --- Executes on button press in home_pb.
 function home_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to home_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-nanohubGUI_sec38_team13
-close Print_Recipe_shah213
+nanohubGUI_sec38_team13 %Goes to the home page of the GUI
+close Print_Recipe_shah213 %Exits current GUI
 
 
 function Display_et_Callback(hObject, eventdata, handles)
@@ -179,7 +177,7 @@ function AddData_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to AddData_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-enterData_akharche
+enterData_akharche %Opens the enderdata GUI to add or delete data
 
 
 % --- Executes on button press in help_pb.
@@ -187,7 +185,7 @@ function help_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to help_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-Print_Help_shah213;
+Print_Help_shah213; %Pop up opens help GUi screen 
 
 
 % --- Executes on button press in generate_pb.
@@ -195,30 +193,35 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to generate_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-axes(handles.Attr_Plot_ax);
-%%Here's where we'd plot the data that gets passed form the ENTER DATA.
-matr = handles.recipe.mats; 
-tox = 1:length(matr);
-cost = 1:length(matr);
-cellar = cell(length(matr));
+
+matr = handles.recipe.mats; %Assigns the matrix
+tox = 1:length(matr); %Assigns toxicity array
+cost = 1:length(matr); %Assigns cost array
+cellar = cell(length(matr)); %Creates a cell array
 for counter = 1:length(matr)
   cellar{counter} = matr(counter).name;
-  tox(counter) = matr(countr).tox;
-  cost(counter) = matr(countr).cost;
+  tox(counter) = matr(counter).tox;
+  cost(counter) = matr(counter).cost;
 end
 
-customPlot_akharche_sec38_team13 (@plot, handles.Attr_Plot_ax, cellar, {}, handles.recipe.cost, handles.recipe.tox);
-title('Toxicity vs. Cost');
-ylabel('Toxicity (units/g)');
-xlabel('Cost ($/g)');
 
 axes(handles.Bar_Graph_ax);
 %%Plot the mass percentages of the materials by their names
 
-set(handles.Display_st, 'String', cellar);
+set(handles.Display_st, 'String', cellar); %Displays the recipe in the static display text
 
-customPlot_akharche_sec38_team13 (@colorBar_akharche_sec38_team13, handles.Bar_Graph_ax, cellar, {}, 1:length(matr), handles.recipe.ratios, 'rgb');
-title('Recipe');
-ylabel('Material Mass Index [g]');
-xlabel('Material');
+customPlot_akharche_sec38_team13 (@colorBar_akharche_sec38_team13, handles.Bar_Graph_ax, cellar, {}, 1:length(matr), handles.recipe.ratios, 'rgbcym');
+title('Recipe'); %Title for the Bar Graph
+ylabel('Material Mass Index [g]'); %Label for the y-axis
+xlabel('Material'); %Label for the x-axis
+
+axes(handles.Attr_Plot_ax);
+%%Here's where we'd plot the data that gets passed form the ENTER DATA.
+
+%customPlot_akharche_sec38_team13 (@plot, handles.Attr_Plot_ax, {}, {}, handles.recipe.cost, handles.recipe.tox);
+scatter(handles.Attr_Plot_ax, cost, tox, 'dm');
+title('Toxicity vs. Cost'); %Title for the plot
+ylabel('Toxicity (units/g)'); %Label for y-axis
+xlabel('Cost ($/g)'); %Label for x-axis
+
 
