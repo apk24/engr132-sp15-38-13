@@ -154,7 +154,7 @@ if(~(isempty(xstep) || isempty(ystep)))
             recipe.(yitem) = yvals(cty);
             recipe = DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe);
             if(isempty(recipe.(zitem)))
-                errordlg('Something is wrong about this plot. Perhaps there are no values left to be evaluated by the program?');
+                errordlg('Something is wrong about this plot. Perhaps there are no values left to be evaluated by the program?', 'Nothing to plot', 'modal');
             end
             zvals(cty,ctx) = recipe.(zitem);
         end
@@ -195,7 +195,7 @@ elseif(ystep)
     end
     plotType = @plot3;
 else
-    errordlg('Please define the range for at least one of the variables to plot');
+    errordlg('Please define the range for at least one of the variables to plot', 'Nothing to plot', 'modal');
 end
 if(isempty(zvals))
     customPlot_akharche_sec38_team13(@plot, handles.plot_ax, {}, {}, xvals, yvals);
@@ -209,7 +209,7 @@ catch ME
     disp(ME.identifier);
     switch ME.identifier
         case 'MATLAB:surfc:NonMatrixInput'
-            errordlg('Please ensure you are plotting more than a single point or line when giving two ranges to plot over');
+            errordlg('Please ensure you are plotting more than a single point or line when giving two ranges to plot over', 'Not enough points', 'modal');
         otherwise
             rethrow(ME)
     end

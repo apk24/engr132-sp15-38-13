@@ -336,6 +336,7 @@ function clearAll_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 setappdata(0, 'mats', []);
+setappdata(0, 'matStruct', struct());
 recipe = struct(...
     'ratios', [0], ...
     'mats', [], ...
@@ -354,7 +355,26 @@ function del_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to del_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+try
+    selected = get(handles.select_et, 'String');
+    matNames = strsplit(selected, ',');
+    confirm = questdlg(['Are you sure you want to delete ', selected, '?'], 'Confirm delete', 'Yes', 'No', 'No');
+    if isequal(confirm , 'Yes')
+        matStruct = getappdata(0, 'matStruct');
+        for nameCell = matNames
+            n = char(nameCell);
+            matStruct = rmfield(matStruct, n);
+        end
+        setappdata(0, 'matStruct', matStruct);
+        setappdata(0, 'mats', struct2array(matStruct));
+        set(handles.select_et, 'String', '');
+    end
+catch ME
+    errordlgWait('Please ensure that you have selected a valid set of materials. Please ensure that you have entered a comma separated list of the materials desired.', 'Invalid Input', 'modal');
+    rethrow(ME);
+end
+saveRecipeData(hObject, handles);
+updateDisplay(hObject, handles, getappdata(0, 'mats'), getappdata(0, 'recipe'));
 
 
 function select_et_Callback(hObject, eventdata, handles)
@@ -683,6 +703,10 @@ set(handles.beg_st, 'String', beg);
 set(handles.qdeg_st, 'String', qdeg);
 set(handles.size_st, 'String', r);
 
+nameCell = {recipe.mats.name};
+nameString = strjoin(nameCell, ',');
+set(handles.select_et, 'String', nameString);
+
 set(handles.goal_et, 'String', num2str(recipe.goaleg));
 set(handles.minUse_et, 'String', num2str(recipe.minUse));
 set(handles.total_et, 'String', num2str(recipe.total));
@@ -698,8 +722,22 @@ recipe.goaleg = str2num(get(handles.goal_et, 'String'));
 recipe.minUse = str2num(get(handles.minUse_et, 'String'));
 recipe.total = str2num(get(handles.total_et, 'String'));
 recipe.relimp = get(handles.ratio_sl, 'Value');
-if 1%isempty(recipe.mats)
+try
+matNames = strsplit(get(handles.select_et, 'String'), ',');
+if isempty(char(matNames))
     recipe.mats = getappdata(0, 'mats');
+else
+    matStruct = getappdata(0, 'matStruct');
+    mats = [];
+    for nameCell = matNames
+        n = char(nameCell);
+        mats = [mats, matStruct.(n)];
+    end
+    recipe.mats = mats;
+end
+catch ME
+    errordlgWait('Please ensure that you have selected a valid set of materials. Please ensure that you have entered a comma separated list of the materials desired.', 'Invalid Input', 'modal');
+    rethrow(ME);
 end
 numMat = length(recipe.mats);
 if(numMat < 2)
@@ -718,9 +756,16 @@ end
 
 function [mats, iserror] = addMatData(hObject, handles)
 iserror = 1;
+matStruct = getappdata(0, 'matStruct');
 newMatName = get(handles.matName_et, 'String');
 if length(newMatName) > 5
     newMatName = newMatName(1:5);
+end
+if(isfield(matStruct, newMatName))
+    overwrite = questdlg(['Are you sure you want to overwrite the material ', newMatName], 'Overwrite?', 'Yes', 'No', 'No');
+    if(isequal(overwrite, 'No'))
+        error('User does not want to overwrite material');
+    end
 end
 newMat = struct( ...
     'qdeg', str2num(get(handles.qdeg_et, 'String')), ...
@@ -734,8 +779,12 @@ if(any(struct2array(newMat)<= 0))
     errordlgWait('Please ensure all values are positive real numbers.', 'Invalid Input', 'modal');
 else
     newMat.name = newMatName;
-    mats = getappdata(0, 'mats');
-    mats = [mats, newMat];
+%     mats = getappdata(0, 'mats');
+%     mats = [mats, newMat];
+    
+    matStruct.(newMatName) = newMat;
+    mats = struct2array(matStruct);
     iserror = 0;
+    setappdata(0, 'matStruct', matStruct);
     setappdata(0, 'mats', mats);
 end
