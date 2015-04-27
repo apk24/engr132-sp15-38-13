@@ -731,7 +731,7 @@ newMat = struct( ...
     'tox', str2num(get(handles.tox_et, 'String')) ...
     );
 if(any(struct2array(newMat)<= 0))
-    errordlgWait('Please double check your data values for negative values or zeroes.', 'Invalid Input', 'modal');
+    errordlgWait('Please ensure all values are positive real numbers.', 'Invalid Input', 'modal');
 else
     newMat.name = newMatName;
     mats = getappdata(0, 'mats');
