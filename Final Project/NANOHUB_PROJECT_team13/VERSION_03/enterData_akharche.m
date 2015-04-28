@@ -127,7 +127,6 @@ function close_pb_Callback(hObject, eventdata, handles)
 [~, iserror] = saveRecipeData(hObject, handles);
 if(~iserror)
     close
-    nanohubGUI_sec38_team13
     openGUI = getappdata(0, 'openGUI');
     openGUI()
 end
@@ -702,8 +701,11 @@ set(handles.eps_st, 'String', eps);
 set(handles.beg_st, 'String', beg);
 set(handles.qdeg_st, 'String', qdeg);
 set(handles.size_st, 'String', r);
-
+if isempty(recipe.mats)
+    nameCell = {};
+else
 nameCell = {recipe.mats.name};
+end
 nameString = strjoin(nameCell, ',');
 set(handles.select_et, 'String', nameString);
 
