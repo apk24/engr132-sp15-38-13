@@ -761,9 +761,13 @@ iserror = 1;
 matStruct = getappdata(0, 'matStruct');
 uncheckedNewMatName = get(handles.matName_et, 'String');
 [startIndex, endIndex] = regexp(uncheckedNewMatName, '\w*');
-newMatName = uncheckedNewMatName(startIndex(1):endIndex(1));
-for ct = 2:length(startIndex)
-    newMatName = [newMatName, '_', uncheckedNewMatName(startIndex(ct):endIndex(ct))];
+if ~isempty(startIndex)
+    newMatName = uncheckedNewMatName(startIndex(1):endIndex(1));
+    for ct = 2:length(startIndex)
+        newMatName = [newMatName, '_', uncheckedNewMatName(startIndex(ct):endIndex(ct))];
+    end
+else
+    newMatName = uncheckedNewMatName;
 end
 if length(newMatName) > 5
     newMatName = newMatName(1:5);
