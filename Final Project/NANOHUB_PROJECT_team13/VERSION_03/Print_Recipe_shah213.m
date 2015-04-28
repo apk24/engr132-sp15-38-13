@@ -193,7 +193,9 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to generate_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+if isempty(handles.recipe)
+    uiwait(errordlg('Please enter data before generating', 'Invalid Input', 'modal'));
+end
 matr = handles.recipe.mats; %Assigns the matrix
 tox = 1:length(matr); %Assigns toxicity array
 cost = 1:length(matr); %Assigns cost array

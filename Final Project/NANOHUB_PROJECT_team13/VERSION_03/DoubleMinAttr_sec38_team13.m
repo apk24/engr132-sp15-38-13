@@ -30,6 +30,7 @@ minUse = recipe.minUse;
 totalReq = recipe.total;
 if relimp > 100 || relimp < 0
     error('DoubleMinAttr_sec38_team13:RelimpOutOfBounds', 'Relative Importance must be on a scale from 0 to 100');
+end
 if numMat <= 0
     errordlg('Not enough materials!');
 elseif(recipe.minUse*numMat > recipe.total)

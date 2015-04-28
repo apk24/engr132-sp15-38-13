@@ -130,6 +130,9 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to generate_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+if isempty(getappdata(0, 'recipe'))
+    uiwait(errordlg('Please enter data before generating', 'Invalid Input', 'modal'));
+end
 try
     xNames = handles.data.xNames;
     yNames = handles.data.yNames;

@@ -331,6 +331,9 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to generate_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+if isempty(handles.data.mats)
+    uiwait(errordlg('Please enter data before generating', 'Invalid Input', 'modal'));
+end
 cla(handles.plot_ax);
 mats = handles.data.mats;
 names = cell(length(mats));
@@ -343,16 +346,16 @@ names(ct) = {handles.data.mats(ct).name};
 end
 namePlaceHolder = 1 : length(mats);
 recipeZero = handles.data.recipe.ratios;
-if (isfield(handles,'recipe1'))
+if (isfield(handles,'recipe1') && ~isempty(handles.recipe1))
 recipeOne = handles.recipe1.ratios;
 end
-if (isfield(handles,'recipe2'))
+if (isfield(handles,'recipe2') && ~isempty(handles.recipe2))
 recipeTwo = handles.recipe2.ratios;
 end
-if (isfield(handles,'recipe3'))
+if (isfield(handles,'recipe3') && ~isempty(handles.recipe3))
 recipeThree = handles.recipe3.ratios;
 end
-if (isfield(handles,'recipe4'))
+if (isfield(handles,'recipe4') && ~isempty(handles.recipe4))
 recipeFour = handles.recipe4.ratios;
 end
 legendArray = {};
