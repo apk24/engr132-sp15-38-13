@@ -107,9 +107,10 @@ function RashidGUI_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to RashidGUI_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-Eff_Plot_asarwar
-setappdata(0, 'openGUI', @Eff_Plot_asarwar);
-close nanohubGUI_sec38_team13
+errordlg('Due to the absence of one of the build team''s members, this component is not active yet. We apologize for the inconvenience', 'Sorry, but this component is unavailable', 'modal');
+%Eff_Plot_asarwar
+%setappdata(0, 'openGUI', @Eff_Plot_asarwar);
+%close nanohubGUI_sec38_team13
 
 % --- Executes on button press in YashGUI_pb.
 function YashGUI_pb_Callback(hObject, eventdata, handles)

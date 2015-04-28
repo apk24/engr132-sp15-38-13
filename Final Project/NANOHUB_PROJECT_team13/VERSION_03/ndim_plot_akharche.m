@@ -131,85 +131,89 @@ function generate_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 try
-xNames = handles.data.xNames;
-yNames = handles.data.yNames;
-zNames = handles.data.zNames;
-xstep = str2num(get(handles.x_axis_et, 'String'));
-ystep = str2num(get(handles.y_axis_et, 'String'));
-xitem = char(xNames(get(handles.x_axis_pm, 'Value'), 2));
-yitem = char(yNames(get(handles.y_axis_pm, 'Value'), 2));
-zitem = char(zNames(get(handles.z_axis_pm, 'Value'), 2));
-recipe = getappdata(0, 'recipe');
-plotType = @plot;
-yvals = [];
-xvals = [];
-zvals = [];
-if(~(isempty(xstep) || isempty(ystep)))
-    yvals = ystep;
-    zvals = zeros(length(ystep),length(xstep));
-    xvals = xstep;
-    for ctx = 1:length(xstep)
-        recipe.(xitem) = xvals(ctx);
-        for cty = 1:length(ystep)
-            recipe.(yitem) = yvals(cty);
+    xNames = handles.data.xNames;
+    yNames = handles.data.yNames;
+    zNames = handles.data.zNames;
+    xstep = str2num(get(handles.x_axis_et, 'String'));
+    ystep = str2num(get(handles.y_axis_et, 'String'));
+    xitem = char(xNames(get(handles.x_axis_pm, 'Value'), 2));
+    yitem = char(yNames(get(handles.y_axis_pm, 'Value'), 2));
+    zitem = char(zNames(get(handles.z_axis_pm, 'Value'), 2));
+    recipe = getappdata(0, 'recipe');
+    plotType = @plot;
+    yvals = [];
+    xvals = [];
+    zvals = [];
+    if(~(isempty(xstep) || isempty(ystep)))
+        yvals = ystep;
+        zvals = zeros(length(ystep),length(xstep));
+        xvals = xstep;
+        for ctx = 1:length(xstep)
+            recipe.(xitem) = xvals(ctx);
+            for cty = 1:length(ystep)
+                recipe.(yitem) = yvals(cty);
+                recipe = DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe);
+                if(isempty(recipe.(zitem)))
+                    errordlg('Something is wrong about this plot. Perhaps there are no values left to be evaluated by the program?', 'Nothing to plot', 'modal');
+                end
+                zvals(cty,ctx) = recipe.(zitem);
+            end
+        end
+        plotType = @surfc;
+    elseif(~isempty(xstep))
+        yvals = linspace(0,0,length(xstep));
+        zvals = yvals;
+        xvals = xstep;
+        for ct = 1:length(xvals)
+            recipe.(xitem) = xvals(ct);
             recipe = DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe);
-            if(isempty(recipe.(zitem)))
-                errordlg('Something is wrong about this plot. Perhaps there are no values left to be evaluated by the program?', 'Nothing to plot', 'modal');
-            end
-            zvals(cty,ctx) = recipe.(zitem);
-        end
-    end
-    plotType = @surfc;
-elseif(~isempty(xstep))
-    yvals = linspace(0,0,length(xstep));
-    zvals = yvals;
-    xvals = xstep;
-    for ct = 1:length(xvals)
-        recipe.(xitem) = xvals(ct);
-        recipe = DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe);
-        yvals(ct) = recipe.(yitem);
-        try
-            zvals(ct) = recipe.(zitem);
-        catch
-            if(isempty(recipe.(zitem)))
-                zvals = [];
+            yvals(ct) = recipe.(yitem);
+            try
+                zvals(ct) = recipe.(zitem);
+            catch
+                if(isempty(recipe.(zitem)))
+                    zvals = [];
+                end
             end
         end
-    end
-    plotType = @plot3;
-elseif(ystep)
-    xvals = linspace(0,0,length(ystep));
-    zvals = xvals;
-    yvals = ystep;
-    for ct = 1:length(yvals)
-        recipe.(yitem) = yvals(ct);
-        recipe = DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe);
-        xvals(ct) = recipe.(xitem);
-        try
-            zvals(ct) = recipe.(zitem);
-        catch
-            if(isempty(recipe.(zitem)))
-                zvals = [];
+        plotType = @plot3;
+    elseif(ystep)
+        xvals = linspace(0,0,length(ystep));
+        zvals = xvals;
+        yvals = ystep;
+        for ct = 1:length(yvals)
+            recipe.(yitem) = yvals(ct);
+            recipe = DoubleMinAttr_sec38_team13(recipe.mats, 'cost', 'tox', recipe);
+            xvals(ct) = recipe.(xitem);
+            try
+                zvals(ct) = recipe.(zitem);
+            catch
+                if(isempty(recipe.(zitem)))
+                    zvals = [];
+                end
             end
         end
+        plotType = @plot3;
+    else
+        errordlg('Please define the range for at least one of the variables to plot', 'Nothing to plot', 'modal');
     end
-    plotType = @plot3;
-else
-    errordlg('Please define the range for at least one of the variables to plot', 'Nothing to plot', 'modal');
-end
-if(isempty(zvals))
-    customPlot_akharche_sec38_team13(@plot, handles.plot_ax, {}, {}, xvals, yvals);
-else
-    customPlot_akharche_sec38_team13(plotType, handles.plot_ax, {}, {}, xvals, yvals, zvals);
-end
-xlabel(xNames{get(handles.x_axis_pm, 'Value'), 1});
-ylabel(yNames{get(handles.y_axis_pm, 'Value'), 1});
-zlabel(zNames{get(handles.z_axis_pm, 'Value'), 1});
+    if(isempty(zvals))
+        customPlot_akharche_sec38_team13(@plot, handles.plot_ax, {}, {}, xvals, yvals);
+    else
+        customPlot_akharche_sec38_team13(plotType, handles.plot_ax, {}, {}, xvals, yvals, zvals);
+    end
+    xlabel(xNames{get(handles.x_axis_pm, 'Value'), 1});
+    ylabel(yNames{get(handles.y_axis_pm, 'Value'), 1});
+    zlabel(zNames{get(handles.z_axis_pm, 'Value'), 1});
 catch ME
-    disp(ME.identifier);
+    disp(ME);
     switch ME.identifier
         case 'MATLAB:surfc:NonMatrixInput'
             errordlg('Please ensure you are plotting more than a single point or line when giving two ranges to plot over', 'Not enough points', 'modal');
+        case 'DoubleMinAttr_sec38_team13:MinUseError'
+            errordlgWait('It is impossible to maintain that level of minimum usage. Please ensure that the minimum usage does not exceed total requirement. Take care that 5 materials with a minimum usage of 2g, result in a minimum of 10g of product', 'Invalid Input', 'modal');
+        case 'DoubleMinAttr_sec38_team13:RelimpOutOfBounds'
+            errordlgWait('Relative Importance must be on a scale from 0 to 100', 'Invalid Input', 'modal');
         otherwise
             rethrow(ME)
     end

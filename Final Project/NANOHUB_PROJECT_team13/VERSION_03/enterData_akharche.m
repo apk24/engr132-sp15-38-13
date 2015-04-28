@@ -759,9 +759,19 @@ end
 function [mats, iserror] = addMatData(hObject, handles)
 iserror = 1;
 matStruct = getappdata(0, 'matStruct');
-newMatName = get(handles.matName_et, 'String');
+uncheckedNewMatName = get(handles.matName_et, 'String');
+[startIndex, endIndex] = regexp(uncheckedNewMatName, '\w*');
+newMatName = uncheckedNewMatName(startIndex(1):endIndex(1));
+for ct = 2:length(startIndex)
+    newMatName = [newMatName, '_', uncheckedNewMatName(startIndex(ct):endIndex(ct))];
+end
 if length(newMatName) > 5
     newMatName = newMatName(1:5);
+elseif isempty(newMatName)
+    errordlgWait('Material must be named', 'Invalid Input', 'modal');
+end
+if(~isequal(newMatName, uncheckedNewMatName))
+    uiwait(warndlg(['"', uncheckedNewMatName, '" has been changed to "', newMatName, '"'], 'Material Name automatically modified', 'modal'));
 end
 if(isfield(matStruct, newMatName))
     overwrite = questdlg(['Are you sure you want to overwrite the material ', newMatName], 'Overwrite?', 'Yes', 'No', 'No');
@@ -777,16 +787,29 @@ newMat = struct( ...
     'cost', str2num(get(handles.cost_et, 'String')), ...
     'tox', str2num(get(handles.tox_et, 'String')) ...
     );
-if(any(struct2array(newMat)<= 0))
+newMatArray = struct2array(newMat);
+if(any(newMatArray <= 0) || length(newMatArray) < 5)
     errordlgWait('Please ensure all values are positive real numbers.', 'Invalid Input', 'modal');
 else
     newMat.name = newMatName;
 %     mats = getappdata(0, 'mats');
 %     mats = [mats, newMat];
-    
+    try
     matStruct.(newMatName) = newMat;
+    catch err
+        disp(err.identifier);
+        switch(err.identifier)
+            case 'MATLAB:AddField:InvalidFieldName'
+                errordlgWait('The material name is invalid, please choose another material name');
+            otherwise
+                rethrow(err);
+        end
+    end
     mats = struct2array(matStruct);
     iserror = 0;
     setappdata(0, 'matStruct', matStruct);
     setappdata(0, 'mats', mats);
 end
+
+function errordlgWait(varargin)
+uiwait(errordlg(varargin{:}));

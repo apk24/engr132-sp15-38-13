@@ -28,8 +28,12 @@ relimp = recipe.relimp;
 goalEg = recipe.goaleg;
 minUse = recipe.minUse;
 totalReq = recipe.total;
+if relimp > 100 || relimp < 0
+    error('DoubleMinAttr_sec38_team13:RelimpOutOfBounds', 'Relative Importance must be on a scale from 0 to 100');
 if numMat <= 0
     errordlg('Not enough materials!');
+elseif(recipe.minUse*numMat > recipe.total)
+    error('DoubleMinAttr_sec38_team13:MinUseError','It is impossible to maintain that level of minimum usage. Please ensure that the minimum usage does not exceed total requirement. Take care that 5 materials with a minimum usage of 2g, result in a minimum of 10g of product');
 end
 weightingFactor1 = relimp;
 weightingFactor2 = 100 -relimp;
