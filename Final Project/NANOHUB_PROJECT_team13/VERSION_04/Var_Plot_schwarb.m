@@ -91,7 +91,7 @@ handles.oldAtr2 = getappdata(0,'auxatr2');
 handles.oldAtr3 = getappdata(0,'auxatr3');
 handles.oldAtr4 = getappdata(0,'auxatr4');
 if (isfield(handles,'oldData'))
-    handles.recipe1 = getappdata(0,'recipe1');
+    handles.recipe1 = getappdata(0,'recipe1');   %%These lines retrieve the data from the Root and validate its existance.
     handles.recipe2 = getappdata(0,'recipe2');
     handles.recipe3 = getappdata(0,'recipe3');
     handles.recipe4 = getappdata(0,'recipe4');
@@ -141,7 +141,7 @@ if (any(handles.data.auxatr1.atr < 0))
     h = errordlg('Error in Attribute 1 entry field: Non-negative values only','Invalid Input','modal');
     handles.data.auxatr1.atr = handles.data.auxatr1.atr * 0;
     set(handles.atr1_et,'String','Enter');
-end
+end %%These check for user input validity.
 if (length(handles.data.auxatr1.atr) < length(handles.data.mats))
     h = errordlg('Error in Attribute 1 entry field: There must be the same number of attribute values as materials','Insufficient Inputs','modal');
     handles.data.auxatr1.atr = handles.data.auxatr1.atr * 0;
@@ -153,9 +153,6 @@ if (length(handles.data.auxatr1.atr) > length(handles.data.mats))
     set(handles.atr1_et,'String','Enter');
 end
 numMat = length(handles.data.mats);
-% for ct = 1: numMat
-%     eval(['handles.data.mats(ct).' , handles.data.auxatr1.name , '= handles.data.auxatr1.atr(ct)']);
-% end
 handles.recipe1 = MinAttr_sec38_team13(handles.data.mats,handles.data.auxatr1.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
 setappdata(0, 'auxatr1',handles.data.auxatr1.atr);
 setappdata(0,'recipe1',handles.recipe1)
@@ -190,7 +187,7 @@ if (any(handles.data.auxatr2.atr < 0))
     h = errordlg('Error in Attribute 2 entry field: Non-negative values only','Invalid Input','modal');
     handles.data.auxatr2.atr = handles.data.auxatr2.atr * 0;
     set(handles.atr2_et,'String','Enter');
-end
+end  %%These check for user input validity.
 if (length(handles.data.auxatr2.atr) < length(handles.data.mats))
     h = errordlg('Error in Attribute 2 entry field: There must be the same number of attribute values as materials','Insufficient Inputs','modal');
     handles.data.auxatr2.atr = handles.data.auxatr2.atr * 0;
@@ -201,14 +198,12 @@ if (length(handles.data.auxatr2.atr) > length(handles.data.mats))
     handles.data.auxatr2.atr = handles.data.auxatr2.atr * 0;
     set(handles.atr2_et,'String','Enter');
 end
-% for ct = 1: numMat
-%     eval(['handles.data.mats(ct).' , handles.data.auxatr2.name , '= handles.data.auxatr2.atr(ct)']);
-% end
 handles.recipe2 = MinAttr_sec38_team13(handles.data.mats,handles.data.auxatr2.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
 setappdata(0,'recipe2',handles.recipe2);
 setappdata(0, 'auxatr2',handles.data.auxatr2.atr);
 guidata(hObject, handles);
 %This gets the info from hObject and sends it to be minimized.
+
 % --- Executes during object creation, after setting all properties.
 function atr2_et_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to atr2_et (see GCBO)
@@ -237,7 +232,7 @@ if (any(handles.data.auxatr3.atr < 0))
     h = errordlg('Error in Attribute 3 entry field: Non-negative values only','Invalid Input','modal');
     handles.data.auxatr3.atr = handles.data.auxatr3.atr * 0;
     set(handles.atr3_et,'String','Enter');
-end
+end  %%These check for user input validity.
 if (length(handles.data.auxatr3.atr) < length(handles.data.mats))
     h = errordlg('Error in Attribute 3 entry field: There must be the same number of attribute values as materials','Insufficient Inputs','modal');
     handles.data.auxatr3.atr = handles.data.auxatr3.atr * 0;
@@ -248,9 +243,6 @@ if (length(handles.data.auxatr3.atr) > length(handles.data.mats))
     handles.data.auxatr3.atr = handles.data.auxatr3.atr * 0;
     set(handles.atr3_et,'String','Enter');
 end
-% for ct = 1: numMat
-%     eval(['handles.data.mats(ct).' , handles.data.auxatr3.name , '= handles.data.auxatr3.atr(ct)']);
-% end
 handles.recipe3 = MinAttr_sec38_team13(handles.data.mats,handles.data.auxatr3.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
 setappdata(0,'auxatr3',handles.data.auxatr3.atr);
 setappdata(0,'recipe3',handles.recipe3);
@@ -284,7 +276,7 @@ if (any(handles.data.auxatr4.atr < 0))
     h = errordlg('Error in Attribute 4 entry field: Non-negative values only','Invalid Input','modal');
     handles.data.auxatr4.atr = handles.data.auxatr4.atr * 0;
     set(handles.atr4_et,'String','Enter');
-end
+end  %%These check for user input validity.
 if (length(handles.data.auxatr4.atr) < length(handles.data.mats))
     h = errordlg('Error in Attribute 4 entry field: There must be the same number of attribute values as materials','Insufficient Inputs','modal');
     handles.data.auxatr4.atr = handles.data.auxatr4.atr * 0;
@@ -295,9 +287,6 @@ if (length(handles.data.auxatr4.atr) > length(handles.data.mats))
     handles.data.auxatr4.atr = handles.data.auxatr4.atr * 0;
     set(handles.atr4_et,'String','Enter');
 end
-% for ct = 1: numMat
-%     eval(['handles.data.mats(ct).' , handles.data.auxatr4.name , '= handles.data.auxatr1.atr(ct)']);
-% end
 handles.recipe4 = MinAttr_sec38_team13(handles.data.mats,handles.data.auxatr4.atr,handles.data.recipe.goaleg,handles.data.recipe.minUse,handles.data.recipe.total);
 setappdata(0,'auxatr4',handles.data.auxatr4.atr);
 setappdata(0,'recipe4',handles.recipe4);
@@ -348,7 +337,7 @@ namePlaceHolder = 1 : length(mats);
 recipeZero = handles.data.recipe.ratios;
 if (isfield(handles,'recipe1') && ~isempty(handles.recipe1))
 recipeOne = handles.recipe1.ratios;
-end
+end %%This applies The predetermined recipes to local variables and validate them.
 if (isfield(handles,'recipe2') && ~isempty(handles.recipe2))
 recipeTwo = handles.recipe2.ratios;
 end
@@ -373,7 +362,7 @@ if (handles.atr1_cb == 1)|(handles.atr2_cb == 1)|(handles.atr3_cb == 1)|(handles
         recipeFour = [];
     end
     if (handles.atr1_cb == 1)
-        legendArray = {legendArray{:}, 'Attribute 1'};
+        legendArray = {legendArray{:}, 'Attribute 1'}; %%This Names the attributes.
     end
     if (handles.atr2_cb == 1)
         legendArray = {legendArray{:}, 'Attribute 2'};
@@ -385,7 +374,6 @@ if (handles.atr1_cb == 1)|(handles.atr2_cb == 1)|(handles.atr3_cb == 1)|(handles
         legendArray = {legendArray{:}, 'Attribute 4'};
     end
        recipeAg = [recipeOne',recipeTwo',recipeThree',recipeFour'];
-    %plot(handles.recipe1,handles.data.mat);
     customPlot_akharche_sec38_team13(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg);%plot(names,recipeOne,'black');
     title('Material Ratio by Attribute Value','Color','w','FontSize',13,'FontWeight','bold');
     ylabel('Material Mass','FontSize',13,'Color','w','FontWeight','bold');
@@ -394,8 +382,6 @@ if (handles.atr1_cb == 1)|(handles.atr2_cb == 1)|(handles.atr3_cb == 1)|(handles
     set(handles.plot_ax,'YColor',[1 1 1]); % Change the Axes color to white.
     set(handles.plot_ax,'XColor',[1 1 1]);
     set(handles.text1,'visible','off');
-    %c = get(handles.plot_ax,'Color');
-    %set(c,'value','w');
 else
     customPlot_akharche_sec38_team13(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeZero)%plot(names,recipeZero);
     title('Material Ratio by Attribute Value','Color','w','FontSize',13,'FontWeight','bold');
@@ -409,39 +395,6 @@ else
   end
  hold off;
 guidata(hObject, handles)
-
-% if (handles.atr2_cb == 1)
-%     %plot(handles.recipe2,handles.data.mat,'magenta');
-%     customPlot_akharche_sec38_team13(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg)%plot(names,recipeTwo,'magenta'); %Each of the selection structures only plots if the check boxes associated are 'on.'
-%     title('Material Ratio by Attribute Value')
-%     ylabel('Material Ratio')
-%     xlabel('Attribute Value')  
-%     hold on;
-% end
-% if (handles.atr3_cb == 1)
-%     %plot(handles.recipe2,handles.data.mat,'red');
-%     customPlot_akharche_sec38_team13(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg)%plot(names,recipeThree,'red');
-%     title('Material Ratio by Attribute Value')
-%     ylabel('Material Ratio')
-%     xlabel('Attribute Value')  
-%     hold on;
-% end
-% if (handles.atr4_cb == 1)
-%     %plot(handles.recipe4,handles.data.mat,'green')
-%     customPlot_akharche_sec38_team13(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeAg)%plot(names,recipeFour,'green');
-%     title('Material Ratio by Attribute Value')
-%     ylabel('Material Ratio')
-%     xlabel('Attribute Value')
-%     hold on;
-% end
-%  if ((handles.atr1_cb ~= 1)&(handles.atr2_cb ~= 1)&(handles.atr3_cb ~= 1)&(handles.atr4_cb ~= 1))
-%      customPlot_akharche_sec38_team13(@bar, handles.plot_ax, names, {}, namePlaceHolder, recipeZero, 'b')%plot(names,recipeZero);
-%      title('Material Ratio by Attribute Value') %This is where the default data will be plotted.
-%      ylabel('Material Ratio')
-%      xlabel('Attribute Value')
-%      hold on;
-%  end
-% hold off;
 
 % --- Executes on button press in exit_pb.
 function exit_pb_Callback(hObject, eventdata, handles)
@@ -460,10 +413,6 @@ function clear_pb_Callback(hObject, eventdata, handles)
 cla(handles.plot_ax);
 set(handles.legend,'visible','off');
 set(handles.text1,'visible','on');
-% set(handles.atr1_et,'String','Enter');
-% set(handles.atr2_et,'String','Enter');
-% set(handles.atr3_et,'String','Enter');
-% set(handles.atr4_et,'String','Enter');
 guidata(hObject, handles)
 %This clears all text boxes and the axes for new data or a recombination.
 % --- Executes on button press in home_pb.

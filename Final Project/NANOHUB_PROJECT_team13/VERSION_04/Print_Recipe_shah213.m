@@ -43,7 +43,7 @@ function varargout = Print_Recipe_shah213(varargin)
 
 % Edit the above text to modify the response to help Print_Recipe_shah213
 
-% Last Modified by GUIDE v2.5 13-Apr-2015 20:03:55
+% Last Modified by GUIDE v2.5 30-Apr-2015 08:47:00
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -225,5 +225,3 @@ scatter(handles.Attr_Plot_ax, cost, tox, 'dm');
 title('Toxicity vs. Cost'); %Title for the plot
 ylabel('Toxicity (units/g)'); %Label for y-axis
 xlabel('Cost ($/g)'); %Label for x-axis
-
-
