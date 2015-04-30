@@ -1,13 +1,13 @@
-function varargout = Var_Plot_help_schwarb(varargin)
+function varargout = Print_Plot_shah213(varargin)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %  ENGR 13200 Spring 2015
 %  Programmer(s) and Purdue Email Address(es):
-%  1. Broderick Schwartz, schwarb@purdue.edu
+%  1. Yash Shah, shah213@purdue.edu
 %
 %  Other Contributor(s) and Purdue Email Address(es):
 %  1. Name login@purdue.edu
 %
-%  Section #:38      Team #:13
+%  Section #: 38   Team #:13
 %  Assignment: nanoHUB Simulation Suite
 %
 %  Academic Integrity Statement:
@@ -17,39 +17,40 @@ function varargout = Var_Plot_help_schwarb(varargin)
 %       to my/our code to another. The project I/we am/are 
 %       submitting is my/our own original work.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%No citations were used for this help GUI as the programmer was the sole
-%source of infomation on their GUI.
-% VAR_PLOT_HELP_SCHWARB MATLAB code for Var_Plot_help_schwarb.fig
-%      VAR_PLOT_HELP_SCHWARB, by itself, creates a new VAR_PLOT_HELP_SCHWARB or raises the existing
+%In text citations are not found in this GUI because the only citations
+%needed are for prior art and pictures can't have in 'text' citations.
+%Citations are found in the citations GUI window.
+% PRINT_PLOT_SHAH213 MATLAB code for Print_Plot_shah213.fig
+%      PRINT_PLOT_SHAH213, by itself, creates a new PRINT_PLOT_SHAH213 or raises the existing
 %      singleton*.
 %
-%      H = VAR_PLOT_HELP_SCHWARB returns the handle to a new VAR_PLOT_HELP_SCHWARB or the handle to
+%      H = PRINT_PLOT_SHAH213 returns the handle to a new PRINT_PLOT_SHAH213 or the handle to
 %      the existing singleton*.
 %
-%      VAR_PLOT_HELP_SCHWARB('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in VAR_PLOT_HELP_SCHWARB.M with the given input arguments.
+%      PRINT_PLOT_SHAH213('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in PRINT_PLOT_SHAH213.M with the given input arguments.
 %
-%      VAR_PLOT_HELP_SCHWARB('Property','Value',...) creates a new VAR_PLOT_HELP_SCHWARB or raises the
+%      PRINT_PLOT_SHAH213('Property','Value',...) creates a new PRINT_PLOT_SHAH213 or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before Var_Plot_help_schwarb_OpeningFcn gets called.  An
+%      applied to the GUI before Print_Plot_shah213_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to Var_Plot_help_schwarb_OpeningFcn via varargin.
+%      stop.  All inputs are passed to Print_Plot_shah213_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help Var_Plot_help_schwarb
+% Edit the above text to modify the response to help Print_Plot_shah213
 
-% Last Modified by GUIDE v2.5 21-Apr-2015 10:35:47
+% Last Modified by GUIDE v2.5 27-Apr-2015 11:32:42
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @Var_Plot_help_schwarb_OpeningFcn, ...
-                   'gui_OutputFcn',  @Var_Plot_help_schwarb_OutputFcn, ...
+                   'gui_OpeningFcn', @Print_Plot_shah213_OpeningFcn, ...
+                   'gui_OutputFcn',  @Print_Plot_shah213_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -64,38 +65,44 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before Var_Plot_help_schwarb is made visible.
-function Var_Plot_help_schwarb_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before Print_Plot_shah213 is made visible.
+function Print_Plot_shah213_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to Var_Plot_help_schwarb (see VARARGIN)
+% varargin   command line arguments to Print_Plot_shah213 (see VARARGIN)
 
-% Choose default command line output for Var_Plot_help_schwarb
+% Choose default command line output for Print_Plot_shah213
 handles.output = hObject;
 
-% Update handles structure
-guidata(hObject, handles);
+cost = getappdata(0, 'Yash_Plot1');
+tox = getappdata(0, 'Yash_Plot2');
+ 
+%axes(handles.Print_Attr_ax);
+scatter(handles.Print_Plot_ax, cost, tox, 'filled', 'cyan');
+ 
+title('Toxicity vs. Cost'); %Title for the plot
+ylabel('Toxicity (units/g)'); %Label for y-axis
+xlabel('Cost ($/g)'); %Label for x-axis
+ 
+saveas(handles.Print_Plot_ax,'Attribute Plot', 'png');
+ 
+close Print_Plot_shah213;
 
-% UIWAIT makes Var_Plot_help_schwarb wait for user response (see UIRESUME)
-% uiwait(handles.figure1);
+% Update handles structure
+%guidata(hObject, handles);
+
+% UIWAIT makes Print_Plot_shah213 wait for user response (see UIRESUME)
+% uiwait(handles.background);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = Var_Plot_help_schwarb_OutputFcn(hObject, eventdata, handles) 
+function varargout = Print_Plot_shah213_OutputFcn(hObject, eventdata, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
 % Get default command line output from handles structure
-varargout{1} = handles.output;
-
-
-% --- Executes on button press in close_pb.
-function close_pb_Callback(hObject, eventdata, handles)
-% hObject    handle to close_pb (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-close Var_Plot_help_schwarb;
+%varargout{1} = handles.output;

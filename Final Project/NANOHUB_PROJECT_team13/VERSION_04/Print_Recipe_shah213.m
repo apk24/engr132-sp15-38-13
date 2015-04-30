@@ -43,7 +43,7 @@ function varargout = Print_Recipe_shah213(varargin)
 
 % Edit the above text to modify the response to help Print_Recipe_shah213
 
-% Last Modified by GUIDE v2.5 28-Apr-2015 13:01:36
+% Last Modified by GUIDE v2.5 13-Apr-2015 20:03:55
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -227,8 +227,3 @@ ylabel('Toxicity (units/g)'); %Label for y-axis
 xlabel('Cost ($/g)'); %Label for x-axis
 
 
-% --- Executes when uipanel1 is resized.
-function uipanel1_ResizeFcn(hObject, eventdata, handles)
-% hObject    handle to uipanel1 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
